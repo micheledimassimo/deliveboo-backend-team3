@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
+
+use App\Http\Controllers\Controller;
 
 class RestaurantController extends Controller
 {
@@ -12,7 +14,8 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        //
+        $restaurants = Restaurant::get();
+        return view('admin.restaurants.index', compact('restaurants'));
     }
 
     /**
@@ -20,7 +23,7 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.restaurants.create');
     }
 
     /**
@@ -28,7 +31,12 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all(
+            // nome
+            // indirizzo
+            // numero
+            // img
+        );
     }
 
     /**
@@ -36,7 +44,7 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-        //
+        return view('admin.restaurants.show', compact('restaurant'));
     }
 
     /**
@@ -44,7 +52,7 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-        //
+        return view('admin.restaurants.edit', compact('restaurant'));
     }
 
     /**
@@ -52,7 +60,11 @@ class RestaurantController extends Controller
      */
     public function update(Request $request, Restaurant $restaurant)
     {
-        //
+        $data = $request->all();
+
+        $restaurant->update($data);
+
+        return redirect()->route('admin.restaurants.show', ['restaurant' => $restaurant->id]);
     }
 
     /**
@@ -60,6 +72,8 @@ class RestaurantController extends Controller
      */
     public function destroy(Restaurant $restaurant)
     {
-        //
+        $restaurant->delete();
+
+        return redirect()->route('admin.restaurants.index');
     }
 }

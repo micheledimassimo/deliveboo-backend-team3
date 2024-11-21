@@ -16,24 +16,26 @@
 
     @endif
 
-    <div class="container my-5">
+    <div class="container login-container my-5">
         
         <div class="card mb-3">
 
             <div class="row">
-                <div class="col-md-4">
-                    <img src="https://i.pinimg.com/736x/e9/3b/26/e93b26ba393c37f7846ad1978324d621.jpg" class="img-fluid rounded-start" alt="...">
+                <div class="col-md-4 rounded-start">
+                    {{-- <img src="https://i.pinimg.com/736x/e9/3b/26/e93b26ba393c37f7846ad1978324d621.jpg" class="rounded-start" alt="..."> --}}
                 </div>
 
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h3 class="card-title">
+                        <h2 class="card-title mb-3">
                             Inizia a vendere su
                             <i class="fa-solid fa-burger"></i>
                             Delive<span class="text-warning">Boo</span>
-                        </h3>
-                        <p class="card-text">
-                            Benvenuto! <br>
+                        </h2>
+                        <h5 class="card-text mb-0">
+                            Benvenuto!
+                        </h5>
+                        <p>
                             Ti aiuteremo a configurare il tuo account.
                             Ci vorranno solo pochi minuti.
                         </p>
@@ -42,7 +44,7 @@
                             @csrf
 
                             <!-- Name + cognome -->
-                            <div class="row mb-3">
+                            <div class="row mb-4">
                                 <div class="col">
                                     <div>
                                         <label for="first-name">
@@ -76,7 +78,7 @@
                             </div>
     
                             <!-- Partita IVA -->
-                            <div class="row mb-3">
+                            <div class="row mb-4">
                                 <div class="col">
                                     <div>
                                         <label for="p-iva">
@@ -95,7 +97,7 @@
                             </div>
     
                             <!-- Email Address -->
-                            <div class="row mb-3">
+                            <div class="row mb-4">
                                 <div class="col">
                                     <div>
                                         <label for="email">
@@ -112,7 +114,7 @@
                             </div>
     
                             <!-- Password + conferma -->
-                            <div class="row mb-3">
+                            <div class="row mb-4">
                                 <div class="col">
                                     <div>
                                     <label for="password">
@@ -143,7 +145,7 @@
                                 </div>
                             </div>
 
-                            <div class="mb-3">
+                            <div class="mb-4">
                                 <p>
                                     <span class="text-danger">*</span> Tutti i campi sono obbligatori
                                 </p>
@@ -164,5 +166,11 @@
             </div>
         </div>
     </div>
+
+    <style scoped>
+        .col-md-4{
+            background-image: url('https://i.pinimg.com/736x/e9/3b/26/e93b26ba393c37f7846ad1978324d621.jpg')
+        }
+    </style>
 
 @endsection

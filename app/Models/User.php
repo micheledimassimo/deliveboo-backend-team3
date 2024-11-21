@@ -14,9 +14,9 @@ class User extends Authenticatable
 
     //Relathionships
 
-    /* public function restaurants() {
+    public function restaurants() {
         return $this->hasOne(Restaurant::class);
-    } */
+    } 
 
     /**
      * The attributes that are mass assignable.

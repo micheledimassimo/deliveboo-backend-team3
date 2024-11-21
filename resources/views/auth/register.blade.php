@@ -5,11 +5,26 @@
         @csrf
 
         <!-- Name -->
-        <div>
-            <label for="name">
+        <div class="mt-4">
+            <label for="first-name">
                 Name
             </label>
-            <input type="text" id="name" name="name">
+            <input type="text" id="first-name" name="first-name">
+        </div>
+
+        <div class="mt-4"> 
+            <label for="last-name">
+               Surname
+            </label>
+            <input type="text" id="last-name" name="last-name">
+        </div>
+
+        <!-- Partita IVA -->
+        <div class="mt-4">
+            <label for="p-iva">
+               Numero Partita IVA
+            </label>
+            <input type="text" id="p-iva" name="p-iva">
         </div>
 
         <!-- Email Address -->

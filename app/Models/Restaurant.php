@@ -1,0 +1,43 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Restaurant extends Model
+{
+    use HasFactory;
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
+    protected $fillable = [
+        'restaurant_name',
+        'address',
+        'phone_number',
+        'slug',
+        'user_id'
+    ];
+
+    public static function getUniqueSlug($restaurant_name) {
+        $originalSlug = str()->slug($restaurant_name);
+
+        $slug = $originalSlug;
+
+        $existingRestaurant = Restaurant::where('slug', $slug)->first();
+
+        $counter = 1;
+
+        while($existingRestaurant != null) {
+            $slug = $originalSlug.'-'.$counter;
+
+            $existingRestaurant = Restaurant::where('slug', $slug)->first();
+
+            $counter = $counter + 1;
+        }
+
+        return $slug;
+    }
+}

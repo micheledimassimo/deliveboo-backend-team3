@@ -13,8 +13,19 @@ return new class extends Migration
     {
         Schema::create('restaurants', function (Blueprint $table) {
             $table->id();
+            $table->string('restaurant_name', 128);
+            $table->string('address', 128);
+            $table->string('phone_number', 64);
+            $table->string('slug', 64)->unique();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')
+                  ->nullable()
+                  ->references('id')
+                  ->on('users');
             $table->timestamps();
         });
+
+        // commento
     }
 
     /**
@@ -23,5 +34,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('restaurants');
+
     }
 };

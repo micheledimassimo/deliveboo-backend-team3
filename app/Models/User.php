@@ -12,15 +12,24 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    //Relathionships
+
+    /* public function restaurants() {
+        return $this->hasOne(Restaurant::class);
+    } */
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
         'password',
+        'p_iva',
+        
     ];
 
     /**

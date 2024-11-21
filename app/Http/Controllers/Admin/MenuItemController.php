@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\MenuItem;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class MenuItemController extends Controller
 {
@@ -12,7 +13,9 @@ class MenuItemController extends Controller
      */
     public function index()
     {
-        //
+        $menuItems = MenuItem::get();
+
+        return view('admin.menu_items.index', compact('menuItems'));
     }
 
     /**
@@ -20,7 +23,7 @@ class MenuItemController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.menu_items.create');
     }
 
     /**
@@ -28,7 +31,15 @@ class MenuItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $this->validateRequest($request);
+
+        $data = $request->all();
+
+        $data['slug'] = str()->slug($data['item_name']);
+
+        $menuItem = MenuItem::create($data);
+
+        return redirect()->route('admin.menu_items.show', ['menuItem' => $menuItem->id]);
     }
 
     /**
@@ -36,7 +47,7 @@ class MenuItemController extends Controller
      */
     public function show(MenuItem $menuItem)
     {
-        //
+        return view('admin.menu_items.show', compact('menuItem'));
     }
 
     /**
@@ -44,7 +55,7 @@ class MenuItemController extends Controller
      */
     public function edit(MenuItem $menuItem)
     {
-        //
+        return view('admin.menu_items.edit', compact('menuItem'));
     }
 
     /**
@@ -52,14 +63,38 @@ class MenuItemController extends Controller
      */
     public function update(Request $request, MenuItem $menuItem)
     {
-        //
+
+        $data = $this->validateRequest($request);
+
+        $data = $request->all();
+
+        $data['slug'] = str()->slug($data['item_name']);
+
+        $menuItem->update($data);
+
+        return redirect()->route('admin.menu_items.show', ['menuItem' => $menuItem->id]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(MenuItem $menuItem)
+    public function destroy(MenuItem $menu_item)
     {
-        //
+        $menu_item->delete();
+        return redirect()->route('admin.menu_items.index');
+    }
+
+    private function validateRequest($request){
+
+        $request->validate([
+
+            'item_name' => 'required|min:3|max:255',
+            'description',
+            'price',
+            'is_visible',
+            'image',
+            'restaurant_id'
+
+        ]);
     }
 }

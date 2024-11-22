@@ -61,7 +61,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="image" class="form-label">Immagine</label>
-                            <input type="file" class="form-control" id="image" name="image" minlength="3" maxlength="1024" placeholder="Scegli un immagine per il tuo piatto...">
+                            <input type="file" class="form-control" id="image" name="image" minlength="3" maxlength="1024" placeholder="Carica un immagine per il tuo piatto...">
                         </div>
                         <div class="mb-3">
 

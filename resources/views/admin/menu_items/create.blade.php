@@ -44,7 +44,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('admin.menu_items.store') }}" method="POST">
+                    <form action="{{ route('admin.menu_items.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <div class="mb-3">
@@ -61,7 +61,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="image" class="form-label">Immagine</label>
-                            <input type="text" class="form-control" id="image" name="image" minlength="3" maxlength="1024" value="{{ old('image') }}" placeholder="Inserisci l'url dell'immagine...">
+                            <input type="file" class="form-control" id="image" name="image" minlength="3" maxlength="1024" placeholder="Scegli un immagine per il tuo piatto...">
                         </div>
                         <div class="mb-3">
 

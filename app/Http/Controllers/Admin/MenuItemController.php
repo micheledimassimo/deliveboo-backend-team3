@@ -39,7 +39,7 @@ class MenuItemController extends Controller
 
         $menuItem = MenuItem::create($data);
 
-        return redirect()->route('admin.menu_items.show', ['menuItem' => $menuItem->id]);
+        return redirect()->route('admin.menu_items.show', [$menuItem->id]);
     }
 
     /**
@@ -72,7 +72,7 @@ class MenuItemController extends Controller
 
         $menuItem->update($data);
 
-        return redirect()->route('admin.menu_items.show', ['menuItem' => $menuItem->id]);
+        return redirect()->route('admin.menu_items.show', [$menuItem->id]);
     }
 
     /**

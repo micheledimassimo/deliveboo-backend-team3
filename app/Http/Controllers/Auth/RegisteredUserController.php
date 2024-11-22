@@ -40,7 +40,7 @@ class RegisteredUserController extends Controller
             'last-name' => ['required', 'string','min:1', 'max:32'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed','min:3', 'max:64', Rules\Password::defaults()],
-            'p-iva' => ['required', 'string', 'min:11', 'max:11'],
+            'p-iva' => ['required', 'string', 'min:11', 'max:11', 'regex:/qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNMèéòçà°ù§[]#¶-.,;:|\!"£$%&()=?^[^/]+*/'],
             'restaurant-name' => ['required', 'string','min:1', 'max:128'],
             'address' => ['required', 'string','min:1', 'max:128'],
             'phone-number' => ['required', 'string','min:5', 'max:64'],

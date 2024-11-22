@@ -65,7 +65,7 @@
                     </ul>
 
                     <div>
-                        <img src="https://www.moltofood.it/wp-content/uploads/2024/03/Bistecca.jpg" alt="" class="w-25">
+                        <img src="{{ asset('storage/' . $menuItem->image) }}" alt="{{ $menuItem->item_name }}" style="max-width: 200px;">
                     </div>
                 </div>
             </div>

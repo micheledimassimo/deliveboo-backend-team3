@@ -6,6 +6,10 @@ use App\Models\MenuItem;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+// Helpers
+
+use Illuminate\Support\Facades\Storage;
+
 class MenuItemController extends Controller
 {
     /**
@@ -37,6 +41,11 @@ class MenuItemController extends Controller
 
         $data['slug'] = str()->slug($data['item_name']);
 
+        if (isset($data['image'])) {
+            $imgPath = Storage::put('uploads', $data['image']);
+            $data['image'] = $imgPath;
+        }
+       
         $menuItem = MenuItem::create($data);
 
         return redirect()->route('admin.menu_items.show', [$menuItem->id]);
@@ -92,7 +101,7 @@ class MenuItemController extends Controller
             'description',
             'price',
             'is_visible',
-            'image',
+            'image' => 'nullable|image|max:1024',
             'restaurant_id'
 
         ]);

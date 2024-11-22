@@ -58,7 +58,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="price" class="form-label">Prezzo <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="price" name="price"  minlength="3" maxlength="255" value="{{ old('price', $menuItem->price) }}" placeholder="Inserisci il prezzo...">
+                            <input type="text" class="form-control" id="price" name="price" value="{{ old('price', $menuItem->price) }}" placeholder="Inserisci il prezzo...">
                         </div>
                         <div class="mb-3">
                             <label for="image" class="form-label">Immagine</label>

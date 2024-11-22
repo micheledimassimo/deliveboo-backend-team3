@@ -143,6 +143,235 @@
                                             maxlength="64"
                                             placeholder="Inserisci qui il telefono della tua attività..">
                                 </div>
+                                <!-- Typologies Checkboxes -->
+                                <div class="col mb-4">
+                                    <div class="mb-4">
+                                        Tipologia/e Attività
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                        
+                                            <div>
+                                                <label for="Italiano">
+                                                    Italiano
+                                                </label>
+                                            </div>
+                                            <input
+                                                    type="checkbox"
+                                                    id="Italiano"
+                                                    name="Italiano"
+                                                    value="Italiano"
+                                                    >
+                                        </div>
+                                        <div class="col">
+                                        
+                                            <div>
+                                                <label for="Messicano">
+                                                    Messicano
+                                                </label>
+                                            </div>
+                                            <input
+                                                    type="checkbox"
+                                                    id="Messicano"
+                                                    name="Messicano"
+                                                    value="Messicano"
+                                                    >
+                                        </div>
+                                        <div class="col">
+                                        
+                                            <div>
+                                                <label for="Cinese">
+                                                    Cinese
+                                                </label>
+                                            </div>
+                                            <input
+                                                    type="checkbox"
+                                                    id="Cinese"
+                                                    name="Cinese"
+                                                    value="Cinese"
+                                                    >
+                                        </div>
+                                        <div class="col">
+                                        
+                                            <div>
+                                                <label for="Pizzeria">
+                                                    Pizzeria
+                                                </label>
+                                            </div>
+                                            <input
+                                                    type="checkbox"
+                                                    id="Pizzeria"
+                                                    name="Pizzeria"
+                                                    value="Pizzeria"
+                                                    >
+                                        </div>
+                                            
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                        
+                                            <div>
+                                                <label for="Sushi">
+                                                    Sushi
+                                                </label>
+                                            </div>
+                                            <input
+                                                    type="checkbox"
+                                                    id="Sushi"
+                                                    name="Sushi"
+                                                    value="Sushi"
+                                                    >
+                                        </div>
+                                        <div class="col">
+                                        
+                                            <div>
+                                                <label for="Paninoteca">
+                                                    Paninoteca
+                                                </label>
+                                            </div>
+                                            <input
+                                                    type="checkbox"
+                                                    id="Paninoteca"
+                                                    name="Paninoteca"
+                                                    value="Paninoteca"
+                                                    >
+                                        </div>
+                                        <div class="col">
+                                        
+                                            <div>
+                                                <label for="Kebab">
+                                                    Kebab
+                                                </label>
+                                            </div>
+                                            <input
+                                                    type="checkbox"
+                                                    id="Kebab"
+                                                    name="Kebab"
+                                                    value="Kebab"
+                                                    >
+                                        </div>
+                                        <div class="col">
+                                        
+                                            <div>
+                                                <label for="Ramen">
+                                                    Ramen
+                                                </label>
+                                            </div>
+                                            <input
+                                                    type="checkbox"
+                                                    id="Ramen"
+                                                    name="Ramen"
+                                                    value="Ramen"
+                                                    >
+                                        </div>
+                                            
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                        
+                                            <div>
+                                                <label for="Pub">
+                                                    Pub
+                                                </label>
+                                            </div>
+                                            <input
+                                                    type="checkbox"
+                                                    id="Pub"
+                                                    name="Pub"
+                                                    value="Pub"
+                                                    >
+                                        </div>
+                                        <div class="col">
+                                        
+                                            <div>
+                                                <label for="Gelateria">
+                                                    Gelateria
+                                                </label>
+                                            </div>
+                                            <input
+                                                    type="checkbox"
+                                                    id="Gelateria"
+                                                    name="Gelateria"
+                                                    value="Gelateria"
+                                                    >
+                                        </div>
+                                        <div class="col">
+                                        
+                                            <div>
+                                                <label for="Pasticceria">
+                                                    Pasticceria
+                                                </label>
+                                            </div>
+                                            <input
+                                                    type="checkbox"
+                                                    id="Pasticceria"
+                                                    name="Pasticceria"
+                                                    value="Pasticceria"
+                                                    >
+                                        </div>
+                                        <div class="col">
+                                        
+                                            <div>
+                                                <label for="Hambuergeria">
+                                                    Hambuergeria
+                                                </label>
+                                            </div>
+                                            <input
+                                                    type="checkbox"
+                                                    id="Hambuergeria"
+                                                    name="Hambuergeria"
+                                                    value="Hambuergeria"
+                                                    >
+                                        </div>
+                                            
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                        
+                                            <div>
+                                                <label for="Pesce">
+                                                    Pesce
+                                                </label>
+                                            </div>
+                                            <input
+                                                    type="checkbox"
+                                                    id="Pesce"
+                                                    name="Pesce"
+                                                    value="Pesce"
+                                                    >
+                                        </div>
+                                        <div class="col">
+                                        
+                                            <div>
+                                                <label for="Pasta">
+                                                    Pasta
+                                                </label>
+                                            </div>
+                                            <input
+                                                    type="checkbox"
+                                                    id="Pasta"
+                                                    name="Pasta"
+                                                    value="Pasta"
+                                                    >
+                                        </div>
+                                        <div class="col">
+                                        
+                                            <div>
+                                                <label for="Carne">
+                                                    Carne
+                                                </label>
+                                            </div>
+                                            <input
+                                                    type="checkbox"
+                                                    id="Carne"
+                                                    name="Carne"
+                                                    value="Carne"
+                                                    >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <!-- Email Address -->
                             <div class="row mb-4">
                                 <div class="col">
@@ -200,7 +429,7 @@
                                 <button class="btn btn-success mb-3" type="submit">
                                     Register
                                 </button>
-    
+                                
                                 <div>
                                     <a href="{{ route('login') }}">
                                         {{ __('Already registered?') }}

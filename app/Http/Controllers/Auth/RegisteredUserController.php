@@ -17,6 +17,7 @@ use Illuminate\View\View;
 use App\Models\User;
 use App\Models\Restaurant;
 
+
 class RegisteredUserController extends Controller
 {
     /**
@@ -34,6 +35,7 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        
         $request->validate([
             'first-name' => ['required', 'string','min:1', 'max:32'],
             'last-name' => ['required', 'string','min:1', 'max:32'],

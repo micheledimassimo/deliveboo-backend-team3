@@ -38,7 +38,10 @@ class TypologySeeder extends Seeder
             'Ramen',
             'Pasticceria',
             'Gelateria',
-            'Pub'
+            'Pub',
+            'Carne',
+            'Pesce',
+            'Pasta'
         ];
 
         foreach ($alltypologys as $singletypology) {

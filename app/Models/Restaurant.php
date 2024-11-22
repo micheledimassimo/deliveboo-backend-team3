@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 // Models
 
 use App\Models\MenuItem;
+use App\Models\Typology;
 
 class Restaurant extends Model
 {
@@ -21,12 +22,17 @@ class Restaurant extends Model
         return $this->hasMany(MenuItem::class);
     }
 
+    public function typologies() {
+        return $this->belongsToMany(Typology::class);
+
+    }
     protected $fillable = [
         'restaurant_name',
         'address',
         'phone_number',
         'slug',
-        'user_id'
+        'user_id',
+        'typology_id'
     ];
 
     public static function getUniqueSlug($restaurant_name) {

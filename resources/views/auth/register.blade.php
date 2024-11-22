@@ -313,15 +313,15 @@
                                         <div class="col">
                                         
                                             <div>
-                                                <label for="Hambuergeria">
-                                                    Hambuergeria
+                                                <label for="Hamburgeria">
+                                                    Hamburgeria
                                                 </label>
                                             </div>
                                             <input
                                                     type="checkbox"
-                                                    id="Hambuergeria"
-                                                    name="Hambuergeria"
-                                                    value="Hambuergeria"
+                                                    id="Hamburgeria"
+                                                    name="Hamburgeria"
+                                                    value="Hamburgeria"
                                                     >
                                         </div>
                                             

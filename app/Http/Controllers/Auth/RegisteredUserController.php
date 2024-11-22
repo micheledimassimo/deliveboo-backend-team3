@@ -17,7 +17,6 @@ use Illuminate\View\View;
 use App\Models\User;
 use App\Models\Restaurant;
 
-
 class RegisteredUserController extends Controller
 {
     /**
@@ -57,15 +56,61 @@ class RegisteredUserController extends Controller
             'p_iva'=> $data['p-iva'],
             
         ]);
-
-        $restarantName = $data['restaurant-name'];
-        $restarantSlug = str()->slug($restarantName);
+        
+        $restaurantName = $data['restaurant-name'];
+        $restaurantSlug = str()->slug($restaurantName);
         $restaurant = Restaurant::create([
             'restaurant_name' => $data['restaurant-name'],
             'address' => $data['address'],
             'phone_number' => $data['phone-number'],
-            'slug' => $restarantSlug,
+            'slug' => $restaurantSlug,
         ]);
+
+        if ($data['Italiano']) {
+            $restaurant->typologies()->attach('1'); 
+        }
+        if ($data['Cinese']) {
+            $restaurant->typologies()->attach('2'); 
+        }
+        if ($data['Hamburgeria']) {
+            $restaurant->typologies()->attach('3'); 
+        }
+        if ($data['Pizzeria']) {
+            $restaurant->typologies()->attach('4'); 
+        }
+        if ($data['Sushi']) {
+            $restaurant->typologies()->attach('5'); 
+        }
+        if ($data['Paninoteca']) {
+            $restaurant->typologies()->attach('6'); 
+        }
+        if ($data['Kebab']) {
+            $restaurant->typologies()->attach('7'); 
+        }
+        if ($data['Messicano']) {
+            $restaurant->typologies()->attach('8'); 
+        }
+        if ($data['Ramen']) {
+            $restaurant->typologies()->attach('9'); 
+        }
+        if ($data['Pasticceria']) {
+            $restaurant->typologies()->attach('10'); 
+        }
+        if ($data['Gelateria']) {
+            $restaurant->typologies()->attach('11'); 
+        }
+        if ($data['Pub']) {
+            $restaurant->typologies()->attach('12'); 
+        }
+        if ($data['Carne']) {
+            $restaurant->typologies()->attach('13'); 
+        }
+        if ($data['Pesce']) {
+            $restaurant->typologies()->attach('14'); 
+        }
+        if ($data['Pasta']) {
+            $restaurant->typologies()->attach('15'); 
+        }
 
         event(new Registered($user));
 

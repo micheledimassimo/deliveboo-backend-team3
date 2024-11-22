@@ -8,7 +8,8 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <form method="POST" action="" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('admin.restaurants.update', ['restaurant' => $restaurant ->id]) }}" enctype="multipart/form-data">
+                        @method('PUT')
                         @csrf
                         <div class="mb-3">
                             <label 
@@ -60,9 +61,17 @@
                                 placeholder="Inserisci il numero di telefono..." 
                                 required>
                           </div>
+
+                          <div>
+                             <button type="submit" class="btn btn-primary">
+                                Modifica
+                             </button>
+                          </div>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
+@endsection    

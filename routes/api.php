@@ -27,6 +27,13 @@ Route::name('api.')->group(function(){
         return $request->user();
     });
 
-    Route::get('/restaurants', [RestaurantController::class, 'index'])->name('restaurants.index');
+    // Route::get('/restaurants', [RestaurantController::class, 'index'])->name('restaurants.index');
+
+    // Route::get('/restaurants/{slug}', [RestaurantController::class, 'show'])->name('restaurants.show');
+
+    Route::resource('restaurants', RestaurantController::class)->only([
+        'index',
+        'show'
+    ]);
 
 });

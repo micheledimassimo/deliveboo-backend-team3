@@ -26,4 +26,26 @@ class RestaurantController extends Controller
             ]
         ]);
     }
+
+    public function show(string $slug){
+        $restaurant = Restaurant::with('typologies')->where('slug', $slug)->first();
+
+        if($restaurant){
+            return response()->json([
+                'success' => true,
+                'code' => 200,
+                'data' => [
+                    'restaurant' => $restaurant
+                ]
+            ]);
+        }
+        else{
+            return response()->json([
+                'success' => false,
+                'code' => 404,
+                'message' => 'Ristorante non trovato'
+            ]);
+        }
+
+    }
 }

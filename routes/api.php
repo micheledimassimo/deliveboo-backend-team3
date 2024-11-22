@@ -3,6 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+// controllers
+use App\Http\Controllers\API\RestaurantController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,6 +17,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// 
+
+// per evitare conflitti con le rotte di web, aggiungo prefisso name
+
+Route::name('api.')->group(function(){
+
+    Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+        return $request->user();
+    });
+
+    // Route::get('/restaurants', [RestaurantController::class, 'index'])->name('restaurants.index');
+
+    // Route::get('/restaurants/{slug}', [RestaurantController::class, 'show'])->name('restaurants.show');
+
+    Route::resource('restaurants', RestaurantController::class)->only([
+        'index',
+        'show'
+    ]);
+
 });

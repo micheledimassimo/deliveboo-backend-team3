@@ -31,6 +31,7 @@ class Restaurant extends Model
         'address',
         'phone_number',
         'slug',
+        'img',
         'user_id',
         'typology_id'
     ];

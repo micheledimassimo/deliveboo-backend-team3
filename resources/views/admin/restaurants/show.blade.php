@@ -5,9 +5,11 @@
 @section('main-content')
     <div class="row">
         <div class="col">
-            <h2>
-                Ristorante
-            </h2>
+            <div class="mb-3">
+                <a href="{{ route('admin.restaurants.edit',['restaurant' => $restaurant->id]) }}" class="btn btn-primary">
+                    Modifica
+                </a>
+            </div>
             <div class="card">
                 <div class="card-body">
 

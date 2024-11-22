@@ -31,6 +31,8 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
+        $data = $this->validateRequest($request);
+        
         $data = $request->all();
 
         $data['slug'] = str()->slug($data['restaurant_name']);
@@ -60,7 +62,9 @@ class RestaurantController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, Restaurant $restaurant)
-    {
+    {   
+        $data = $this->validateRequest($request);
+
         $data = $request->all();
 
         $restaurant->update($data);
@@ -76,5 +80,17 @@ class RestaurantController extends Controller
         $restaurant->delete();
 
         return redirect()->route('admin.restaurants.index');
+    }
+
+    private function validateRequest($request){
+
+        $request->validate([
+
+            'restaurant_name' => 'required|min:3|max:128',
+            'address' => 'required|min:3|max:128',
+            'phone_number' => 'required|min:3|max:64',
+            'img' => 'nullable|image|max:2048',
+            'user_id' => 'nullable|exists:user,id'
+        ]);
     }
 }

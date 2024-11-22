@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -12,6 +11,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+
+
+//Models
+use App\Models\User;
+use App\Models\Restaurant;
 
 class RegisteredUserController extends Controller
 {
@@ -31,11 +35,14 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'first-name' => ['required', 'string', 'max:32'],
-            'last-name' => ['required', 'string', 'max:32'],
+            'first-name' => ['required', 'string','min:1', 'max:32'],
+            'last-name' => ['required', 'string','min:1', 'max:32'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', 'max:64', Rules\Password::defaults()],
+            'password' => ['required', 'confirmed','min:3', 'max:64', Rules\Password::defaults()],
             'p-iva' => ['required', 'string', 'min:11', 'max:11'],
+            'restaurant-name' => ['required', 'string','min:1', 'max:128'],
+            'address' => ['required', 'string','min:1', 'max:128'],
+            'phone-number' => ['required', 'string','min:5', 'max:64'],
         ]);
 
         $data = $request->all();
@@ -47,6 +54,15 @@ class RegisteredUserController extends Controller
             'password'=> Hash::make($data['password']),
             'p_iva'=> $data['p-iva'],
             
+        ]);
+
+        $restarantName = $data['restaurant-name'];
+        $restarantSlug = str()->slug($restarantName);
+        $restaurant = Restaurant::create([
+            'restaurant_name' => $data['restaurant-name'],
+            'address' => $data['address'],
+            'phone_number' => $data['phone-number'],
+            'slug' => $restarantSlug,
         ]);
 
         event(new Registered($user));

@@ -31,12 +31,13 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all(
-            // nome
-            // indirizzo
-            // numero
-            // img
-        );
+        $data = $request->all();
+
+        $data['slug'] = str()->slug($data['restaurant_name']);
+
+        $restaurant = Restaurant::create($data);
+
+        return redirect()->route('admin.restaurants.show', ['restaurant' => $restaurant->id]);
     }
 
     /**

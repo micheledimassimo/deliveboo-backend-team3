@@ -16,9 +16,9 @@
 
     @endif
 
-    <div class="container login-container my-5">
+    <div class="container login-container my-3">
         
-        <div class="card mb-3">
+        <div class="card mb-1">
 
             <div class="row">
                 <div class="col-md-4 rounded-start">
@@ -96,7 +96,7 @@
                                 </div>
                             </div>
                             <!-- Nome Attività -->
-                            <div class="col">
+                            <div class="col mb-4">
                                     <div>
                                         <label for="restaurant-name">
                                             Nome attività <span class="text-danger">*</span>
@@ -112,7 +112,7 @@
                                             placeholder="Inserisci qui il nome della tua attività..">
                                 </div>
                             <!-- Indirizzo Attività -->
-                            <div class="col">
+                            <div class="col mb-4">
                                     <div>
                                         <label for="address">
                                             Indirizzo attività <span class="text-danger">*</span>
@@ -128,7 +128,7 @@
                                             placeholder="Inserisci qui l'indirizzo della tua attività..">
                             </div>
                             <!-- Numero di telefono attività -->
-                            <div class="col">
+                            <div class="col mb-4">
                                     <div>
                                         <label for="phone-number">
                                             Numero di telefono attività <span class="text-danger">*</span>

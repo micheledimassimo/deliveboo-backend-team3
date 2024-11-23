@@ -8,7 +8,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <form method="POST" action="{{ route('admin.restaurants.update', ['restaurant' => $restaurant ->id]) }}">
+                    <form method="POST" action="{{ route('admin.restaurants.update', ['restaurant' => $restaurant ->id]) }}" enctype="multipart/form-data">
                         @method('PUT')
                         @csrf
                         <div class="mb-3">
@@ -61,6 +61,22 @@
                                 placeholder="Inserisci il numero di telefono..." 
                                 required>
                           </div>
+
+                          <div class="mb-3">
+                            <label 
+                                for="img"
+                                class="form-label">
+                                <span class="text-danger">*</span>
+                                Immagine ristorante
+                            </label>
+                            <input class="form-control"
+                                    type="file"
+                                    id="img"
+                                    name="img"
+                                    minlength="1"
+                                    maxlength="2048"
+                                    placeholder="Inserisci qui la foto del tuo ristorante..">
+                            </div>
                           
 
                           <div>

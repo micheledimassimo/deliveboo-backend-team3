@@ -21,9 +21,7 @@
         <div class="card mb-1">
 
             <div class="row">
-                <div class="col-md-4 rounded-start">
-                    {{-- <img src="https://i.pinimg.com/736x/e9/3b/26/e93b26ba393c37f7846ad1978324d621.jpg" class="rounded-start" alt="..."> --}}
-                </div>
+                <div class="col-md-4 rounded-start"> </div>
 
                 <div class="col-md-8">
                     <div class="card-body">

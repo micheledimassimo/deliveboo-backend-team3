@@ -10,11 +10,11 @@
                     <h2>Informazioni ristorante</h2>
                 </div>
                 <div class="card-body">
-                    {{-- @if (!empty($menuItem->image) && file_exists(storage_path('app/public/' . $menuItem->image)))
-                        <img src="{{ asset('storage/' . $menuItem->image) }}" alt="{{ $menuItem->item_name }}" style="max-width: 200px;">
+                    @if (!empty($restaurant->img) && file_exists(storage_path('app/public/' . $restaurant->img)))
+                        <img src="{{ asset('storage/' . $restaurant->img) }}" alt="{{ $restaurant->item_name }}" style="max-width: 200px;">
                     @else
                         <img src="https://via.placeholder.com/100" alt="Placeholder image" class="img-thumbnail">
-                    @endif --}}
+                    @endif
                     <p><strong>Nome:</strong> <span>{{ $restaurant->restaurant_name }}</span></p>
                     <p><strong>Indirizzo:</strong> <span>{{ $restaurant->address }}</p>
                     <p><strong>Telefono:</strong> <span>{{ $restaurant->phone_number }}</span></p>

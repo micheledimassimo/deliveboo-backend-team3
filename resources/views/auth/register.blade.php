@@ -40,7 +40,7 @@
                             Ci vorranno solo pochi minuti.
                         </p>
 
-                        <form method="POST" action="{{ route('register') }}">
+                        <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                             @csrf
 
                             <!-- Name + cognome -->
@@ -111,6 +111,23 @@
                                             maxlength="128"
                                             placeholder="Inserisci qui il nome della tua attività..">
                                 </div>
+
+                            <!-- img -->
+                            <div class="col mb-4">
+                                <div>
+                                    <label for="img">
+                                        Foto ristorante
+                                    </label>
+                                </div>
+                                <input class="form-control"
+                                        type="file"
+                                        id="img"
+                                        name="img"
+                                        minlength="1"
+                                        maxlength="2048"
+                                        placeholder="Inserisci qui la foto del tuo ristorante..">
+                            </div>
+
                             <!-- Indirizzo Attività -->
                             <div class="col mb-4">
                                     <div>
@@ -421,6 +438,7 @@
                                 </div>
                             </div>
 
+                            {{-- submit --}}
                             <div class="mb-4">
                                 <p>
                                     <span class="text-danger">*</span> Tutti i campi sono obbligatori

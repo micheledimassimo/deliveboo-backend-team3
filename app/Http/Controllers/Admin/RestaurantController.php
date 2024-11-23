@@ -80,7 +80,7 @@ class RestaurantController extends Controller
 
         $restaurant->update($data);
 
-        return redirect()->route('admin.restaurants.show', ['restaurant' => $restaurant->id]);
+        return redirect()->route('admin.restaurants.show', ['restaurant' => $restaurant->slug]);
     }
 
     /**

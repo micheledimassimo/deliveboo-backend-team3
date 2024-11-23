@@ -30,7 +30,6 @@ Route::prefix('admin')
     Route::resource('menu_items', AdminMenuItemController::class);
     Route::resource('restaurants', AdminRestaurantController::class);
 
-
 });
 
 require __DIR__.'/auth.php';

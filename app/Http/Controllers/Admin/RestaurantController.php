@@ -50,9 +50,9 @@ class RestaurantController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show($slug)
     {   
-        $restaurant = Restaurant::with('menuItems')->findOrFail($id); // Eager loading
+        $restaurant = Restaurant::with('menuItems')->where('slug', $slug)->firstOrFail();
         return view('admin.restaurants.show', compact('restaurant'));
     }
 

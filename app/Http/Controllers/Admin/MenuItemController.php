@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\MenuItem;
+use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -45,10 +46,15 @@ class MenuItemController extends Controller
             $menuItemImage = Storage::put('uploads', $data['image']);
             $data['image'] = $menuItemImage;
         }
+
+        $restaurant = Restaurant::where('slug', $request->restaurant_slug)->firstOrFail();
+
+        $data['restaurant_id'] = $restaurant->id;
        
         $menuItem = MenuItem::create($data);
 
-        return redirect()->route('admin.restaurants.show', ['restaurant' => $request->restaurant_id]);
+        return redirect()->route('admin.restaurants.show', ['restaurant' => $restaurant->slug]);
+    
     }
 
     /**
@@ -102,7 +108,7 @@ class MenuItemController extends Controller
             'price'=> 'required|numeric',
             'is_visible' => 'nullable|boolean',
             'image' => 'nullable|image|max:1024',
-            'restaurant_id' => 'required|exists:restaurants,id',
+            'restaurant_id' => 'nullable|exists:restaurants,id',
 
         ]);
     }

@@ -76,53 +76,51 @@ class RegisteredUserController extends Controller
             'img' => $data['img']
         ]);
 
-        // AIUTO CI DANNO ERRORE T.T
-
-        // if ($data['Italiano']) {
-        //     $restaurant->typologies()->attach('1'); 
-        // }
-        // if ($data['Cinese']) {
-        //     $restaurant->typologies()->attach('2'); 
-        // }
-        // if ($data['Hamburgeria']) {
-        //     $restaurant->typologies()->attach('3'); 
-        // }
-        // if ($data['Pizzeria']) {
-        //     $restaurant->typologies()->attach('4'); 
-        // }
-        // if ($data['Sushi']) {
-        //     $restaurant->typologies()->attach('5'); 
-        // }
-        // if ($data['Paninoteca']) {
-        //     $restaurant->typologies()->attach('6'); 
-        // }
-        // if ($data['Kebab']) {
-        //     $restaurant->typologies()->attach('7'); 
-        // }
-        // if ($data['Messicano']) {
-        //     $restaurant->typologies()->attach('8'); 
-        // }
-        // if ($data['Ramen']) {
-        //     $restaurant->typologies()->attach('9'); 
-        // }
-        // if ($data['Pasticceria']) {
-        //     $restaurant->typologies()->attach('10'); 
-        // }
-        // if ($data['Gelateria']) {
-        //     $restaurant->typologies()->attach('11'); 
-        // }
-        // if ($data['Pub']) {
-        //     $restaurant->typologies()->attach('12'); 
-        // }
-        // if ($data['Carne']) {
-        //     $restaurant->typologies()->attach('13'); 
-        // }
-        // if ($data['Pesce']) {
-        //     $restaurant->typologies()->attach('14'); 
-        // }
-        // if ($data['Pasta']) {
-        //     $restaurant->typologies()->attach('15'); 
-        // }
+        if (in_array('Italiano', $data)) {
+            $restaurant->typologies()->attach('1');
+        }
+        if (in_array('Cinese', $data)) {
+            $restaurant->typologies()->attach('2');
+        }
+        if (in_array('Hamburgeria', $data)) {
+            $restaurant->typologies()->attach('3');
+        }
+        if (in_array('Pizzeria', $data)) {
+            $restaurant->typologies()->attach('4');
+        }
+        if (in_array('Sushi', $data)) {
+            $restaurant->typologies()->attach('5');
+        }
+        if (in_array('Paninoteca', $data)) {
+            $restaurant->typologies()->attach('6');
+        }
+        if (in_array('Kebab', $data)) {
+            $restaurant->typologies()->attach('7');
+        }
+        if (in_array('Messicano', $data)) {
+            $restaurant->typologies()->attach('8');
+        }
+        if (in_array('Ramen', $data)) {
+            $restaurant->typologies()->attach('9');
+        }
+        if (in_array('Pasticceria', $data)) {
+            $restaurant->typologies()->attach('10');
+        }
+        if (in_array('Gelateria', $data)) {
+            $restaurant->typologies()->attach('11');
+        }
+        if (in_array('Pub', $data)) {
+            $restaurant->typologies()->attach('12');
+        }
+        if (in_array('Carne', $data)) {
+            $restaurant->typologies()->attach('13');
+        }
+        if (in_array('Pesce', $data)) {
+            $restaurant->typologies()->attach('14');
+        }
+        if (in_array('Pasta', $data)) {
+            $restaurant->typologies()->attach('15');
+        }
 
         event(new Registered($user));
 

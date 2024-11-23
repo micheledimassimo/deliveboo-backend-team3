@@ -26,7 +26,7 @@ class MenuItemController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
+    {   
         return view('admin.menu_items.create');
     }
 
@@ -42,8 +42,8 @@ class MenuItemController extends Controller
         $data['slug'] = str()->slug($data['item_name']);
 
         if (isset($data['image'])) {
-            $imgPath = Storage::put('uploads', $data['image']);
-            $data['image'] = $imgPath;
+            $menuItemImage = Storage::put('uploads', $data['image']);
+            $data['image'] = $menuItemImage;
         }
        
         $menuItem = MenuItem::create($data);

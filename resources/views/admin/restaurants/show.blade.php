@@ -98,7 +98,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="price" class="form-label">Prezzo <span class="text-danger">*</span></label>
-                                <input type="number" class="form-control" id="price" name="price" required value="{{ old('price') }}" placeholder="Inserisci il prezzo...">
+                                <input type="number" class="form-control" id="price" name="price" required value="{{ old('price') }}" placeholder="Inserisci il prezzo..." min="0.01" step="0.01">
                             </div>
                             <div class="mb-3">
                                 <label for="image" class="form-label">Immagine</label>

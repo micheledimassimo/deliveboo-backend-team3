@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('item_name', 64);
             $table->string('slug');
             $table->text('description', 1024);
-            $table->decimal('price', $precision = 4, $scale = 2);
+            $table->decimal('price', 4, 2);
             $table->boolean('is_visible')
                     ->nullable();
             $table->string('image', 2048)
@@ -24,7 +24,8 @@ return new class extends Migration
             $table->foreignId('restaurant_id')
                     ->nullable()
                     ->references('id')
-                    ->on('restaurants');
+                    ->on('restaurants')
+                    ->onDelete('cascade');
             $table->timestamps();
         });
     }

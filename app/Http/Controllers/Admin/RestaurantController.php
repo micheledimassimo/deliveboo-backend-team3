@@ -5,6 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 
+// Helpers
+
+use Illuminate\Support\Facades\Storage;
+
+
 use App\Http\Controllers\Controller;
 
 class RestaurantController extends Controller
@@ -47,7 +52,7 @@ class RestaurantController extends Controller
      */
     public function show($id)
     {   
-        $restaurant = Restaurant::with('menuItems')->findOrFail($id);
+        $restaurant = Restaurant::with('menuItems')->findOrFail($id); // Eager loading
         return view('admin.restaurants.show', compact('restaurant'));
     }
 
@@ -67,6 +72,11 @@ class RestaurantController extends Controller
         $data = $this->validateRequest($request);
 
         $data = $request->all();
+
+        if (isset($data['img'])) {
+            $restaurantImgPath = Storage::put('uploads', $data['img']);
+            $data['img'] = $restaurantImgPath;
+        }
 
         $restaurant->update($data);
 

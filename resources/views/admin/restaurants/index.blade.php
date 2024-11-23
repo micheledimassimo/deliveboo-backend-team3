@@ -49,7 +49,7 @@
                                     </td>
 
                                     <td class="text-center">
-                                        <a href="{{ route('admin.restaurants.show', [$restaurant->id]) }}" class="btn btn-primary btn-sm">
+                                        <a href="{{ route('admin.restaurants.show', [$restaurant->slug]) }}" class="btn btn-primary btn-sm">
                                             Vedi
                                         </a>
                                         <a href="{{ route('admin.restaurants.edit', [$restaurant->id]) }}" class="btn btn-warning btn-sm">

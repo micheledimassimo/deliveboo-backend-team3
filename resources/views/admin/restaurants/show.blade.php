@@ -87,7 +87,7 @@
                         <form action="{{ route('admin.menu_items.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             
-                            <input type="hidden" name="restaurant_id" value="{{ $restaurant->id }}">
+                            <input type="hidden" name="restaurant_slug" value="{{ $restaurant->slug }}">
                             <div class="mb-3">
                                 <label for="item_name" class="form-label">Nome <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="item_name" name="item_name" required minlength="3" maxlength="255" value="{{ old('item_name') }}" placeholder="Inserisci il nome...">

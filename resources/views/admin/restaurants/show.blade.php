@@ -10,6 +10,11 @@
                     <h2>Informazioni ristorante</h2>
                 </div>
                 <div class="card-body">
+                    {{-- @if (!empty($menuItem->image) && file_exists(storage_path('app/public/' . $menuItem->image)))
+                        <img src="{{ asset('storage/' . $menuItem->image) }}" alt="{{ $menuItem->item_name }}" style="max-width: 200px;">
+                    @else
+                        <img src="https://via.placeholder.com/100" alt="Placeholder image" class="img-thumbnail">
+                    @endif --}}
                     <p><strong>Nome:</strong> <span>{{ $restaurant->restaurant_name }}</span></p>
                     <p><strong>Indirizzo:</strong> <span>{{ $restaurant->address }}</p>
                     <p><strong>Telefono:</strong> <span>{{ $restaurant->phone_number }}</span></p>
@@ -64,6 +69,21 @@
 
                 <div class="card">
                     <div class="card-body">
+
+                        @if ($errors->any())
+
+                        <div class="alert alert-danger mb-4">
+                            <ul class="mb-0">
+                                @foreach ($errors->all() as $error)
+                                    <li>
+                                        {{ $error }}
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                
+                    @endif
+
                         <form action="{{ route('admin.menu_items.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             
@@ -74,15 +94,15 @@
                             </div>
                             <div class="mb-3">
                                 <label for="description" class="form-label">Descrizione</label>
-                                <input type="text" class="form-control" id="description" name="description" minlength="10" maxlength="2048" value="{{ old('description') }}" placeholder="Inserisci la descrizione del piatto...">
+                                <input type="text" class="form-control" id="description" name="description" required minlength="10" maxlength="1024" value="{{ old('description') }}" placeholder="Inserisci la descrizione del piatto...">
                             </div>
                             <div class="mb-3">
                                 <label for="price" class="form-label">Prezzo <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="price" name="price" value="{{ old('price') }}" placeholder="Inserisci il prezzo...">
+                                <input type="number" class="form-control" id="price" name="price" required value="{{ old('price') }}" placeholder="Inserisci il prezzo...">
                             </div>
                             <div class="mb-3">
                                 <label for="image" class="form-label">Immagine</label>
-                                <input type="file" class="form-control" id="image" name="image" minlength="3" maxlength="1024" placeholder="Carica un immagine per il tuo piatto...">
+                                <input type="file" class="form-control" id="image" name="image" minlength="3" maxlength="2048" placeholder="Carica un immagine per il tuo piatto...">
                             </div>
                             <div class="mb-3">
     

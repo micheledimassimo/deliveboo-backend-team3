@@ -15,10 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('item_name', 64);
             $table->string('slug');
-            $table->text('description', 2048);
+            $table->text('description', 1024);
             $table->decimal('price', $precision = 4, $scale = 2);
-            $table->boolean('is_visible');
-            $table->string('image', 1024);
+            $table->boolean('is_visible')
+                    ->nullable();
+            $table->string('image', 2048)
+                    ->nullable();
             $table->foreignId('restaurant_id')
                     ->nullable()
                     ->references('id')

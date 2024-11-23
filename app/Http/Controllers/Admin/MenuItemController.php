@@ -98,11 +98,11 @@ class MenuItemController extends Controller
         $request->validate([
 
             'item_name' => 'required|min:3|max:255',
-            'description',
-            'price',
-            'is_visible',
+            'description' => 'required|min:10|max:1024',
+            'price'=> 'required|numeric',
+            'is_visible' => 'nullable|boolean',
             'image' => 'nullable|image|max:1024',
-            'restaurant_id'
+            'restaurant_id' => 'required|exists:restaurants,id',
 
         ]);
     }

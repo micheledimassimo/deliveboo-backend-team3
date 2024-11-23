@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
+use Illuminate\Support\Facades\Storage;
+
 
 //Models
 use App\Models\User;
@@ -40,10 +42,13 @@ class RegisteredUserController extends Controller
             'last-name' => ['required', 'string','min:1', 'max:32'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed','min:3', 'max:64', Rules\Password::defaults()],
-            'p-iva' => ['required', 'string', 'min:11', 'max:11', 'regex:/qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNMèéòçà°ù§[]#¶-.,;:|\!"£$%&()=?^[^/]+*/'],
+            'p-iva' => ['required', 'string', 'min:11', 'max:11'],
+            // ci dava errore T.T AIUTO
+            // 'regex:/qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNMèéòçà°ù§[]#¶-.,;:|\!"£$%&()=?^[^/]+*/'
             'restaurant-name' => ['required', 'string','min:1', 'max:128'],
             'address' => ['required', 'string','min:1', 'max:128'],
             'phone-number' => ['required', 'string','min:5', 'max:64'],
+            'img' => ['nullable', 'image', 'max:2048']
         ]);
 
         $data = $request->all();
@@ -54,8 +59,12 @@ class RegisteredUserController extends Controller
             'email' => $data['email'],
             'password'=> Hash::make($data['password']),
             'p_iva'=> $data['p-iva'],
-            
         ]);
+
+        if (isset($data['img'])) {
+            $imgPath = Storage::put('uploads', $data['img']);
+            $data['img'] = $imgPath;
+        }
         
         $restaurantName = $data['restaurant-name'];
         $restaurantSlug = str()->slug($restaurantName);
@@ -64,53 +73,56 @@ class RegisteredUserController extends Controller
             'address' => $data['address'],
             'phone_number' => $data['phone-number'],
             'slug' => $restaurantSlug,
+            'img' => $data['img']
         ]);
 
-        if ($data['Italiano']) {
-            $restaurant->typologies()->attach('1'); 
-        }
-        if ($data['Cinese']) {
-            $restaurant->typologies()->attach('2'); 
-        }
-        if ($data['Hamburgeria']) {
-            $restaurant->typologies()->attach('3'); 
-        }
-        if ($data['Pizzeria']) {
-            $restaurant->typologies()->attach('4'); 
-        }
-        if ($data['Sushi']) {
-            $restaurant->typologies()->attach('5'); 
-        }
-        if ($data['Paninoteca']) {
-            $restaurant->typologies()->attach('6'); 
-        }
-        if ($data['Kebab']) {
-            $restaurant->typologies()->attach('7'); 
-        }
-        if ($data['Messicano']) {
-            $restaurant->typologies()->attach('8'); 
-        }
-        if ($data['Ramen']) {
-            $restaurant->typologies()->attach('9'); 
-        }
-        if ($data['Pasticceria']) {
-            $restaurant->typologies()->attach('10'); 
-        }
-        if ($data['Gelateria']) {
-            $restaurant->typologies()->attach('11'); 
-        }
-        if ($data['Pub']) {
-            $restaurant->typologies()->attach('12'); 
-        }
-        if ($data['Carne']) {
-            $restaurant->typologies()->attach('13'); 
-        }
-        if ($data['Pesce']) {
-            $restaurant->typologies()->attach('14'); 
-        }
-        if ($data['Pasta']) {
-            $restaurant->typologies()->attach('15'); 
-        }
+        // AIUTO CI DANNO ERRORE T.T
+
+        // if ($data['Italiano']) {
+        //     $restaurant->typologies()->attach('1'); 
+        // }
+        // if ($data['Cinese']) {
+        //     $restaurant->typologies()->attach('2'); 
+        // }
+        // if ($data['Hamburgeria']) {
+        //     $restaurant->typologies()->attach('3'); 
+        // }
+        // if ($data['Pizzeria']) {
+        //     $restaurant->typologies()->attach('4'); 
+        // }
+        // if ($data['Sushi']) {
+        //     $restaurant->typologies()->attach('5'); 
+        // }
+        // if ($data['Paninoteca']) {
+        //     $restaurant->typologies()->attach('6'); 
+        // }
+        // if ($data['Kebab']) {
+        //     $restaurant->typologies()->attach('7'); 
+        // }
+        // if ($data['Messicano']) {
+        //     $restaurant->typologies()->attach('8'); 
+        // }
+        // if ($data['Ramen']) {
+        //     $restaurant->typologies()->attach('9'); 
+        // }
+        // if ($data['Pasticceria']) {
+        //     $restaurant->typologies()->attach('10'); 
+        // }
+        // if ($data['Gelateria']) {
+        //     $restaurant->typologies()->attach('11'); 
+        // }
+        // if ($data['Pub']) {
+        //     $restaurant->typologies()->attach('12'); 
+        // }
+        // if ($data['Carne']) {
+        //     $restaurant->typologies()->attach('13'); 
+        // }
+        // if ($data['Pesce']) {
+        //     $restaurant->typologies()->attach('14'); 
+        // }
+        // if ($data['Pasta']) {
+        //     $restaurant->typologies()->attach('15'); 
+        // }
 
         event(new Registered($user));
 

@@ -21,9 +21,7 @@
         <div class="card mb-1">
 
             <div class="row">
-                <div class="col-md-4 rounded-start">
-                    {{-- <img src="https://i.pinimg.com/736x/e9/3b/26/e93b26ba393c37f7846ad1978324d621.jpg" class="rounded-start" alt="..."> --}}
-                </div>
+                <div class="col-md-4 rounded-start"> </div>
 
                 <div class="col-md-8">
                     <div class="card-body">
@@ -40,7 +38,7 @@
                             Ci vorranno solo pochi minuti.
                         </p>
 
-                        <form method="POST" action="{{ route('register') }}">
+                        <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                             @csrf
 
                             <!-- Name + cognome -->
@@ -111,6 +109,23 @@
                                             maxlength="128"
                                             placeholder="Inserisci qui il nome della tua attività..">
                                 </div>
+
+                            <!-- img -->
+                            <div class="col mb-4">
+                                <div>
+                                    <label for="img">
+                                        Foto ristorante
+                                    </label>
+                                </div>
+                                <input class="form-control"
+                                        type="file"
+                                        id="img"
+                                        name="img"
+                                        minlength="1"
+                                        maxlength="2048"
+                                        placeholder="Inserisci qui la foto del tuo ristorante..">
+                            </div>
+
                             <!-- Indirizzo Attività -->
                             <div class="col mb-4">
                                     <div>
@@ -421,6 +436,7 @@
                                 </div>
                             </div>
 
+                            {{-- submit --}}
                             <div class="mb-4">
                                 <p>
                                     <span class="text-danger">*</span> Tutti i campi sono obbligatori

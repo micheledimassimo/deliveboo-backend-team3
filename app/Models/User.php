@@ -14,7 +14,7 @@ class User extends Authenticatable
 
     //Relathionships
 
-    public function restaurants() {
+    public function restaurant() {
         return $this->hasOne(Restaurant::class);
     } 
 

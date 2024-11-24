@@ -2,6 +2,7 @@
 
 @section('main-content')
 
+
     <div class="container d-flex justify-content-center my-5">
         <div class="card mb-3 shadow">
             <div class="card-img-top"></div>
@@ -18,6 +19,21 @@
                         Accedi al tuo account per visualizzare i tuoi dati.
                     </p>
                 </div>
+
+                @if ($errors->any())
+
+                <div class="alert alert-danger mb-4">
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                            <li>
+                                {{ $error }}
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            
+                @endif
+
 
                 <form method="POST" action="{{ route('login') }}">
                     @csrf

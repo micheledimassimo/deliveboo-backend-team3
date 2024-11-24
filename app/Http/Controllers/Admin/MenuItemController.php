@@ -27,7 +27,7 @@ class MenuItemController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {   
+    {
         return view('admin.menu_items.create');
     }
 
@@ -50,11 +50,11 @@ class MenuItemController extends Controller
         $restaurant = Restaurant::where('slug', $request->restaurant_slug)->firstOrFail();
 
         $data['restaurant_id'] = $restaurant->id;
-       
+
         $menuItem = MenuItem::create($data);
 
         return redirect()->route('admin.restaurants.show', ['restaurant' => $restaurant->slug]);
-    
+
     }
 
     /**
@@ -85,18 +85,48 @@ class MenuItemController extends Controller
 
         $data['slug'] = str()->slug($data['item_name']);
 
+        if (isset($data['image'])) {
+            if ($menuItem->image) {
+                // ELIMINA L'IMMAGINE PRECEDENTE
+                Storage::delete($menuItem->image);
+                $menuItem->image = null;
+            }
+
+            $imagePath = Storage::put('uploads', $data['image']);
+            $data['image'] = $imagePath;
+        }
+        else if (isset($data['remove_image']) && $menuItem->image) {
+            // ELIMINA L'IMMAGINE PRECEDENTE
+            Storage::delete($menuItem->image);
+            $menuItem->image = null;
+        }
+
+        $restaurant = Restaurant::where('slug', $request->restaurant_slug)->firstOrFail();
+
+        $data['restaurant_id'] = $restaurant->id;
+
         $menuItem->update($data);
 
-        return redirect()->route('admin.menu_items.show', [$menuItem->id]);
+        return redirect()->route('admin.restaurants.show', ['restaurant' => $restaurant->slug]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(MenuItem $menu_item)
+    public function destroy(Request $request, MenuItem $menuItem)
     {
-        $menu_item->delete();
-        return redirect()->route('admin.menu_items.index');
+
+        if ($menuItem->image) {
+            // ELIMINA L'IMMAGINE PRECEDENTE
+            Storage::disk('public')->delete($menuItem->image);
+        }
+
+        $menuItem->delete();
+
+        $restaurant = $menuItem->restaurant()->first();
+        $data['restaurant_id'] = $restaurant->id;
+
+        return redirect()->route('admin.restaurants.show', [$restaurant->slug]);
     }
 
     private function validateRequest($request){

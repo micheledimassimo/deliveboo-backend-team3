@@ -37,7 +37,7 @@ class RestaurantController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateRequest($request);
-        
+
         $data = $request->all();
 
         $data['slug'] = str()->slug($data['restaurant_name']);
@@ -51,7 +51,7 @@ class RestaurantController extends Controller
      * Display the specified resource.
      */
     public function show($slug)
-    {   
+    {
         $restaurant = Restaurant::with('menuItems')->where('slug', $slug)->firstOrFail();
         return view('admin.restaurants.show', compact('restaurant'));
     }
@@ -68,7 +68,7 @@ class RestaurantController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, Restaurant $restaurant)
-    {   
+    {
         $data = $this->validateRequest($request);
 
         $data = $request->all();

@@ -48,7 +48,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title" id="offcanvasWithBothOptionsLabel">Aggiungi i dettagli del nuovo piatto</h5>
-        
+
                                 {{-- errori --}}
                                 @if ($errors->any())
                                     <div class="alert alert-danger mb-4">
@@ -61,11 +61,11 @@
                                         </ul>
                                     </div>
                                 @endif
-        
+
                                 {{-- form --}}
                                 <form action="{{ route('admin.menu_items.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
-                                    
+
                                     <input type="hidden" name="restaurant_slug" value="{{ $restaurant->slug }}">
                                     <div class="mb-3">
                                         <label for="item_name" class="form-label">Nome <span class="text-danger">*</span></label>
@@ -84,30 +84,30 @@
                                         <input type="file" class="form-control" id="image" name="image" minlength="3" maxlength="2048" placeholder="Carica un immagine per il tuo piatto...">
                                     </div>
                                     <div class="mb-3">
-            
+
                                         <div class="form-check">
-            
+
                                             <input class="form-check-input" type="checkbox" value="1" id="is_visible" name="is_visible"
                                                 @if (old('is_visible') !== null)
                                                     checked
                                                 @endif
                                             >
-            
+
                                             <label for="is_visible" class="form-label">Disponibile</label>
-            
+
                                         </div>
                                     </div>
-            
+
                                     <div>
                                         <button type="submit" class="btn btn-success w-100">
                                             + Aggiungi
                                         </button>
                                     </div>
-            
+
                                 </form>
                             </div>
                         </div>
-                      
+
                     </div>
                   </div>
 
@@ -120,32 +120,161 @@
                             <th>Prezzo</th>
                             <th>Immagine</th>
                             <th>Visibile</th>
+                            <th>Azioni</th>
                           </tr>
                         </thead>
                         <tbody>
                           @foreach ($restaurant->menuItems as $menuItem)
                           <tr>
-                            <td>{{ $menuItem->item_name }}</td>
-                            <td>{{ $menuItem->description }}</td>
-                            <td>€{{ $menuItem->price }}</td>
-                            <td>
+                            <td class="align-middle">{{ $menuItem->item_name }}</td>
+                            <td class="align-middle">{{ $menuItem->description }}</td>
+                            <td class="align-middle">€{{ $menuItem->price }}</td>
+                            <td class="align-middle text-center">
                                 @if (!empty($menuItem->image) && file_exists(storage_path('app/public/' . $menuItem->image)))
                                     <img src="{{ asset('storage/' . $menuItem->image) }}" alt="{{ $menuItem->item_name }}" style="max-width: 200px;">
                                 @else
                                     <img src="https://via.placeholder.com/100" alt="Placeholder image" class="img-thumbnail">
                                 @endif
                             </td>
-                            <td>
+                            <td class="align-middle">
                                 @if ($menuItem->is_visible)
                                     <span class="badge bg-success">Sì</span>
                                 @else
                                     <span class="badge bg-danger">No</span>
                                 @endif
                             </td>
+                            <td class="align-middle text-center">
+
+                                <div class="d-flex justify-content-center">
+
+                                    <div class="me-2">
+
+                                        <button class="btn btn-warning"
+                                            type="button" data-bs-toggle="offcanvas"
+                                            data-bs-target="#offcanvasWithEdit"
+                                            aria-controls="offcanvasWithEdit">
+                                            Modifica
+                                        </button>
+
+
+                                        {{-- offcanvas con form per aggiunta piatto --}}
+                                        <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithEdit" aria-labelledby="offcanvasWithEditLabel">
+                                            {{-- bottone chiusura offcanvas --}}
+                                            <div class="offcanvas-header">
+                                                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                            </div>
+                                            <div class="offcanvas-body">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title" id="offcanvasWithEditLabel">Modifica i dettagli del piatto</h5>
+
+                                                        {{-- errori --}}
+                                                        @if ($errors->any())
+                                                            <div class="alert alert-danger mb-4">
+                                                                <ul class="mb-0">
+                                                                    @foreach ($errors->all() as $error)
+                                                                        <li>
+                                                                            {{ $error }}
+                                                                        </li>
+                                                                    @endforeach
+                                                                </ul>
+                                                            </div>
+                                                        @endif
+
+                                                        {{-- form --}}
+                                                        <form action="{{ route('admin.menu_items.update', [$menuItem ->id]) }}" method="POST" enctype="multipart/form-data">
+                                                            @csrf
+                                                            @method ('PUT')
+
+                                                            <input type="hidden" name="restaurant_slug" value="{{ $restaurant->slug }}">
+                                                            <div class="mb-3">
+                                                                <label for="item_name" class="form-label">Nome <span class="text-danger">*</span></label>
+                                                                <input type="text" class="form-control" id="item_name" name="item_name" required minlength="3" maxlength="255" value="{{ old('item_name', $menuItem->item_name) }}" placeholder="Inserisci il nome...">
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="description" class="form-label">Descrizione</label>
+                                                                <input type="text" class="form-control" id="description" name="description" required minlength="10" maxlength="1024" value="{{ old('description', $menuItem->description) }}" placeholder="Inserisci la descrizione del piatto...">
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="price" class="form-label">Prezzo <span class="text-danger">*</span></label>
+                                                                <input type="number" class="form-control" id="price" name="price" required value="{{ old('price', $menuItem->price) }}" placeholder="Inserisci il prezzo..." min="0.01" step="0.01">
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="image" class="form-label">Immagine</label>
+                                                                <input type="file" class="form-control" id="image" name="image" minlength="3" maxlength="2048" placeholder="Carica un immagine per il tuo piatto...">
+                                                                @if ($menuItem->image)
+                                                                    <div class="mt-2">
+                                                                        <h5>
+                                                                            Immagine attuale:
+                                                                        </h5>
+                                                                        <img src="{{ asset('storage/'.$menuItem->image) }}" alt="{{ $menuItem->item_name }}" style="height: 150px;">
+
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input" type="checkbox" value="1" id="remove_image" name="remove_image">
+                                                                            <label class="form-check-label" for="remove_image">
+                                                                                Rimuovi immagine attuale
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                @endif
+                                                            </div>
+                                                            <div class="mb-3">
+
+                                                                <div class="form-check">
+
+                                                                    <input class="form-check-input" type="checkbox" value="1" id="is_visible" name="is_visible"
+                                                                        @if (old('is_visible') !== null)
+                                                                            checked
+                                                                        @endif
+                                                                    >
+
+                                                                    <label for="is_visible" class="form-label">Disponibile</label>
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div>
+                                                                <button type="submit" class="btn btn-warning w-100">
+                                                                    Modifica
+                                                                </button>
+                                                            </div>
+
+                                                        </form>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div>
+
+                                        <form onsubmit=" return confirm('Sei sicuro di voler cancellare questo piatto?')" action="{{ route('admin.menu_items.destroy', [$menuItem->id]) }}" method="POST">
+
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">
+
+                                                Elimina
+
+                                            </button>
+
+                                        </form>
+
+                                    </div>
+
+                                </div>
+
+
+
+
+                            </td>
                           </tr>
                           @endforeach
                         </tbody>
-                    </table>  
+                    </table>
                 </div>
             </div>
         </div>

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('description', 1024);
             $table->decimal('price', 4, 2);
             $table->boolean('is_visible')
-                    ->nullable();
+                    ->nullable()->default(false);
             $table->string('image', 2048)
                     ->nullable();
             $table->foreignId('restaurant_id')

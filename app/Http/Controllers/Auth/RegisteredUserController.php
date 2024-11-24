@@ -73,7 +73,8 @@ class RegisteredUserController extends Controller
             'address' => $data['address'],
             'phone_number' => $data['phone-number'],
             'slug' => $restaurantSlug,
-            'img' => $data['img']
+            'img' => $data['img'],
+            'user_id' => $user->id
         ]);
 
         if (in_array('Italiano', $data)) {
@@ -126,6 +127,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect()->route('admin.restaurants.show', $restaurant->slug);
     }
 }

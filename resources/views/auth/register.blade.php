@@ -2,6 +2,26 @@
 
 @section('main-content')
 
+    @error('phone-number')
+        <div class="alert alert-danger mb-4">
+            <ul class="mb-0">
+                <li>
+                    Il numero di telefono contiene caratteri non permessi (sono ammessi + - ())
+                </li>
+            </ul>
+        </div>
+    @enderror
+
+    @error('p-iva')
+        <div class="alert alert-danger mb-4">
+            <ul class="mb-0">
+                <li>
+                    Sono ammessi solo numeri in partita IVA
+                </li>
+            </ul>
+        </div>
+    @enderror
+
     @error('email')
         <div class="alert alert-danger mb-4">
             <ul class="mb-0">
@@ -92,7 +112,9 @@
                                             Numero Partita IVA <span class="text-danger">*</span> 
                                         </label>
                                     </div>
-                                    <input class="form-control"
+                                    <input class="form-control
+                                    @error('p-iva') is-invalid @enderror
+                                    "
                                             type="text"
                                             id="p-iva"
                                             name="p-iva"
@@ -158,7 +180,9 @@
                                             Numero di telefono attività <span class="text-danger">*</span>
                                         </label>
                                     </div>
-                                    <input class="form-control"
+                                    <input class="form-control
+                                    @error('phone-number') is-invalid @enderror
+                                    "
                                             type="text"
                                             id="phone-number"
                                             name="phone-number"

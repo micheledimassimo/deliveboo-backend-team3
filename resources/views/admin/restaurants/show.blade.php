@@ -109,7 +109,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 {{-- tabella visualizzazione piatti --}}
                 <div class="card-body">
                     <table class="table table-bordered table-striped">
@@ -211,7 +211,7 @@
                                                                                 </h5>
                                                                                 <img src="{{ asset('storage/'.$menuItem->image) }}" alt="{{ $menuItem->item_name }}" style="height: 150px;">
 
-                                                                                <input type="checkbox" class="btn-check" id="remove_image" name="remove_image" autocomplete="off">
+                                                                                <input type="checkbox" class="btn-check" id="remove_image" name="remove_image" maxlength="1024" autocomplete="off">
                                                                                 <label class="btn btn-light mt-2" for="remove_image">
                                                                                     <i class="fa-solid fa-trash fa-lg object-fit-contain"></i>
                                                                                 </label>
@@ -253,7 +253,7 @@
                                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $menuItem->id }}">
                                                 Elimina
                                             </button>
-                                            
+
                                             <!-- Modal -->
                                             <div class="modal fade" id="deleteModal{{ $menuItem->id }}" tabindex="-1" aria-labelledby="exampleModalLabel{{ $menuItem->id }}" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered">
@@ -276,11 +276,11 @@
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <button type="submit" class="btn btn-danger">
-                
+
                                                                     Elimina
-                
+
                                                                 </button>
-                
+
                                                             </form>
                                                         </div>
                                                     </div>

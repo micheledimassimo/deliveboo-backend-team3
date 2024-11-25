@@ -40,7 +40,7 @@ class MenuItemController extends Controller
 
         $data = $request->all();
 
-        $data['slug'] = str()->slug($data['item_name']);
+        $data['slug'] = MenuItem::getUniqueSlug($data['item_name']);
 
         if (isset($data['image'])) {
             $menuItemImage = Storage::put('uploads', $data['image']);
@@ -83,7 +83,7 @@ class MenuItemController extends Controller
 
         $data = $request->all();
 
-        $data['slug'] = str()->slug($data['item_name']);
+        $data['slug'] = MenuItem::getUniqueSlug($data['item_name']);
 
         if (isset($data['image'])) {
             if ($menuItem->image) {

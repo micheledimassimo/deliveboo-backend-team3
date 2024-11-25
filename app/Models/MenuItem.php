@@ -5,6 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+// Models
+
+use App\Models\Order;
+
 class MenuItem extends Model
 {
     use HasFactory;
@@ -20,10 +24,16 @@ class MenuItem extends Model
 
     ];
 
+    public function orders() {
+        return $this->belongsToMany(Order::class);
+    
+    }
+    
     public function restaurant()
     {
         return $this->belongsTo(Restaurant::class);
     }
+
     public static function getUniqueSlug($item_name) {
         $originalSlug = str()->slug($item_name);
 

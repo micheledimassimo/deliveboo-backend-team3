@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\MenuItem;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -19,6 +18,7 @@ class DatabaseSeeder extends Seeder
             RestaurantSeeder::class,
             MenuItemSeeder::class,
             TypologySeeder::class,
+            OrderSeeder::class
         ]);
     }
 }

@@ -36,7 +36,6 @@ class RestaurantSeeder extends Seeder
                 'address' => fake()->address(),
                 'phone_number' => fake()->phoneNumber(),
                 'slug' => $slug,
-                'img' => 'https://cdn.vox-cdn.com/thumbor/dwuLlpmXjH9U1AJLSAt41nOzE1s=/1400x1400/filters:format(png)/cdn.vox-cdn.com/uploads/chorus_asset/file/22891216/Screen_Shot_2021_09_30_at_11.57.54_AM.png',
                 'user_id' => $randomUser->id,
             ]);
             $usersIds = [];

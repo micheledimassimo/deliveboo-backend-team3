@@ -11,7 +11,7 @@
                 </div>
                 <div class="card-body">
                     @if (!empty($restaurant->img) && file_exists(storage_path('app/public/' . $restaurant->img)))
-                        <img src="{{ asset('storage/' . $restaurant->img) }}" alt="{{ $restaurant->item_name }}" style="max-width: 200px;">
+                        <img src="{{ asset('storage/' . $restaurant->img) }}" alt="{{ $restaurant->restaurant_name }}" style="max-width: 200px;">
                     @else
                         <img src="https://via.placeholder.com/100" alt="Placeholder image" class="img-thumbnail">
                     @endif

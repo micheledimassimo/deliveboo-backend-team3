@@ -67,7 +67,7 @@ class RegisteredUserController extends Controller
         }
         else{
 
-            $imgPath = 'https://via.placeholder.com/100';
+            $imgPath = null;
             $data['img'] = $imgPath;
         }
 

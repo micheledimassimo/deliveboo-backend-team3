@@ -159,7 +159,7 @@
                                                     Modifica
                                                 </button>
 
-                                                {{-- offcanvas con form per modifica piatto --}}
+                                                {{-- offcanvas con form per aggiunta piatto --}}
                                                 <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithEdit" aria-labelledby="offcanvasWithEditLabel">
                                                     {{-- bottone chiusura offcanvas --}}
                                                     <div class="offcanvas-header">
@@ -169,52 +169,6 @@
                                                         <div class="card">
                                                             <div class="card-body">
                                                                 <h5 class="card-title" id="offcanvasWithEditLabel">Modifica i dettagli del piatto</h5>
-
-                                                        {{-- errori --}}
-                                                        @if ($errors->any())
-                                                            <div class="alert alert-danger mb-4">
-                                                                <ul class="mb-0">
-                                                                    @foreach ($errors->all() as $error)
-                                                                        <li>
-                                                                            {{ $error }}
-                                                                        </li>
-                                                                    @endforeach
-                                                                </ul>
-                                                            </div>
-                                                        @endif
-
-                                                        {{-- form --}}
-                                                        <form action="{{ route('admin.menu_items.update', [$menuItem ->id]) }}" method="POST" enctype="multipart/form-data">
-                                                            @csrf
-                                                            @method ('PUT')
-
-                                                            <input type="hidden" name="restaurant_slug" value="{{ $restaurant->slug }}">
-                                                            <div class="mb-3">
-                                                                <label for="item_name" class="form-label">Nome <span class="text-danger">*</span></label>
-                                                                <input type="text" class="form-control" id="item_name" name="item_name" required minlength="3" maxlength="255" value="{{ old('item_name', $menuItem->item_name) }}" placeholder="Inserisci il nome...">
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="description" class="form-label">Descrizione</label>
-                                                                <input type="text" class="form-control" id="description" name="description" required minlength="10" maxlength="1024" value="{{ old('description', $menuItem->description) }}" placeholder="Inserisci la descrizione del piatto...">
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="price" class="form-label">Prezzo <span class="text-danger">*</span></label>
-                                                                <input type="number" class="form-control" id="price" name="price" required value="{{ old('price', $menuItem->price) }}" placeholder="Inserisci il prezzo..." min="0.01" step="0.01">
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="image" class="form-label">Immagine</label>
-                                                                <input type="file" class="form-control" id="image" name="image" minlength="3" maxlength="2048" placeholder="Carica un immagine per il tuo piatto...">
-                                                                @if ($menuItem->image)
-                                                                    <div class="mt-2 d-flex flex-column">
-                                                                        <h5>
-                                                                            Immagine attuale:
-                                                                        </h5>
-                                                                        <img src="{{ asset('storage/'.$menuItem->image) }}" alt="{{ $menuItem->item_name }}" style="height: 150px;">
-
-                                                                        <input type="checkbox" class="btn-check" id="remove_image" name="remove_image" autocomplete="off">
-                                                                        <label class="btn btn-light mt-2" for="remove_image">
-                                                                            <i class="fa-solid fa-trash fa-lg object-fit-contain"></i>
-                                                                        </label>
 
                                                                 {{-- errori --}}
                                                                 @if ($errors->any())
@@ -251,18 +205,17 @@
                                                                         <label for="image" class="form-label">Immagine</label>
                                                                         <input type="file" class="form-control" id="image" name="image" minlength="3" maxlength="2048" placeholder="Carica un immagine per il tuo piatto...">
                                                                         @if ($menuItem->image)
-                                                                            <div class="mt-2">
+                                                                            <div class="mt-2 d-flex flex-column">
                                                                                 <h5>
                                                                                     Immagine attuale:
                                                                                 </h5>
                                                                                 <img src="{{ asset('storage/'.$menuItem->image) }}" alt="{{ $menuItem->item_name }}" style="height: 150px;">
 
-                                                                                <div class="form-check">
-                                                                                    <input class="form-check-input" type="checkbox" value="1" id="remove_image" name="remove_image">
-                                                                                    <label class="form-check-label" for="remove_image">
-                                                                                        Rimuovi immagine attuale
-                                                                                    </label>
-                                                                                </div>
+                                                                                <input type="checkbox" class="btn-check" id="remove_image" name="remove_image" autocomplete="off">
+                                                                                <label class="btn btn-light mt-2" for="remove_image">
+                                                                                    <i class="fa-solid fa-trash fa-lg object-fit-contain"></i>
+                                                                                </label>
+
                                                                             </div>
                                                                         @endif
                                                                     </div>
@@ -290,14 +243,12 @@
                                                                 </form>
                                                             </div>
                                                         </div>
-
                                                     </div>
                                                 </div>
 
                                             </div>
 
                                             {{-- elimina piatto --}}
-
                                             <!-- Button trigger modal -->
                                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $menuItem->id }}">
                                                 Elimina
@@ -335,20 +286,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            {{-- <div>
-                                                <form onsubmit=" return confirm('Sei sicuro di voler cancellare questo piatto?')" action="{{ route('admin.menu_items.destroy', [$menuItem->id]) }}" method="POST">
-
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger">
-
-                                                        Elimina
-
-                                                    </button>
-
-                                                </form>
-                                            </div> --}}
 
                                         </div>
 

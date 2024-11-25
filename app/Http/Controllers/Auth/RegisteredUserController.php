@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\User;
 use App\Models\Restaurant;
 
+use function PHPUnit\Framework\isEmpty;
+
 class RegisteredUserController extends Controller
 {
     /**
@@ -53,13 +55,16 @@ class RegisteredUserController extends Controller
 
         $data = $request->all();
 
-        $user = User::create([
-            'first_name' => $data['first-name'],
-            'last_name' => $data['last-name'],
-            'email' => $data['email'],
-            'password'=> Hash::make($data['password']),
-            'p_iva'=> $data['p-iva'],
-        ]);
+        
+        if (isset($data['restaurant-name']) && isset($data['address']) && isset($data['phone-number']) ) {
+            $user = User::create([
+                'first_name' => $data['first-name'],
+                'last_name' => $data['last-name'],
+                'email' => $data['email'],
+                'password'=> Hash::make($data['password']),
+                'p_iva'=> $data['p-iva'],
+            ]);
+        }
 
         if (isset($data['img'])) {
             $imgPath = Storage::put('uploads', $data['img']);
@@ -73,16 +78,18 @@ class RegisteredUserController extends Controller
 
         $restaurantName = $data['restaurant-name'];
         $restaurantSlug = Restaurant::getUniqueSlug($restaurantName);
-        $restaurant = Restaurant::create([
-            'restaurant_name' => $data['restaurant-name'],
-            'address' => $data['address'],
-            'phone_number' => $data['phone-number'],
-            'slug' => $restaurantSlug,
-            'user_id' => $user->id,
-            'img' => $data['img']
-        ]);
+        if (isset($data['first-name']) && isset($data['last-name']) && isset($data['email']) && isset($data['password']) && isset($data['p-iva'])) {
+            $restaurant = Restaurant::create([
+                'restaurant_name' => $data['restaurant-name'],
+                'address' => $data['address'],
+                'phone_number' => $data['phone-number'],
+                'slug' => $restaurantSlug,
+                'user_id' => $user->id,
+                'img' => $data['img']
+            ]);
+        }
 
-
+        
         if (in_array('Italiano', $data)) {
             $restaurant->typologies()->attach('1');
         }

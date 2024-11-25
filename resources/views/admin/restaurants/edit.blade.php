@@ -56,12 +56,12 @@
                                 class="form-control @error('phone_number') is-invalid @enderror"
                                 id="phone_number" name="phone_number"
                                 minlength="6"
-                                maxlength="15"
+                                maxlength="20"
                                 placeholder="Inserisci il numero di telefono..."
                                 value="{{ old('phone_number', $restaurant->phone_number) }}"
                                 required>
                             <div class="invalid-feedback">
-                                Il numero di telefono è obbligatorio.
+                                Il numero di telefono è obbligatorio ( i caratteri ammessi sono: numeri + - () ). 
                             </div>
                         </div>
 

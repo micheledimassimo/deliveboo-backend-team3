@@ -121,7 +121,7 @@ class RestaurantController extends Controller
 
             'restaurant_name' => 'required|min:3|max:128',
             'address' => 'required|min:3|max:128',
-            'phone_number' => 'required|min:3|max:64',
+            'phone_number' => 'required|min:3|max:64|regex:/^[\d+\-() ]+$/',
             'img' => 'nullable|image|max:2048',
             'user_id' => 'nullable|exists:user,id'
         ]);

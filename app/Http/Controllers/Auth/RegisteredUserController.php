@@ -36,7 +36,7 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        
+
         $request->validate([
             'first-name' => ['required', 'string','min:1', 'max:32'],
             'last-name' => ['required', 'string','min:1', 'max:32'],
@@ -65,7 +65,12 @@ class RegisteredUserController extends Controller
             $imgPath = Storage::put('uploads', $data['img']);
             $data['img'] = $imgPath;
         }
-        
+        else{
+
+            $imgPath = 'https://via.placeholder.com/100';
+            $data['img'] = $imgPath;
+        }
+
         $restaurantName = $data['restaurant-name'];
         $restaurantSlug = str()->slug($restaurantName);
         $restaurant = Restaurant::create([
@@ -73,13 +78,10 @@ class RegisteredUserController extends Controller
             'address' => $data['address'],
             'phone_number' => $data['phone-number'],
             'slug' => $restaurantSlug,
-            'user_id' => $user->id
-        ]);
-        if (isset($data['img'])) {
-            $restaurant = Restaurant::create([
+            'user_id' => $user->id,
             'img' => $data['img']
-            ]);
-        };
+        ]);
+
 
         if (in_array('Italiano', $data)) {
             $restaurant->typologies()->attach('1');

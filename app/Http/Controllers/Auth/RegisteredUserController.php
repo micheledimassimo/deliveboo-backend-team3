@@ -72,7 +72,7 @@ class RegisteredUserController extends Controller
         }
 
         $restaurantName = $data['restaurant-name'];
-        $restaurantSlug = str()->slug($restaurantName);
+        $restaurantSlug = Restaurant::getUniqueSlug($restaurantName);
         $restaurant = Restaurant::create([
             'restaurant_name' => $data['restaurant-name'],
             'address' => $data['address'],

@@ -203,18 +203,17 @@
                                                                 <label for="image" class="form-label">Immagine</label>
                                                                 <input type="file" class="form-control" id="image" name="image" minlength="3" maxlength="2048" placeholder="Carica un immagine per il tuo piatto...">
                                                                 @if ($menuItem->image)
-                                                                    <div class="mt-2">
+                                                                    <div class="mt-2 d-flex flex-column">
                                                                         <h5>
                                                                             Immagine attuale:
                                                                         </h5>
                                                                         <img src="{{ asset('storage/'.$menuItem->image) }}" alt="{{ $menuItem->item_name }}" style="height: 150px;">
 
-                                                                        <div class="form-check">
-                                                                            <input class="form-check-input" type="checkbox" value="1" id="remove_image" name="remove_image">
-                                                                            <label class="form-check-label" for="remove_image">
-                                                                                Rimuovi immagine attuale
-                                                                            </label>
-                                                                        </div>
+                                                                        <input type="checkbox" class="btn-check" id="remove_image" name="remove_image" autocomplete="off">
+                                                                        <label class="btn btn-light mt-2" for="remove_image">
+                                                                            <i class="fa-solid fa-trash fa-lg object-fit-contain"></i>
+                                                                        </label>
+
                                                                     </div>
                                                                 @endif
                                                             </div>

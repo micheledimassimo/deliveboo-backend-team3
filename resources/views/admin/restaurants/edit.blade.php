@@ -85,14 +85,16 @@
                                             <h5>
                                                 Immagine attuale:
                                             </h5>
-                                            <img src="{{ asset('storage/'.$restaurant->img) }}" alt="{{ $restaurant->restaurant_name }}" style="height: 150px;">
 
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="1" id="remove_img" name="remove_img">
-                                                <label class="form-check-label" for="remove_img">
-                                                    Rimuovi immagine attuale
+                                            <div class="d-flex flex-column w-25">
+                                                <img src="{{ asset('storage/'.$restaurant->img) }}" alt="{{ $restaurant->restaurant_name }}" style="height: 150px;">
+
+                                                <input type="checkbox" class="btn-check" id="remove_img" name="remove_img" autocomplete="off">
+                                                <label class="btn btn-light mt-2" for="remove_img">
+                                                    <i class="fa-solid fa-trash fa-lg object-fit-contain"></i>
                                                 </label>
                                             </div>
+
                                         </div>
                                     @endif
                             </div>

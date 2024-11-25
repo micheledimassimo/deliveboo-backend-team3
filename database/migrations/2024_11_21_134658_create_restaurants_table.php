@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('restaurant_name', 128);
             $table->string('address', 128);
             $table->string('phone_number', 64);
-            $table->string('slug', 64)->unique()->nullable();
+            $table->string('slug', 64)->unique();
             $table->string('img',2048)->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')

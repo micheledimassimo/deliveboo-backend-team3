@@ -36,6 +36,8 @@ class Restaurant extends Model
         'typology_id'
     ];
 
+    // Helper functions
+
     public static function getUniqueSlug($restaurant_name) {
         $originalSlug = str()->slug($restaurant_name);
 

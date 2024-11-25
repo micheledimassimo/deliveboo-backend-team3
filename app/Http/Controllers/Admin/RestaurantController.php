@@ -51,8 +51,11 @@ class RestaurantController extends Controller
      * Display the specified resource.
      */
     public function show($slug)
-    {
+    {   
         $restaurant = Restaurant::with('menuItems')->where('slug', $slug)->firstOrFail();
+
+        $this->authorize('view', $restaurant);
+
         return view('admin.restaurants.show', compact('restaurant'));
     }
 
@@ -60,7 +63,9 @@ class RestaurantController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(Restaurant $restaurant)
-    {
+    {   
+        $this->authorize('update', $restaurant);
+        
         return view('admin.restaurants.edit', compact('restaurant'));
     }
 
@@ -73,6 +78,9 @@ class RestaurantController extends Controller
 
         $data = $request->all();
 
+        $restaurantName = $data['restaurant_name'];
+
+        $data['slug'] = Restaurant::getUniqueSlug($restaurantName);
         
         if (isset($data['img'])) {
             if ($restaurant->img) {
@@ -99,7 +107,9 @@ class RestaurantController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(Restaurant $restaurant)
-    {
+    {   
+        $this->authorize('delete', $restaurant);
+
         $restaurant->delete();
 
         return redirect()->route('admin.restaurants.index');

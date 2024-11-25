@@ -18,11 +18,11 @@ return new class extends Migration
             $table->string('phone_number', 64);
             $table->string('slug', 64)->unique();
             $table->string('img',2048)->nullable();
-            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
-                  ->nullable()
                   ->references('id')
-                  ->on('users');
+                  ->on('users')
+                  ->onDelete('cascade');
             $table->timestamps();
         });
 

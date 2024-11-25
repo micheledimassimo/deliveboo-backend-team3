@@ -25,7 +25,7 @@
                                 value="{{ old('restaurant_name', $restaurant->restaurant_name) }}"
                                 required>
                                 <div class="invalid-feedback">
-                                    L'indirizzo è obbligatorio e deve essere lungo almeno 3 caratteri.
+                                        Il nome della tua attività è obbligatorio e deve essere lungo almeno 3 caratteri.
                                 </div>
                         </div>
 

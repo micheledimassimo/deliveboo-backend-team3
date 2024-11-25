@@ -24,4 +24,23 @@ class MenuItem extends Model
     {
         return $this->belongsTo(Restaurant::class);
     }
+    public static function getUniqueSlug($item_name) {
+        $originalSlug = str()->slug($item_name);
+
+        $slug = $originalSlug;
+
+        $existingMenuItem = MenuItem::where('slug', $slug)->first();
+
+        $counter = 1;
+
+        while($existingMenuItem != null) {
+            $slug = $originalSlug.'-'.$counter;
+
+            $existingMenuItem = MenuItem::where('slug', $slug)->first();
+
+            $counter = $counter + 1;
+        }
+
+        return $slug;
+    }
 }

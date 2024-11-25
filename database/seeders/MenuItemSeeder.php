@@ -27,7 +27,7 @@ class MenuItemSeeder extends Seeder
         for ($i = 0; $i < 20; $i ++){
 
             $name = fake()->word(2);
-            $slug = str()->slug($name);
+            $slug = MenuItem::getUniqueSlug($name);
 
             /* Prendo una categoria casuale dal db */
             $randomRestaurantId = null;

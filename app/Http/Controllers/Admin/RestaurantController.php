@@ -73,9 +73,21 @@ class RestaurantController extends Controller
 
         $data = $request->all();
 
+        
         if (isset($data['img'])) {
+            if ($restaurant->img) {
+                // ELIMINA L'IMMAGINE PRECEDENTE
+                Storage::delete($restaurant->img);
+                $restaurant->img = null;
+            }
+
             $restaurantImgPath = Storage::put('uploads', $data['img']);
             $data['img'] = $restaurantImgPath;
+        }
+        else if (isset($data['remove_img']) && $restaurant->img) {
+            // ELIMINA L'IMMAGINE PRECEDENTE
+            Storage::delete($restaurant->img);
+            $restaurant->img = null;
         }
 
         $restaurant->update($data);

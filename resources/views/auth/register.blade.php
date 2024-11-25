@@ -86,7 +86,11 @@
                                             minlength="1"
                                             maxlength="32"
                                             placeholder="Inserisci qui il tuo nome..">
+                                            <div class="invalid-feedback">
+                                                Il è obbligatorio e deve essere lungo massimo 32 caratteri.
+                                            </div>
                                 </div>
+                                
                                 <div class="col">
                                     <div>
                                         <label for="last-name">
@@ -101,6 +105,9 @@
                                             minlength="1"
                                             maxlength="32"
                                             placeholder="Inserisci qui il tuo cognome..">
+                                            <div class="invalid-feedback">
+                                                Il cognome è obbligatorio e deve essere lungo massimo 32 caratteri.
+                                            </div>
                                 </div>
                             </div>
     
@@ -122,6 +129,9 @@
                                             minlength="11"
                                             maxlength="11"
                                             placeholder="Inserisci qui la partita IVA..">
+                                            <div class="invalid-feedback">
+                                                La partita iva è obbligatoria e deve essere lungo ESATTAMENTE 11 caratteri e DEVONO essere numeri.
+                                            </div>
                                 </div>
                             </div>
                             <!-- Nome Attività -->
@@ -139,6 +149,9 @@
                                             minlength="1"
                                             maxlength="128"
                                             placeholder="Inserisci qui il nome della tua attività..">
+                                            <div class="invalid-feedback">
+                                                Il nome dell'attività è obbligatorio e deve essere lungo massimo 128 caratteri.
+                                            </div>
                                 </div>
 
                             <!-- img -->
@@ -172,6 +185,9 @@
                                             minlength="1"
                                             maxlength="128"
                                             placeholder="Inserisci qui l'indirizzo della tua attività..">
+                                            <div class="invalid-feedback">
+                                                L'indirizzo è obbligatorio e deve essere lungo almeno 3 caratteri.
+                                            </div>
                             </div>
                             <!-- Numero di telefono attività -->
                             <div class="col mb-4">
@@ -190,6 +206,9 @@
                                             minlength="1"
                                             maxlength="64"
                                             placeholder="Inserisci qui il telefono della tua attività..">
+                                            <div class="invalid-feedback">
+                                                Il numero di telefono dell'attività è obbligatorio e deve essere lungo massimo 20 caratteri, e contenere solo numeri e simboli come + - ().
+                                            </div>
                                 </div>
                                 <!-- Typologies Checkboxes -->
                                 <div class="col mb-4">
@@ -436,6 +455,9 @@
                                             required
                                             maxlength="255"
                                             placeholder="Inserisci qui la tua email..">
+                                            <div class="invalid-feedback">
+                                                L'indirizzo email è obbligatorio e deve essere lungo massimo 255 caratteri, SENZA maiuscole.
+                                            </div>
                                 </div>
                             </div>
     
@@ -457,6 +479,9 @@
                                             minlength="8"
                                             maxlength="64"
                                             placeholder="Inserisci password..">
+                                            <div class="invalid-feedback">
+                                                La password è obbligatoria e deve essere lungo almeno 8 caratteri e  massimo 64, caratteri speciali compresi.
+                                            </div>
                                 </div>
         
                                 <div class="col">
@@ -475,6 +500,9 @@
                                             minlength="8"
                                             maxlength="64"
                                             placeholder="Conferma password..">
+                                            <div class="invalid-feedback">
+                                                La password è obbligatoria e deve essere lungo almeno 8 caratteri e  massimo 64, caratteri speciali compresi.
+                                            </div>
                                 </div>
                             </div>
 

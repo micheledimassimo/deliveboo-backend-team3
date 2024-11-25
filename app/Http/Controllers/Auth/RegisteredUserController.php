@@ -73,9 +73,13 @@ class RegisteredUserController extends Controller
             'address' => $data['address'],
             'phone_number' => $data['phone-number'],
             'slug' => $restaurantSlug,
-            'img' => $data['img'],
             'user_id' => $user->id
         ]);
+        if (isset($data['img'])) {
+            $restaurant = Restaurant::create([
+            'img' => $data['img']
+            ]);
+        };
 
         if (in_array('Italiano', $data)) {
             $restaurant->typologies()->attach('1');

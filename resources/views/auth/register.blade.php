@@ -466,7 +466,7 @@
                                 
                                 <div>
                                     <a href="{{ route('login') }}">
-                                        {{ __('Already registered?') }}
+                                        {{ __('Già registrato?') }}
                                     </a>
                                 </div>
                             </div>

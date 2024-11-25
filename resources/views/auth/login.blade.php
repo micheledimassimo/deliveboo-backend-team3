@@ -20,19 +20,24 @@
                     </p>
                 </div>
 
-                @if ($errors->any())
-
-                <div class="alert alert-danger mb-4">
-                    <ul class="mb-0">
-                        @foreach ($errors->all() as $error)
+                @error('email')
+                    <div class="alert alert-danger mb-4">
+                        <ul class="mb-0">
                             <li>
-                                {{ $error }}
+                                Credenziali errate
                             </li>
-                        @endforeach
-                    </ul>
-                </div>
-            
-                @endif
+                        </ul>
+                    </div>
+                @enderror
+
+                
+
+                
+                
+                    
+                
+
+                
 
 
                 <form method="POST" action="{{ route('login') }}">
@@ -47,7 +52,9 @@
                                 </label>
                             </div>
 
-                            <input class="form-control"
+                            <input class="form-control
+                            @error('email') @enderror
+                            "
                                     type="email"
                                     id="email"
                                     name="email">
@@ -62,7 +69,9 @@
                                     Password
                                 </label>
                             </div>
-                            <input class="form-control"
+                            <input class="form-control 
+                            @error('password') @enderror
+                            "
                                     type="password"
                                     id="password"
                                     name="password">
@@ -74,7 +83,7 @@
                         <div class="col">
                             <label for="remember_me">
                                 <input id="remember_me" type="checkbox" name="remember">
-                                <span>Remember me</span>
+                                <span>Rimani collegato</span>
                             </label>
                         </div>
                     </div>
@@ -88,7 +97,7 @@
                         <div>
                             @if (Route::has('password.request'))
                                 <a href="{{ route('password.request') }}">
-                                    {{ __('Forgot your password?') }}
+                                    {{ __('Password dimenticata?') }}
                                 </a>
                             @endif
                         </div>

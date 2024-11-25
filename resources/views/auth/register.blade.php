@@ -2,19 +2,28 @@
 
 @section('main-content')
 
-    @if ($errors->any())
-
+    @error('email')
         <div class="alert alert-danger mb-4">
             <ul class="mb-0">
-                @foreach ($errors->all() as $error)
-                    <li>
-                        {{ $error }}
-                    </li>
-                @endforeach
+                <li>
+                    Email già registrata
+                </li>
             </ul>
         </div>
+    @enderror
 
-    @endif
+    @error('password')
+        <div class="alert alert-danger mb-4">
+            <ul class="mb-0">
+                <li>
+                    Le password non coincidono
+                </li>
+            </ul>
+        </div>
+    @enderror
+    
+
+    
 
     <div class="container login-container my-3">
         
@@ -395,7 +404,9 @@
                                             Email <span class="text-danger">*</span> 
                                         </label>
                                     </div>
-                                    <input class="form-control"
+                                    <input class="form-control 
+                                    @error('email') is-invalid @enderror
+                                    "
                                             type="email" id="email"
                                             name="email"
                                             required
@@ -412,11 +423,14 @@
                                         Password <span class="text-danger">*</span> 
                                     </label>
                                     </div>
-                                    <input class="form-control"
+                                    <input class="form-control 
+                                    @error('password') is-invalid @enderror
+                                    "
                                             type="password"
                                             id="password"
                                             name="password"
                                             required
+                                            minlength="8"
                                             maxlength="64"
                                             placeholder="Inserisci password..">
                                 </div>
@@ -427,11 +441,15 @@
                                             Conferma Password <span class="text-danger">*</span> 
                                         </label>
                                     </div>
-                                    <input class="form-control"
+                                    <input class="form-control
+                                    @error('password') is-invalid @enderror
+                                    "
                                             type="password"
                                             id="password_confirmation"
                                             name="password_confirmation"
                                             required
+                                            minlength="8"
+                                            maxlength="64"
                                             placeholder="Conferma password..">
                                 </div>
                             </div>
@@ -443,7 +461,7 @@
                                 </p>
 
                                 <button class="btn btn-success mb-3" type="submit">
-                                    Register
+                                    Registrati
                                 </button>
                                 
                                 <div>

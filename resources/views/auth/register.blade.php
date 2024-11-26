@@ -211,234 +211,28 @@
                                             </div>
                                 </div>
                                 <!-- Typologies Checkboxes -->
-                                <div class="col mb-4">
-                                    <div class="mb-4">
-                                        Tipologia/e Attività
-                                    </div>
+                                <div class="mb-3">
+                                    <label for="typologies" class="form-label">
+                                        Tipologie Attività
+                                    </label>
                                     <div class="row">
-                                        <div class="col">
-                                        
-                                            <div>
-                                                <label for="Italiano">
-                                                    Italiano
-                                                </label>
-                                            </div>
-                                            <input
+                                        @foreach($typologies as $index => $typology)
+                                            <div class="col-md-2 mb-3">
+                                                <div>
+                                                    <label for="typology_{{ $typology->id }}">
+                                                        {{ $typology->typology_name }}
+                                                    </label>
+                                                </div>
+                                                <input
                                                     type="checkbox"
-                                                    id="Italiano"
-                                                    name="Italiano"
-                                                    value="Italiano"
-                                                    >
-                                        </div>
-                                        <div class="col">
-                                        
-                                            <div>
-                                                <label for="Messicano">
-                                                    Messicano
-                                                </label>
+                                                    id="typology_{{ $typology->id }}"
+                                                    name="typologies[]"
+                                                    value="{{ $typology->id }}"
+                                                    @if(old('typologies') && in_array($typology->id, old('typologies'))) checked @endif>
                                             </div>
-                                            <input
-                                                    type="checkbox"
-                                                    id="Messicano"
-                                                    name="Messicano"
-                                                    value="Messicano"
-                                                    >
-                                        </div>
-                                        <div class="col">
-                                        
-                                            <div>
-                                                <label for="Cinese">
-                                                    Cinese
-                                                </label>
-                                            </div>
-                                            <input
-                                                    type="checkbox"
-                                                    id="Cinese"
-                                                    name="Cinese"
-                                                    value="Cinese"
-                                                    >
-                                        </div>
-                                        <div class="col">
-                                        
-                                            <div>
-                                                <label for="Pizzeria">
-                                                    Pizzeria
-                                                </label>
-                                            </div>
-                                            <input
-                                                    type="checkbox"
-                                                    id="Pizzeria"
-                                                    name="Pizzeria"
-                                                    value="Pizzeria"
-                                                    >
-                                        </div>
-                                            
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col">
-                                        
-                                            <div>
-                                                <label for="Sushi">
-                                                    Sushi
-                                                </label>
-                                            </div>
-                                            <input
-                                                    type="checkbox"
-                                                    id="Sushi"
-                                                    name="Sushi"
-                                                    value="Sushi"
-                                                    >
-                                        </div>
-                                        <div class="col">
-                                        
-                                            <div>
-                                                <label for="Paninoteca">
-                                                    Paninoteca
-                                                </label>
-                                            </div>
-                                            <input
-                                                    type="checkbox"
-                                                    id="Paninoteca"
-                                                    name="Paninoteca"
-                                                    value="Paninoteca"
-                                                    >
-                                        </div>
-                                        <div class="col">
-                                        
-                                            <div>
-                                                <label for="Kebab">
-                                                    Kebab
-                                                </label>
-                                            </div>
-                                            <input
-                                                    type="checkbox"
-                                                    id="Kebab"
-                                                    name="Kebab"
-                                                    value="Kebab"
-                                                    >
-                                        </div>
-                                        <div class="col">
-                                        
-                                            <div>
-                                                <label for="Ramen">
-                                                    Ramen
-                                                </label>
-                                            </div>
-                                            <input
-                                                    type="checkbox"
-                                                    id="Ramen"
-                                                    name="Ramen"
-                                                    value="Ramen"
-                                                    >
-                                        </div>
-                                            
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                        
-                                            <div>
-                                                <label for="Pub">
-                                                    Pub
-                                                </label>
-                                            </div>
-                                            <input
-                                                    type="checkbox"
-                                                    id="Pub"
-                                                    name="Pub"
-                                                    value="Pub"
-                                                    >
-                                        </div>
-                                        <div class="col">
-                                        
-                                            <div>
-                                                <label for="Gelateria">
-                                                    Gelateria
-                                                </label>
-                                            </div>
-                                            <input
-                                                    type="checkbox"
-                                                    id="Gelateria"
-                                                    name="Gelateria"
-                                                    value="Gelateria"
-                                                    >
-                                        </div>
-                                        <div class="col">
-                                        
-                                            <div>
-                                                <label for="Pasticceria">
-                                                    Pasticceria
-                                                </label>
-                                            </div>
-                                            <input
-                                                    type="checkbox"
-                                                    id="Pasticceria"
-                                                    name="Pasticceria"
-                                                    value="Pasticceria"
-                                                    >
-                                        </div>
-                                        <div class="col">
-                                        
-                                            <div>
-                                                <label for="Hamburgeria">
-                                                    Hamburgeria
-                                                </label>
-                                            </div>
-                                            <input
-                                                    type="checkbox"
-                                                    id="Hamburgeria"
-                                                    name="Hamburgeria"
-                                                    value="Hamburgeria"
-                                                    >
-                                        </div>
-                                            
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                        
-                                            <div>
-                                                <label for="Pesce">
-                                                    Pesce
-                                                </label>
-                                            </div>
-                                            <input
-                                                    type="checkbox"
-                                                    id="Pesce"
-                                                    name="Pesce"
-                                                    value="Pesce"
-                                                    >
-                                        </div>
-                                        <div class="col">
-                                        
-                                            <div>
-                                                <label for="Pasta">
-                                                    Pasta
-                                                </label>
-                                            </div>
-                                            <input
-                                                    type="checkbox"
-                                                    id="Pasta"
-                                                    name="Pasta"
-                                                    value="Pasta"
-                                                    >
-                                        </div>
-                                        <div class="col">
-                                        
-                                            <div>
-                                                <label for="Carne">
-                                                    Carne
-                                                </label>
-                                            </div>
-                                            <input
-                                                    type="checkbox"
-                                                    id="Carne"
-                                                    name="Carne"
-                                                    value="Carne"
-                                                    >
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
-                            </div>
                             <!-- Email Address -->
                             <div class="row mb-4">
                                 <div class="col">

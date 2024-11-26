@@ -23,18 +23,15 @@
                             <img 
                                 src="{{ asset('storage/' . $restaurant->img) }}" 
                                 alt="{{ $restaurant->restaurant_name }}" 
-                                class="img-fluid h-100" 
-                                style="object-fit: cover;">
+                                class="img-fluid h-100">
                         @else
                             <img 
                                 src="https://via.placeholder.com/300x200" 
                                 alt="Placeholder image" 
-                                class="img-fluid rounded-start h-100" 
-                                style="object-fit: cover;">
+                                class="img-fluid h-100">
                         @endif
                     </div>
             
-                    <!-- Dettagli ristorante -->
                     <div class="col-md-8">
                         <div class="card-body">
                             <!-- Nome ristorante -->

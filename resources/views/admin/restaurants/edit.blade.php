@@ -14,18 +14,6 @@
                             @method('PUT')
                             @csrf
 
-                            <!-- Immagine del ristorante in alto -->
-                            <div class="mb-4">
-                                @if ($restaurant->img)
-                                    <img src="{{ asset('storage/'.$restaurant->img) }}" class="img-fluid w-100 rounded" alt="{{ $restaurant->restaurant_name }}">
-                                @else
-                                    <div class="d-flex justify-content-center align-items-center bg-light" style="height: 200px; width: 100%;">
-                                        <span class="text-muted">Nessuna Immagine</span>
-                                    </div>
-                                @endif
-                            </div>
-
-                            <!-- Dettagli ristorante sotto l'immagine -->
                             <div class="mb-3">
                                 <label for="restaurant_name" class="form-label">
                                     <span class="text-danger">*</span> Nome Attività
@@ -93,6 +81,29 @@
                                     placeholder="Inserisci qui la foto del tuo ristorante..">
                                 <div class="invalid-feedback">
                                     L'immagine deve essere un file valido e non superare i 2MB.
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="typologies" class="form-label">
+                                    Tipologie
+                                </label>
+                                <div class="row">
+                                    @foreach($typologies as $typology)
+                                        <div class="col-2">
+                                            <div>
+                                                <label for="typologies">
+                                                    {{ $typology->typology_name }}
+                                                </label>
+                                            </div>
+                                            <input
+                                                type="checkbox"
+                                                id="typology_{{ $typology->id }}"
+                                                name="typologies[]"
+                                                value="{{ $typology->id }}"
+                                                @if($restaurant->typologies->contains($typology->id)) checked @endif>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
 

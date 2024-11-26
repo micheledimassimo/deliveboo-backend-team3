@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 // controllers
 use App\Http\Controllers\API\RestaurantController;
 use App\Http\Controllers\API\MenuItemController;
-
+use App\Http\Controllers\API\TypologyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +19,7 @@ use App\Http\Controllers\API\MenuItemController;
 |
 */
 
-// 
+//
 
 // per evitare conflitti con le rotte di web, aggiungo prefisso name
 
@@ -39,6 +39,11 @@ Route::name('api.')->group(function(){
     ]);
 
     Route::resource('menuItems', MenuItemController::class)->only([
+        'index',
+        'show'
+    ]);
+
+    Route::resource('typologies', TypologyController::class)->only([
         'index',
         'show'
     ]);

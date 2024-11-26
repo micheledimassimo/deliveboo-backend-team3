@@ -22,6 +22,8 @@ return new class extends Migration
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
 
+            $table->integer('quantity')->nullable();        
+
             $table->timestamps();
 
             $table->primary([

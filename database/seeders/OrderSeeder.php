@@ -27,7 +27,12 @@ class OrderSeeder extends Seeder
 
             $menuItems = MenuItem::inRandomOrder()->take(3)->pluck('id');
             
-            $order->menuItems()->attach($menuItems);
+            $menuItemsWithQuantities = [];
+            foreach ($menuItems as $menuItemId) {
+                $menuItemsWithQuantities[$menuItemId] = ['quantity' => fake()->numberBetween(1, 5)];
+            }
+
+            $order->menuItems()->attach($menuItemsWithQuantities);
         }
     }
 }

@@ -10,13 +10,25 @@ use App\Models\Restaurant;
 
 class RestaurantController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
 
         // $restaurants = Restaurant::get();
 
         // eager loading con with per portarsi dietro le categorie
         // paginazione per mostrarne 5 a pagina
-        $restaurants = Restaurant::with('typologies')->paginate(5);
+        // Recupera il filtro dalle query parameters, se presente
+        $typologyName= $request->query('typology_name');
+
+        // Crea una query di base con il caricamento eager
+        $query = Restaurant::with('typologies');
+
+        // Se è stato specificato un filtro per la typology, aggiungilo alla query
+        if ($typologyName) {
+            $query->whereHas('typologies', function ($q) use ($typologyName) {
+                $q->where('typology_name', $typologyName);
+            });
+        }
+        $restaurants = $query->paginate(5);
 
         return response()->json([
             'success' => true,

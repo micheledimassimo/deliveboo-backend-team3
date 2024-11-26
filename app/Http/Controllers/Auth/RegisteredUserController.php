@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Storage;
 //Models
 use App\Models\User;
 use App\Models\Restaurant;
+use App\Models\Typology;
 
 use function PHPUnit\Framework\isEmpty;
 
@@ -27,8 +28,10 @@ class RegisteredUserController extends Controller
      * Display the registration view.
      */
     public function create(): View
-    {
-        return view('auth.register');
+    {   
+        $typologies = Typology::all();
+
+        return view('auth.register', compact('typologies'));
     }
 
     /**
@@ -38,7 +41,6 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-
         $request->validate([
             'first-name' => ['required', 'string','min:1', 'max:32'],
             'last-name' => ['required', 'string','min:1', 'max:32'],
@@ -88,50 +90,10 @@ class RegisteredUserController extends Controller
         }
 
         
-        if (in_array('Italiano', $data)) {
-            $restaurant->typologies()->attach('1');
-        }
-        if (in_array('Cinese', $data)) {
-            $restaurant->typologies()->attach('2');
-        }
-        if (in_array('Hamburgeria', $data)) {
-            $restaurant->typologies()->attach('3');
-        }
-        if (in_array('Pizzeria', $data)) {
-            $restaurant->typologies()->attach('4');
-        }
-        if (in_array('Sushi', $data)) {
-            $restaurant->typologies()->attach('5');
-        }
-        if (in_array('Paninoteca', $data)) {
-            $restaurant->typologies()->attach('6');
-        }
-        if (in_array('Kebab', $data)) {
-            $restaurant->typologies()->attach('7');
-        }
-        if (in_array('Messicano', $data)) {
-            $restaurant->typologies()->attach('8');
-        }
-        if (in_array('Ramen', $data)) {
-            $restaurant->typologies()->attach('9');
-        }
-        if (in_array('Pasticceria', $data)) {
-            $restaurant->typologies()->attach('10');
-        }
-        if (in_array('Gelateria', $data)) {
-            $restaurant->typologies()->attach('11');
-        }
-        if (in_array('Pub', $data)) {
-            $restaurant->typologies()->attach('12');
-        }
-        if (in_array('Carne', $data)) {
-            $restaurant->typologies()->attach('13');
-        }
-        if (in_array('Pesce', $data)) {
-            $restaurant->typologies()->attach('14');
-        }
-        if (in_array('Pasta', $data)) {
-            $restaurant->typologies()->attach('15');
+        if (isset($data['typologies']) && is_array($data['typologies'])) {
+            $typologies = Typology::whereIn('id', $data['typologies'])->get();
+        
+            $restaurant->typologies()->attach($typologies->pluck('id')->toArray());
         }
 
         event(new Registered($user));

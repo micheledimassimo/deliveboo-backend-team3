@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Restaurant;
+use App\Models\Typology;
 use Illuminate\Http\Request;
 
 // Helpers
@@ -64,9 +65,12 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {   
+
         $this->authorize('update', $restaurant);
+
+        $typologies = Typology::all();
         
-        return view('admin.restaurants.edit', compact('restaurant'));
+        return view('admin.restaurants.edit', compact('restaurant', 'typologies'));
     }
 
     /**
@@ -81,6 +85,10 @@ class RestaurantController extends Controller
         $restaurantName = $data['restaurant_name'];
 
         $data['slug'] = Restaurant::getUniqueSlug($restaurantName);
+
+        if (isset($data['typologies'])) {
+            $restaurant->typologies()->sync($data['typologies']);
+        }
         
         if (isset($data['img'])) {
             if ($restaurant->img) {

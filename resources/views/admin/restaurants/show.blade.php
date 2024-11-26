@@ -3,24 +3,66 @@
 @section('page-title', $restaurant->restaurant_name)
 
 @section('main-content')
+
     <div class="row">
         <div class="col">
-            <div class="card mb-4">
-                <div class="card-header">
+
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header d-flex align-items-center justify-content-between">
                     <h2>Informazioni ristorante</h2>
+                    <div class="my-3">
+                        <a href="{{ route('admin.restaurants.edit', ['restaurant' => $restaurant->id]) }}" class="btn btn-primary">
+                            Modifica Dettagli Ristorante
+                        </a>
+                    </div>
                 </div>
-                <div class="card-body">
-                    @if (!empty($restaurant->img) && file_exists(storage_path('app/public/' . $restaurant->img)))
-                        <img src="{{ asset('storage/' . $restaurant->img) }}" alt="{{ $restaurant->restaurant_name }}" style="max-width: 200px;">
-                    @else
-                        <img src="https://via.placeholder.com/100" alt="Placeholder image" class="img-thumbnail">
-                    @endif
-                    <p><strong>Nome:</strong> <span>{{ $restaurant->restaurant_name }}</span></p>
-                    <p><strong>Indirizzo:</strong> <span>{{ $restaurant->address }}</p>
-                    <p><strong>Telefono:</strong> <span>{{ $restaurant->phone_number }}</span></p>
-                    <a href="{{ route('admin.restaurants.edit', ['restaurant' => $restaurant->id]) }}" class="btn btn-primary">
-                        Modifica Dettagli Ristorante
-                    </a>
+                <div class="row g-0">
+                    <!-- Immagine ristorante -->
+                    <div class="col-md-4">
+                        @if (!empty($restaurant->img) && file_exists(storage_path('app/public/' . $restaurant->img)))
+                            <img 
+                                src="{{ asset('storage/' . $restaurant->img) }}" 
+                                alt="{{ $restaurant->restaurant_name }}" 
+                                class="img-fluid h-100" 
+                                style="object-fit: cover;">
+                        @else
+                            <img 
+                                src="https://via.placeholder.com/300x200" 
+                                alt="Placeholder image" 
+                                class="img-fluid rounded-start h-100" 
+                                style="object-fit: cover;">
+                        @endif
+                    </div>
+            
+                    <!-- Dettagli ristorante -->
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <!-- Nome ristorante -->
+                            <p class="card-title">
+                                <strong>Nome attività:</strong> {{ $restaurant->restaurant_name }}
+                            </p>
+                            
+                            <!-- Indirizzo -->
+                            <p class="mb-2">
+                                <strong>Indirizzo:</strong> {{ $restaurant->address }}
+                            </p>
+                            
+                            <!-- Telefono -->
+                            <p class="mb-2">
+                                <strong>Telefono:</strong> {{ $restaurant->phone_number }}
+                            </p>
+                            
+                            <!-- Tipologie -->
+                            <p>
+                                <strong>Tipologie:</strong> 
+                                @foreach($restaurant->typologies as $typology)
+                                    <span class="badge rounded-pill text-bg-success px-3 py-2">
+                                        {{ $typology->typology_name }}
+                                    </span>
+                                @endforeach
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
 

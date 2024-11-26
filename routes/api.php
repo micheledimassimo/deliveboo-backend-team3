@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 // controllers
 use App\Http\Controllers\API\RestaurantController;
+use App\Http\Controllers\API\MenuItemController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +34,11 @@ Route::name('api.')->group(function(){
     // Route::get('/restaurants/{slug}', [RestaurantController::class, 'show'])->name('restaurants.show');
 
     Route::resource('restaurants', RestaurantController::class)->only([
+        'index',
+        'show'
+    ]);
+
+    Route::resource('menuItems', MenuItemController::class)->only([
         'index',
         'show'
     ]);

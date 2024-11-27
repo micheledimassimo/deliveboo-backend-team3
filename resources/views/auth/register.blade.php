@@ -2,7 +2,7 @@
 
 @section('main-content')
 
-    @error('phone-number')
+    @error('phone_number')
         <div class="alert alert-danger mb-4">
             <ul class="mb-0">
                 <li>
@@ -12,7 +12,7 @@
         </div>
     @enderror
 
-    @error('p-iva')
+    @error('p_iva')
         <div class="alert alert-danger mb-4">
             <ul class="mb-0">
                 <li>
@@ -74,18 +74,20 @@
                             <div class="row mb-4">
                                 <div class="col">
                                     <div>
-                                        <label for="first-name">
+                                        <label for="first_name">
                                             Nome <span class="text-danger">*</span>
                                         </label>
                                     </div>
-                                    <input class="form-control"
+                                    <input class="form-control @error('first_name') is-invalid @enderror
+                                    "
                                             type="text"
-                                            id="first-name"
-                                            name="first-name"
-                                            required
-                                            minlength="1"
+                                            id="first_name"
+                                            name="first_name"
+                                            
+                                            minlength="3"
                                             maxlength="32"
-                                            placeholder="Inserisci qui il tuo nome..">
+                                            placeholder="Inserisci qui il tuo nome.."
+                                            required>
                                             <div class="invalid-feedback">
                                                 Il è obbligatorio e deve essere lungo massimo 32 caratteri.
                                             </div>
@@ -93,18 +95,20 @@
                                 
                                 <div class="col">
                                     <div>
-                                        <label for="last-name">
+                                        <label for="last_name">
                                             Cognome <span class="text-danger">*</span>
                                         </label>
                                     </div>
-                                    <input class="form-control"
+                                    <input class="form-control @error('last_name') is-invalid @enderror
+                                    "
                                             type="text"
-                                            id="last-name"
-                                            name="last-name"
-                                            required
-                                            minlength="1"
+                                            id="last_name"
+                                            name="last_name"
+                                            minlength="3"
                                             maxlength="32"
-                                            placeholder="Inserisci qui il tuo cognome..">
+                                            placeholder="Inserisci qui il tuo cognome.."
+                                            required
+                                            >
                                             <div class="invalid-feedback">
                                                 Il cognome è obbligatorio e deve essere lungo massimo 32 caratteri.
                                             </div>
@@ -115,20 +119,20 @@
                             <div class="row mb-4">
                                 <div class="col">
                                     <div>
-                                        <label for="p-iva">
+                                        <label for="p_iva">
                                             Numero Partita IVA <span class="text-danger">*</span> 
                                         </label>
                                     </div>
                                     <input class="form-control
-                                    @error('p-iva') is-invalid @enderror
+                                    @error('p_iva') is-invalid @enderror
                                     "
                                             type="text"
-                                            id="p-iva"
-                                            name="p-iva"
-                                            required
+                                            id="p_iva"
+                                            name="p_iva"
                                             minlength="11"
                                             maxlength="11"
-                                            placeholder="Inserisci qui la partita IVA..">
+                                            placeholder="Inserisci qui la partita IVA.."
+                                            required>
                                             <div class="invalid-feedback">
                                                 La partita iva è obbligatoria e deve essere lungo ESATTAMENTE 11 caratteri e DEVONO essere numeri.
                                             </div>
@@ -137,18 +141,19 @@
                             <!-- Nome Attività -->
                             <div class="col mb-4">
                                     <div>
-                                        <label for="restaurant-name">
+                                        <label for="restaurant_name">
                                             Nome attività <span class="text-danger">*</span>
                                         </label>
                                     </div>
-                                    <input class="form-control"
+                                    <input class="form-control @error('restaurant_name') is-invalid @enderror
+                                    "
                                             type="text"
-                                            id="restaurant-name"
-                                            name="restaurant-name"
-                                            required
-                                            minlength="1"
+                                            id="restaurant_name"
+                                            name="restaurant_name"
+                                            minlength="2"
                                             maxlength="128"
-                                            placeholder="Inserisci qui il nome della tua attività..">
+                                            placeholder="Inserisci qui il nome della tua attività.."
+                                            required>
                                             <div class="invalid-feedback">
                                                 Il nome dell'attività è obbligatorio e deve essere lungo massimo 128 caratteri.
                                             </div>
@@ -177,14 +182,15 @@
                                             Indirizzo attività <span class="text-danger">*</span>
                                         </label>
                                     </div>
-                                    <input class="form-control"
+                                    <input class="form-control @error('address') is-invalid @enderror
+                                    "
                                             type="text"
                                             id="address"
                                             name="address"
-                                            required
-                                            minlength="1"
+                                            minlength="5"
                                             maxlength="128"
-                                            placeholder="Inserisci qui l'indirizzo della tua attività..">
+                                            placeholder="Inserisci qui l'indirizzo della tua attività.."
+                                            required>
                                             <div class="invalid-feedback">
                                                 L'indirizzo è obbligatorio e deve essere lungo almeno 3 caratteri.
                                             </div>
@@ -192,20 +198,20 @@
                             <!-- Numero di telefono attività -->
                             <div class="col mb-4">
                                     <div>
-                                        <label for="phone-number">
+                                        <label for="phone_number">
                                             Numero di telefono attività <span class="text-danger">*</span>
                                         </label>
                                     </div>
                                     <input class="form-control
-                                    @error('phone-number') is-invalid @enderror
+                                    @error('phone_number') is-invalid @enderror
                                     "
                                             type="text"
-                                            id="phone-number"
-                                            name="phone-number"
-                                            required
-                                            minlength="1"
+                                            id="phone_number"
+                                            name="phone_number"
+                                            minlength="5"
                                             maxlength="64"
-                                            placeholder="Inserisci qui il telefono della tua attività..">
+                                            placeholder="Inserisci qui il telefono della tua attività.."
+                                            required>
                                             <div class="invalid-feedback">
                                                 Il numero di telefono dell'attività è obbligatorio e deve essere lungo massimo 20 caratteri, e contenere solo numeri e simboli come + - ().
                                             </div>
@@ -246,9 +252,9 @@
                                     "
                                             type="email" id="email"
                                             name="email"
-                                            required
                                             maxlength="255"
-                                            placeholder="Inserisci qui la tua email..">
+                                            placeholder="Inserisci qui la tua email.."
+                                            required>
                                             <div class="invalid-feedback">
                                                 L'indirizzo email è obbligatorio e deve essere lungo massimo 255 caratteri, SENZA maiuscole.
                                             </div>

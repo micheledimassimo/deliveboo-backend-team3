@@ -42,27 +42,27 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'first-name' => ['required', 'string','min:1', 'max:32'],
-            'last-name' => ['required', 'string','min:1', 'max:32'],
+            'first_name' => ['required', 'string','min:3', 'max:32'],
+            'last_name' => ['required', 'string','min:3', 'max:32'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed','min:8', 'max:64', Rules\Password::defaults()],
-            'p-iva' => ['required', 'string', 'min:11', 'max:11', 'regex:/^\d{11}$/'],
-            'restaurant-name' => ['required', 'string','min:1', 'max:128'],
-            'address' => ['required', 'string','min:3', 'max:128'],
-            'phone-number' => ['required', 'string','min:5', 'max:64', 'regex:/^[\d+\-() ]+$/'],
+            'p_iva' => ['required', 'string', 'min:11', 'max:11', 'regex:/^\d{11}$/'],
+            'restaurant_name' => ['required', 'string','min:2', 'max:128'],
+            'address' => ['required', 'string','min:5', 'max:128'],
+            'phone_number' => ['required', 'string','min:5', 'max:64', 'regex:/^[\d+\-() ]+$/'],
             'img' => ['nullable', 'image', 'max:2048']
         ]);
 
         $data = $request->all();
 
         
-        if (isset($data['restaurant-name']) && isset($data['address']) && isset($data['phone-number']) ) {
+        if (isset($data['restaurant_name']) && isset($data['address']) && isset($data['phone_number']) ) {
             $user = User::create([
-                'first_name' => $data['first-name'],
-                'last_name' => $data['last-name'],
+                'first_name' => $data['first_name'],
+                'last_name' => $data['last_name'],
                 'email' => $data['email'],
                 'password'=> Hash::make($data['password']),
-                'p_iva'=> $data['p-iva'],
+                'p_iva'=> $data['p_iva'],
             ]);
         }
 
@@ -76,13 +76,13 @@ class RegisteredUserController extends Controller
             $data['img'] = $imgPath;
         }
 
-        $restaurantName = $data['restaurant-name'];
+        $restaurantName = $data['restaurant_name'];
         $restaurantSlug = Restaurant::getUniqueSlug($restaurantName);
-        if (isset($data['first-name']) && isset($data['last-name']) && isset($data['email']) && isset($data['password']) && isset($data['p-iva'])) {
+        if (isset($data['first_name']) && isset($data['last_name']) && isset($data['email']) && isset($data['password']) && isset($data['p_iva'])) {
             $restaurant = Restaurant::create([
-                'restaurant_name' => $data['restaurant-name'],
+                'restaurant_name' => $data['restaurant_name'],
                 'address' => $data['address'],
-                'phone_number' => $data['phone-number'],
+                'phone_number' => $data['phone_number'],
                 'slug' => $restaurantSlug,
                 'user_id' => $user->id,
                 'img' => $data['img']

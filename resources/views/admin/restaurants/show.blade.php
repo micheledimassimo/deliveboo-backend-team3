@@ -127,7 +127,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="price" class="form-label">Prezzo <span class="text-danger">*</span></label>
-                                        <input type="number" class="form-control @error('price') is-invalid @enderror" id="price" name="price" required value="{{ old('price') }}" placeholder="Inserisci il prezzo..." min="0.01" step="0.01">
+                                        <input type="number" class="form-control @error('price') is-invalid @enderror" id="price" name="price" required value="{{ old('price') }}" placeholder="Inserisci il prezzo..." min="0.01" step="0.01" max="99.99">
 
                                         @if($errors->has('price'))
                                             <div>
@@ -278,7 +278,7 @@
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <label for="price" class="form-label">Prezzo <span class="text-danger">*</span></label>
-                                                                        <input type="number" class="form-control @error('price') is-invalid @enderror" id="price" name="price" required value="{{ old('price', $menuItem->price) }}" placeholder="Inserisci il prezzo..." min="0.01" step="0.01">
+                                                                        <input type="number" class="form-control @error('price') is-invalid @enderror" id="price" name="price" required value="{{ old('price', $menuItem->price) }}" placeholder="Inserisci il prezzo..." min="0.01" step="0.01" max="99.99">
 
                                                                         @if($errors->has('price'))
                                                                             <div>

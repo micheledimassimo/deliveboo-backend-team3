@@ -5,8 +5,7 @@
 @section('main-content')
 
 
-    <div class="vh-100 w-85 bg-black" id="dashboard">
-
+    <div class="vh-100 w-85" id="dashboard">
 
         <div class="row mx-auto mt-4 px-5">
 
@@ -14,49 +13,37 @@
                 Dashboard
             </h3>
             <div class="col">
-
-                <div class="card mb-4 shadow-sm">
-                    <div class="card-header d-flex align-items-center justify-content-between">
-                        <h2>Informazioni ristorante</h2>
-                        <div class="my-3">
-                            <a href="{{ route('admin.restaurants.edit', ['restaurant' => $restaurant->id]) }}" class="btn btn-warning border rounded-pill align-middle text-white fw-bold">
-                                Modifica
-                            </a>
-                        </div>
-                    </div>
-                    <div class="row g-0">
+                {{-- Informazioni Ristorant --}}
+                <div class="card mb-4 restaurant-header-card text-white">
+                    <div class="row g-0 d-flex align-items-center">
                         <!-- Immagine ristorante -->
-                        <div class="col-md-4">
+                        <div class="img-container col-12 col-md-4 col-lg-3">
                             @if (!empty($restaurant->img) && file_exists(storage_path('app/public/' . $restaurant->img)))
                                 <img
                                     src="{{ asset('storage/' . $restaurant->img) }}"
-                                    alt="{{ $restaurant->restaurant_name }}"
-                                    class="img-fluid h-100">
+                                    alt="{{ $restaurant->restaurant_name }}">
                             @else
                                 <img
                                     src="https://via.placeholder.com/300x200"
-                                    alt="Placeholder image"
-                                    class="img-fluid h-100">
+                                    alt="Placeholder image">
                             @endif
                         </div>
-
-                        <div class="col-md-8">
+                
+                        <div class="col-12 col-md-7 col-lg-8">
                             <div class="card-body">
                                 <!-- Nome ristorante -->
-                                <p class="card-title">
-                                    <strong>Nome attività:</strong> {{ $restaurant->restaurant_name }}
-                                </p>
-
+                                <h1 class="card-title">{{ $restaurant->restaurant_name }}</h1>
+                
                                 <!-- Indirizzo -->
                                 <p class="mb-2">
                                     <strong>Indirizzo:</strong> {{ $restaurant->address }}
                                 </p>
-
+                
                                 <!-- Telefono -->
                                 <p class="mb-2">
                                     <strong>Telefono:</strong> {{ $restaurant->phone_number }}
                                 </p>
-
+                
                                 <!-- Tipologie -->
                                 <p>
                                     <strong>Tipologie:</strong>
@@ -68,9 +55,16 @@
                                 </p>
                             </div>
                         </div>
+                
+                        <div class="col-12 col-md-1 text-md-end">
+                            <a href="{{ route('admin.restaurants.edit', ['restaurant' => $restaurant->id]) }}" class="btn rounded-pill">
+                                Modifica
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
+
                 <div class="card text-white bg-dark">
                     <div class="card-header d-flex justify-content-between">
                         <h2>

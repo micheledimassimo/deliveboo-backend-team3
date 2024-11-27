@@ -5,7 +5,7 @@
 @section('main-content')
 
 
-    <div class="vh-100" style="width:85%; background-color: #1F1F1F">
+    <div class="vh-100 w-85 bg-black" id="dashboard">
 
 
         <div class="row mx-auto mt-4 px-5">
@@ -20,9 +20,7 @@
                         <h2>Informazioni ristorante</h2>
                         <div class="my-3">
                             <a href="{{ route('admin.restaurants.edit', ['restaurant' => $restaurant->id]) }}" class="btn btn-warning border rounded-pill align-middle text-white fw-bold">
-
                                 Modifica
-
                             </a>
                         </div>
                     </div>
@@ -72,8 +70,8 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="card  text-white" style="background-color:#252525 ">
+            </div>
+                <div class="card text-white bg-dark">
                     <div class="card-header d-flex justify-content-between">
                         <h2>
                             Menu
@@ -189,13 +187,13 @@
                     <div>
 
                         <div>
-                            <ul class="group-list">
+                            <ul class="group-list py-2">
                                 @foreach ($restaurant->menuItems as $menuItem)
-                                    <li class="row group-list-item">
+                                    <li class="row align-items-center group-list-item py-2">
                                         <div class="col-2">
                                             <div>
                                                 @if (!empty($menuItem->image) && file_exists(storage_path('app/public/' . $menuItem->image)))
-                                                <img src="{{ asset('storage/' . $menuItem->image) }}" alt="{{ $menuItem->item_name }}" style="max-width: 200px;">
+                                                <img class="img-width-200" src="{{ asset('storage/' . $menuItem->image) }}" alt="{{ $menuItem->item_name }}">
                                             @else
                                                 <img src="https://via.placeholder.com/100" alt="Placeholder image" class="img-thumbnail">
                                             @endif
@@ -327,14 +325,14 @@
                                                                         @if ($menuItem->image)
                                                                             <div class="mt-2 d-flex flex-column">
                                                                                 <h5>Immagine attuale:</h5>
-                                                                                <img src="{{ asset('storage/'.$menuItem->image) }}" alt="{{ $menuItem->itemname }}" style="height: 150px;">
+                                                                                <img class="h-150" src="{{ asset('storage/'.$menuItem->image) }}" alt="{{ $menuItem->itemname }}">
 
                                                                                 <button type="button" class="btn btn-danger btn-sm mt-2" id="remove_image{{ $menuItem->id }}"
                                                                                         onclick="document.getElementById('removeimage_input{{ $menuItem->id }}').checked = true;">
                                                                                     <i class="fas fa-times"></i> <!-- Icona "X" -->
                                                                                 </button>
 
-                                                                                <input type="checkbox" id="removeimage_input{{ $menuItem->id }}" name="remove_image" value="1" style="display: none;">
+                                                                                <input class="d-none" type="checkbox" id="removeimage_input{{ $menuItem->id }}" name="remove_image" value="1">
                                                                             </div>
                                                                         @endif
                                                                     </div>
@@ -421,5 +419,8 @@
         </div>
 
     </div>
+
+
+
 
 @endsection

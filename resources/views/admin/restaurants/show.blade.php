@@ -217,13 +217,13 @@
 
                                                 <button class="btn btn-warning"
                                                     type="button" data-bs-toggle="offcanvas"
-                                                    data-bs-target="#offcanvasWithEdit"
+                                                    data-bs-target="#offcanvasWithEdit{{ $menuItem->id }}"
                                                     aria-controls="offcanvasWithEdit">
                                                     Modifica
                                                 </button>
 
                                                 {{-- offcanvas con form per aggiunta piatto --}}
-                                                <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithEdit" aria-labelledby="offcanvasWithEditLabel">
+                                                <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithEdit{{ $menuItem->id }}" aria-labelledby="offcanvasWithEditLabel">
                                                     {{-- bottone chiusura offcanvas --}}
                                                     <div class="offcanvas-header">
                                                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>

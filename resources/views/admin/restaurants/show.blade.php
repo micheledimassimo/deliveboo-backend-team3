@@ -226,7 +226,6 @@
 
                                     {{-- modifica del piatto --}}
                                     <div class="me-2">
-
                                         <button class="rounded-pill btn btn-warning"
                                             type="button" data-bs-toggle="offcanvas"
                                             data-bs-target="#offcanvasWithEdit{{ $menuItem->id }}"

@@ -326,16 +326,15 @@
                                                                         <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image" minlength="3" maxlength="2048" placeholder="Carica un immagine per il tuo piatto...">
                                                                         @if ($menuItem->image)
                                                                             <div class="mt-2 d-flex flex-column">
-                                                                                <h5>
-                                                                                    Immagine attuale:
-                                                                                </h5>
-                                                                                <img src="{{ asset('storage/'.$menuItem->image) }}" alt="{{ $menuItem->item_name }}" style="height: 150px;">
+                                                                                <h5>Immagine attuale:</h5>
+                                                                                <img src="{{ asset('storage/'.$menuItem->image) }}" alt="{{ $menuItem->itemname }}" style="height: 150px;">
 
-                                                                                <input type="checkbox" class="btn-check" id="remove_image" name="remove_image" maxlength="1024" autocomplete="off">
-                                                                                <label class="btn btn-light mt-2" for="remove_image">
-                                                                                    <i class="fa-solid fa-trash fa-lg object-fit-contain"></i>
-                                                                                </label>
+                                                                                <button type="button" class="btn btn-danger btn-sm mt-2" id="remove_image{{ $menuItem->id }}"
+                                                                                        onclick="document.getElementById('removeimage_input{{ $menuItem->id }}').checked = true;">
+                                                                                    <i class="fas fa-times"></i> <!-- Icona "X" -->
+                                                                                </button>
 
+                                                                                <input type="checkbox" id="removeimage_input{{ $menuItem->id }}" name="remove_image" value="1" style="display: none;">
                                                                             </div>
                                                                         @endif
                                                                     </div>
@@ -374,7 +373,7 @@
                                                 </button>
 
                                                 <!-- Modal -->
-                                                <div class="modal fade" id="deleteModal{{ $menuItem->id }}" tabindex="-1" aria-labelledby="exampleModalLabel{{ $menuItem->id }}" aria-hidden="true">
+                                                <div class="modal fade text-dark" id="deleteModal{{ $menuItem->id }}" tabindex="-1" aria-labelledby="exampleModalLabel{{ $menuItem->id }}" aria-hidden="true">
                                                     <div class="modal-dialog modal-dialog-centered">
                                                         <div class="modal-content">
                                                             <div class="modal-header">

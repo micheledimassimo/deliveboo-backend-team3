@@ -25,19 +25,32 @@
     background-color: #1F1F1F;
 }
 
+.my-bg-lightdark {
+    background-color: #2E2E2E;
+}
 
 // Restaurant header-card
 
 .restaurant-header-card {
     background-color: #252525;
 
-    .btn {
+    .my-btn {
         position: absolute;
         top: 20px; 
         right: 20px; 
         z-index: 10;
         background-color: #FF914D;
         padding: 0 10px;
+        color: white;
+    }
+
+    .btn-orange {
+        position: absolute;
+        top: 45%; 
+        right: 15px; 
+        z-index: 10;
+        background-color: #FF914D;
+        padding: 5px 10px;
         color: white;
     }
 

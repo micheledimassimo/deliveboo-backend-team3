@@ -51,12 +51,12 @@
                                 </p>
                             </div>
                         </div>
-                
+
+                        {{-- OFFCANVAS RESTAURANT EDIT + BUTTON --}}
                         <div class="col-12 col-md-1 text-md-end">
-                            <a href="{{ route('admin.restaurants.edit', ['restaurant' => $restaurant->id]) }}" class="btn rounded-pill">
-                                Modifica
-                            </a>
+                            <button class="rounded-pill btn-orange" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Modifica Info</button>
                         </div>
+                        @include('components.off-canvas-edit-restaurant')
                     </div>
                 </div>
             </div>

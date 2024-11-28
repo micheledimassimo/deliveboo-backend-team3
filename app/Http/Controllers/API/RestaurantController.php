@@ -28,7 +28,7 @@ class RestaurantController extends Controller
                 $q->where('typology_name', $typologyName);
             });
         }
-        $restaurants = $query->paginate(5);
+        $restaurants = $query->paginate(8);
 
         return response()->json([
             'success' => true,

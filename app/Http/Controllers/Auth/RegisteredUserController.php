@@ -50,7 +50,9 @@ class RegisteredUserController extends Controller
             'restaurant_name' => ['required', 'string','min:2', 'max:128'],
             'address' => ['required', 'string','min:5', 'max:128'],
             'phone_number' => ['required', 'string','min:5', 'max:64', 'regex:/^[\d+\-() ]+$/'],
-            'img' => ['nullable', 'image', 'max:2048']
+            'img' => ['nullable', 'image', 'max:2048'],
+            'typologies' => 'required|array|min:1', // Deve essere un array con almeno un elemento
+            'typologies.*' => 'exists:typologies,id', // Ogni elemento deve esistere nella tabella 'typologies'
         ]);
 
         $data = $request->all();

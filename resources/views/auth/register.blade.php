@@ -22,6 +22,12 @@
         </div>
     @enderror
 
+    @error('typologies')
+        <div class="alert alert-danger mb-4">
+            Seleziona almeno una tipologia
+        </div>
+    @enderror
+
     @error('email')
         <div class="alert alert-danger mb-4">
             <ul class="mb-0">
@@ -219,7 +225,7 @@
                                 <!-- Typologies Checkboxes -->
                                 <div class="mb-3">
                                     <label for="typologies" class="form-label">
-                                        Tipologie Attività
+                                        Tipologie Attività <span class="text-danger">*</span>
                                     </label>
                                     <div class="row">
                                         @foreach($typologies as $index => $typology)
@@ -227,17 +233,19 @@
                                                 <div>
                                                     <label for="typology_{{ $typology->id }}">
                                                         {{ $typology->typology_name }}
-                                                    </label>
+                                                    </labe>
+                                                    <input
+                                                        type="checkbox"
+                                                        id="typology_{{ $typology->id }}"
+                                                        name="typologies[]"
+                                                        value="{{ $typology->id }}"
+                                                        @if(old('typologies') && in_array($typology->id, old('typologies'))) checked @endif>
+                                                    
                                                 </div>
-                                                <input
-                                                    type="checkbox"
-                                                    id="typology_{{ $typology->id }}"
-                                                    name="typologies[]"
-                                                    value="{{ $typology->id }}"
-                                                    @if(old('typologies') && in_array($typology->id, old('typologies'))) checked @endif>
                                             </div>
                                         @endforeach
                                     </div>
+                                    
                                 </div>
                             <!-- Email Address -->
                             <div class="row mb-4">

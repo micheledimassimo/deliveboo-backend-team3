@@ -2,11 +2,11 @@
     <div class="offcanvas offcanvas-end my-bg-black" data-bs-scroll="true" tabindex="-1" id="offcanvasWithEdit{{ $menuItem->id }}" aria-labelledby="offcanvasWithEditLabel">
         {{-- bottone chiusura offcanvas --}}
         <div class="offcanvas-header">
-            <button type="button" class="btn-close bg-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
 
         <div class="offcanvas-body">
-            <div class="card my-bg-dark text-white">
+            <div class="card bg-dark text-white">
                 <div class="card-body">
                     <h5 class="card-title" id="offcanvasWithEditLabel">Modifica i dettagli del piatto</h5>
 
@@ -19,15 +19,15 @@
 
                         <div class="mb-3">
                             <label for="item_name" class="form-label">Nome <span class="text-danger">*</span></label>
-                            <input 
-                                type="text" 
-                                class="form-control @error('item_name') is-invalid @enderror"  
-                                id="item_name" 
-                                name="item_name" 
-                                required 
-                                minlength="3" 
-                                maxlength="255" 
-                                value="{{ old('item_name', $menuItem->item_name) }}" 
+                            <input
+                                type="text"
+                                class="form-control text-light bg-dark @error('item_name') is-invalid @enderror"
+                                id="item_name"
+                                name="item_name"
+                                required
+                                minlength="3"
+                                maxlength="255"
+                                value="{{ old('item_name', $menuItem->item_name) }}"
                                 placeholder="Inserisci il nome...">
                             @if($errors->has('item_name'))
                                 <div>
@@ -42,14 +42,14 @@
 
                         <div class="mb-3">
                             <label for="description" class="form-label">Descrizione</label>
-                            <input 
-                                type="text" 
-                                class="form-control @error('description') is-invalid @enderror" 
-                                id="description" name="description" 
-                                required 
-                                minlength="10" 
-                                maxlength="1024" 
-                                value="{{ old('description', $menuItem->description) }}" 
+                            <input
+                                type="text"
+                                class="form-control text-light bg-dark @error('description') is-invalid @enderror"
+                                id="description" name="description"
+                                required
+                                minlength="10"
+                                maxlength="1024"
+                                value="{{ old('description', $menuItem->description) }}"
                                 placeholder="Inserisci la descrizione del piatto...">
                             @if($errors->has('description'))
                                 <div>
@@ -64,16 +64,16 @@
 
                         <div class="mb-3">
                             <label for="price" class="form-label">Prezzo <span class="text-danger">*</span></label>
-                            <input 
-                                type="number" 
-                                class="form-control @error('price') is-invalid @enderror" 
-                                id="price" 
-                                name="price" 
-                                required 
-                                value="{{ old('price', $menuItem->price) }}" 
-                                placeholder="Inserisci il prezzo..." 
-                                min="0.01" 
-                                step="0.01" 
+                            <input
+                                type="number"
+                                class="form-control text-light bg-dark @error('price') is-invalid @enderror"
+                                id="price"
+                                name="price"
+                                required
+                                value="{{ old('price', $menuItem->price) }}"
+                                placeholder="Inserisci il prezzo..."
+                                min="0.01"
+                                step="0.01"
                                 max="999.99">
                             @if($errors->has('price'))
                                 <div>
@@ -88,13 +88,13 @@
 
                         <div class="mb-3">
                             <label for="image" class="form-label">Immagine</label>
-                            <input 
-                                type="file" 
-                                class="form-control @error('image') is-invalid @enderror" 
-                                id="image" 
-                                name="image" 
-                                minlength="3" 
-                                maxlength="2048" 
+                            <input
+                                type="file"
+                                class="form-control text-light bg-dark @error('image') is-invalid @enderror"
+                                id="image"
+                                name="image"
+                                minlength="3"
+                                maxlength="2048"
                                 placeholder="Carica un immagine per il tuo piatto...">
 
                             @if ($menuItem->image)
@@ -112,12 +112,12 @@
 
                         <div class="mb-3">
                             <div class="form-check">
-                                <input 
-                                    class="form-check-input @error('is_visible') is-invalid @enderror" 
-                                    type="checkbox" 
-                                    value="1" 
-                                    id="is_visible" 
-                                    name="is_visible" 
+                                <input
+                                    class="form-check-input text-light bg-dark @error('is_visible') is-invalid @enderror"
+                                    type="checkbox"
+                                    value="1"
+                                    id="is_visible"
+                                    name="is_visible"
                                     @if (old('is_visible', $menuItem->is_visible) == 1) checked @endif>
                                 <label for="is_visible" class="form-label">Disponibile</label>
                             </div>

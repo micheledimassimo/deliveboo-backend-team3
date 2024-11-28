@@ -1,12 +1,12 @@
 <div>
-    <div class="modal fade text-dark" id="deleteModal{{ $menuItem->id }}" tabindex="-1" aria-labelledby="exampleModalLabel{{ $menuItem->id }}" aria-hidden="true">
+    <div class="modal fade text-white " id="deleteModal{{ $menuItem->id }}" tabindex="-1" aria-labelledby="exampleModalLabel{{ $menuItem->id }}" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
+            <div class="modal-content my-bg-dark">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel{{ $menuItem->id }}">
                         Elimina il piatto
                     </h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <div class="modal-body text-start">

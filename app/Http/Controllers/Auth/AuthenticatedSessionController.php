@@ -49,6 +49,8 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        $frontEndUrl = env('FRONTEND_URL');
+
+        return redirect($frontEndUrl);
     }
 }

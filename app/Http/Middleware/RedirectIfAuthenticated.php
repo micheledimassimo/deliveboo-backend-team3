@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
+use App\Models\Restaurant;
+
 class RedirectIfAuthenticated
 {
     /**
@@ -21,7 +23,9 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+                $user = Auth::user();
+                $restaurant = Restaurant::where('user_id', $user->id)->first();
+                return redirect()->route('admin.restaurants.show', $restaurant->slug);
             }
         }
 

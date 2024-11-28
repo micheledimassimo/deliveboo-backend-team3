@@ -93,6 +93,7 @@
                                             minlength="3"
                                             maxlength="32"
                                             placeholder="Inserisci qui il tuo nome.."
+                                            value="{{ old('first_name') }}"
                                             required>
                                             <div class="invalid-feedback">
                                                 Il è obbligatorio e deve essere lungo massimo 32 caratteri.
@@ -113,6 +114,7 @@
                                             minlength="3"
                                             maxlength="32"
                                             placeholder="Inserisci qui il tuo cognome.."
+                                            value="{{ old('last_name') }}"
                                             required
                                             >
                                             <div class="invalid-feedback">
@@ -138,6 +140,7 @@
                                             minlength="11"
                                             maxlength="11"
                                             placeholder="Inserisci qui la partita IVA.."
+                                            value="{{ old('p_iva') }}"
                                             required>
                                             <div class="invalid-feedback">
                                                 La partita iva è obbligatoria e deve essere lungo ESATTAMENTE 11 caratteri e DEVONO essere numeri.
@@ -159,6 +162,7 @@
                                             minlength="2"
                                             maxlength="128"
                                             placeholder="Inserisci qui il nome della tua attività.."
+                                            value="{{ old('restaurant_name') }}"
                                             required>
                                             <div class="invalid-feedback">
                                                 Il nome dell'attività è obbligatorio e deve essere lungo massimo 128 caratteri.
@@ -196,6 +200,7 @@
                                             minlength="5"
                                             maxlength="128"
                                             placeholder="Inserisci qui l'indirizzo della tua attività.."
+                                            value="{{ old('address') }}"
                                             required>
                                             <div class="invalid-feedback">
                                                 L'indirizzo è obbligatorio e deve essere lungo almeno 3 caratteri.
@@ -217,6 +222,7 @@
                                             minlength="5"
                                             maxlength="64"
                                             placeholder="Inserisci qui il telefono della tua attività.."
+                                            value="{{ old('phone_number') }}"
                                             required>
                                             <div class="invalid-feedback">
                                                 Il numero di telefono dell'attività è obbligatorio e deve essere lungo massimo 20 caratteri, e contenere solo numeri e simboli come + - ().
@@ -262,6 +268,7 @@
                                             name="email"
                                             maxlength="255"
                                             placeholder="Inserisci qui la tua email.."
+                                            value="{{ old('restaurant_name') }}"
                                             required>
                                             <div class="invalid-feedback">
                                                 L'indirizzo email è obbligatorio e deve essere lungo massimo 255 caratteri, SENZA maiuscole.

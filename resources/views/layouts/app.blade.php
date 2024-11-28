@@ -49,36 +49,38 @@
 
         <main>
             <div class="d-flex vh-100 w-100">
-                <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-warning" style="width: 15%;">
+                <div class="d-flex flex-column flex-shrink-0 p-3 text-white" style="width: 15%; background-color: #FF914D;">
 
                     <h2 class="my-4 text-center">
                         <i class="fa-solid fa-burger"></i> DeliveBoo</span>
                     </h2>
 
-
                     <ul class="nav nav-pills flex-column mb-auto mx-auto">
 
                       <li class='fs-4 fw-bold'>
                         <a href="#" class="nav-link text-white btn btn-outline-dark rounded-pill" style="width:fit-content">
-
                             <i class="fa-solid fa-file-lines"></i>
                             <span>
                                 Ordini
                             </span>
-
                         </a>
                       </li>
                       <li class='fs-4 fw-bold'>
                         <a href="#" class="nav-link text-white btn btn-outline-dark rounded-pill" style="width:fit-content">
-
                             <i class="fa-solid fa-chart-column "></i>
 
-                            <span class="">
+                            <span>
                                 Statistiche
                             </span>
+                        </a>
+                      </li>
+                      <li class='fs-4 fw-bold'>
+                        <a href="http://localhost:5174/" class="nav-link text-white btn btn-outline-dark rounded-pill" style="width:fit-content">
+                            <i class="fa-solid fa-chart-column"></i>
 
-
-
+                            <span>
+                                Homepage
+                            </span>
                         </a>
                       </li>
 

@@ -7,15 +7,15 @@
 
     <div class="vh-100 w-85" id="dashboard">
 
-        <div class="row mx-auto mt-4 px-5">
+        <div class="mt-4 px-5">
 
             <h3 class="text-white">
                 Dashboard
             </h3>
-            <div class="col">
+            <div>
                 {{-- Informazioni Ristorant --}}
                 <div class="card mb-4 restaurant-header-card text-white">
-                    <div class="row g-0 d-flex align-items-center">
+                    <div class="row g-0 align-items-center">
                         <!-- Immagine ristorante -->
                         <div class="img-container col-12 col-md-4 col-lg-3">
                             @if (!empty($restaurant->img) && file_exists(storage_path('app/public/' . $restaurant->img)))
@@ -28,22 +28,22 @@
                                     alt="Placeholder image">
                             @endif
                         </div>
-                
+
                         <div class="col-12 col-md-7 col-lg-8">
                             <div class="card-body">
                                 <!-- Nome ristorante -->
                                 <h1 class="card-title">{{ $restaurant->restaurant_name }}</h1>
-                
+
                                 <!-- Indirizzo -->
                                 <p class="mb-2">
                                     <strong>Indirizzo:</strong> {{ $restaurant->address }}
                                 </p>
-                
+
                                 <!-- Telefono -->
                                 <p class="mb-2">
                                     <strong>Telefono:</strong> {{ $restaurant->phone_number }}
                                 </p>
-                
+
                                 <!-- Tipologie -->
                                 <p>
                                     <strong>Tipologie:</strong>
@@ -55,7 +55,7 @@
                                 </p>
                             </div>
                         </div>
-                
+
                         <div class="col-12 col-md-1 text-md-end">
                             <a href="{{ route('admin.restaurants.edit', ['restaurant' => $restaurant->id]) }}" class="btn rounded-pill">
                                 Modifica
@@ -82,13 +82,13 @@
                     </div>
 
                     {{-- offcanvas con form per aggiunta piatto --}}
-                    <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+                    <div class="offcanvas offcanvas-end bg-black" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
                         {{-- bottone chiusura offcanvas --}}
                         <div class="offcanvas-header">
-                          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                          <button type="button" class="btn-close bg-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
                         <div class="offcanvas-body">
-                            <div class="card">
+                            <div class="card bg-dark text-white">
                                 <div class="card-body">
                                     <h5 class="card-title" id="offcanvasWithBothOptionsLabel">Aggiungi i dettagli del nuovo piatto</h5>
 
@@ -179,7 +179,7 @@
 
                     {{-- tabella visualizzazione piatti --}}
 
-                    <div class="group-list">
+                    <div class="px-4">
                         @foreach ($restaurant->menuItems as $menuItem)
                             <div class="row align-items-center group-list-item py-2">
                                 <div class="col-2">
@@ -235,13 +235,13 @@
                                     </div>
 
                                     {{-- offcanvas con form per modifica piatto --}}
-                                    <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithEdit{{ $menuItem->id }}" aria-labelledby="offcanvasWithEditLabel">
+                                    <div class="offcanvas offcanvas-end bg-black" data-bs-scroll="true" tabindex="-1" id="offcanvasWithEdit{{ $menuItem->id }}" aria-labelledby="offcanvasWithEditLabel">
                                         {{-- bottone chiusura offcanvas --}}
-                                        <div class="offcanvas-header">
-                                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                        <div class="offcanvas-header ">
+                                            <button type="button" class="btn-close bg-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                                         </div>
                                         <div class="offcanvas-body">
-                                            <div class="card">
+                                            <div class="card bg-dark text-white">
                                                 <div class="card-body">
                                                     <h5 class="card-title" id="offcanvasWithEditLabel">Modifica i dettagli del piatto</h5>
 
@@ -312,7 +312,7 @@
                                                                     <h5>Immagine attuale:</h5>
                                                                     <img class="h-150" src="{{ asset('storage/'.$menuItem->image) }}" alt="{{ $menuItem->itemname }}">
 
-                                                                    <button type="button" class="btn btn-danger btn-sm mt-2" id="remove_image{{ $menuItem->id }}"
+                                                                    <button type="button" class="btn btn-danger active btn-sm mt-2" data-bs-toggle="button" id="remove_image{{ $menuItem->id }}"
                                                                             onclick="document.getElementById('removeimage_input{{ $menuItem->id }}').checked = true;">
                                                                         <i class="fas fa-times"></i> <!-- Icona "X" -->
                                                                     </button>

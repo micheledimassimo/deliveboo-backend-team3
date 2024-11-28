@@ -101,6 +101,8 @@ class MenuItemController extends Controller
             $menuItem->image = null;
         }
 
+        $data['is_visible'] = $request->has('is_visible') ? true : false;
+
         $restaurant = Restaurant::where('slug', $request->restaurant_slug)->firstOrFail();
 
         $data['restaurant_id'] = $restaurant->id;
@@ -139,7 +141,6 @@ class MenuItemController extends Controller
             'is_visible' => 'nullable|boolean',
             'image' => 'nullable|image|max:1024',
             'restaurant_id' => 'nullable|exists:restaurants,id',
-
         ]);
     }
 }

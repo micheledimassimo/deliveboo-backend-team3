@@ -57,7 +57,9 @@ class RestaurantController extends Controller
 
         $this->authorize('view', $restaurant);
 
-        return view('admin.restaurants.show', compact('restaurant'));
+        $typologies = Typology::all();
+
+        return view('admin.restaurants.show', compact('restaurant', 'typologies'));
     }
 
     /**

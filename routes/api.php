@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\RestaurantController;
 use App\Http\Controllers\API\MenuItemController;
 use App\Http\Controllers\API\TypologyController;
+use App\Http\Controllers\API\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,12 @@ Route::name('api.')->group(function(){
     Route::resource('typologies', TypologyController::class)->only([
         'index',
         'show'
+    ]);
+
+    Route::resource('orders', OrderController::class)->only([
+        'index',
+        'show',
+        'store'
     ]);
 
 });

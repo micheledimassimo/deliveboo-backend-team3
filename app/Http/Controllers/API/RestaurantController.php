@@ -17,15 +17,16 @@ class RestaurantController extends Controller
         // eager loading con with per portarsi dietro le categorie
         // paginazione per mostrarne 5 a pagina
         // Recupera il filtro dalle query parameters, se presente
-        $typologyName= $request->query('typology_name');
+        $typologyNames= $request->query('typology_name');
+        $typologyNames = $typologyNames ? explode(',', $typologyNames) : [];
 
         // Crea una query di base con il caricamento eager
         $query = Restaurant::with('typologies');
 
         // Se è stato specificato un filtro per la typology, aggiungilo alla query
-        if ($typologyName) {
-            $query->whereHas('typologies', function ($q) use ($typologyName) {
-                $q->where('typology_name', $typologyName);
+        if (!empty($typologyNames)) {
+            $query->whereHas('typologies', function ($q) use ($typologyNames) {
+                $q->whereIn('typology_name', $typologyNames);
             });
         }
         $restaurants = $query->paginate(8);

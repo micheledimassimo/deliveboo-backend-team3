@@ -55,4 +55,8 @@ Route::name('api.')->group(function(){
         'store'
     ]);
 
+    Route::post('/menu-item-order', [MenuItemOrderController::class, 'store']);
+
+    Route::post('/orders', [OrderController::class, 'store']);
+
 });

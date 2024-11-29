@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\RestaurantController;
 use App\Http\Controllers\API\MenuItemController;
 use App\Http\Controllers\API\TypologyController;
+use App\Http\Controllers\BraintreeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,4 +49,7 @@ Route::name('api.')->group(function(){
         'show'
     ]);
 
+    Route::get('/braintree/token', [BraintreeController::class, 'generateToken']);
+    Route::post('/braintree/checkout', [BraintreeController::class, 'processPayment']);
+    
 });

@@ -6,6 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
 
+//Helpers
+use Illuminate\Support\Facades\Mail;
+
+//Mailables
+use App\Mail\NewContact;
+
 class OrderController extends Controller
 {   
     public function index(Request $request)
@@ -71,6 +77,9 @@ class OrderController extends Controller
             'customer_name' => $data['customer']['name'],
             'total_price' => $data['total_price'],
         ]);
+        $customerMail = $data['customer']['email'];
+        
+        Mail::to($customerMail)->send(new NewContact());
 
         foreach ($data['items'] as $item) {
             $order->menuItems()->attach($item['id'], ['quantity' => $item['quantity']]);

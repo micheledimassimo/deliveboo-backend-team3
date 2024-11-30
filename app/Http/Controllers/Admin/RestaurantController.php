@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Restaurant;
 use App\Models\Typology;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 // Helpers
@@ -52,12 +53,15 @@ class RestaurantController extends Controller
      * Display the specified resource.
      */
     public function show($slug)
-    {   
+    {
         $restaurant = Restaurant::with('menuItems')->where('slug', $slug)->firstOrFail();
 
         $this->authorize('view', $restaurant);
 
         $typologies = Typology::all();
+
+
+
 
         return view('admin.restaurants.show', compact('restaurant', 'typologies'));
     }
@@ -66,12 +70,12 @@ class RestaurantController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(Restaurant $restaurant)
-    {   
+    {
 
         $this->authorize('update', $restaurant);
 
         $typologies = Typology::all();
-        
+
         return view('admin.restaurants.edit', compact('restaurant', 'typologies'));
     }
 
@@ -91,7 +95,7 @@ class RestaurantController extends Controller
         if (isset($data['typologies'])) {
             $restaurant->typologies()->sync($data['typologies']);
         }
-        
+
         if (isset($data['img'])) {
             if ($restaurant->img) {
                 // ELIMINA L'IMMAGINE PRECEDENTE
@@ -117,7 +121,7 @@ class RestaurantController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(Restaurant $restaurant)
-    {   
+    {
         $this->authorize('delete', $restaurant);
 
         $restaurant->delete();
@@ -136,4 +140,49 @@ class RestaurantController extends Controller
             'user_id' => 'nullable|exists:user,id'
         ]);
     }
+
+    public function orders($slug)
+    {
+
+    $restaurant = Restaurant::with('menuItems')->where('slug', $slug)->firstOrFail();
+
+    // Autorizzazione
+    $this->authorize('view', $restaurant);
+
+    // Recupera gli ordini associati al ristorante
+    $orders = Order::whereHas('menuItems', function ($query) use ($restaurant) {
+        $query->where('restaurant_id', $restaurant->id);
+    })->with(['menuItems' => function ($query) {
+        $query->withPivot('quantity'); // Include la quantità dalla tabella pivot
+    }])->get();
+
+    // Elabora i dati
+    $orders = $orders->map(function ($order) {
+        $totalPrice = $order->menuItems->reduce(function ($total, $menuItem) {
+            $quantity = $menuItem->pivot->quantity ?? 1;
+            $price = $menuItem->price ?? 0;
+
+            return $total + ($quantity * $price);
+        }, 0);
+
+        return [
+            'order_id' => $order->id,
+            'total_price' => $totalPrice,
+            'customer_email' => $order->customer_email ?? 'Non disponibile', // Email cliente
+            'customer_address' => $order->customer_address ?? 'Non disponibile', // Indirizzo cliente
+            'customer_number' => $order->customer_number ?? 'Non disponibile', // Numero cliente
+            'customer_name' => $order->customer_name ?? 'Non disponibile', // Nome cliente
+            'menu_items' => $order->menuItems->map(function ($menuItem) {
+                return [
+                    'item_name' => $menuItem->item_name,
+                    'quantity' => $menuItem->pivot->quantity ?? 1, // Quantità dalla pivot
+                ];
+            }),
+        ];
+    });
+
+    return view('admin.restaurants.orders', compact('restaurant', 'orders'));
 }
+}
+
+

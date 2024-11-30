@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 // Helpers
 
 use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Support\Facades\DB;
 
 use App\Http\Controllers\Controller;
 
@@ -183,6 +183,36 @@ class RestaurantController extends Controller
 
     return view('admin.restaurants.orders', compact('restaurant', 'orders'));
 }
+
+/**
+     * Statistics.
+     */
+
+     public function statistics($slug)
+     {
+         // Recupera il ristorante tramite lo slug
+         $restaurant = Restaurant::where('slug', $slug)->firstOrFail();
+
+         // Ottieni il conteggio degli ordini per mese
+         $ordersPerMonth = DB::table('orders')
+         ->join('menu_item_order', 'orders.id', '=', 'menu_item_order.order_id')
+         ->join('menu_items', 'menu_item_order.menu_item_id', '=', 'menu_items.id')
+         ->where('menu_items.restaurant_id', $restaurant->id) // Filtra per il ristorante
+         ->selectRaw('MONTH(orders.created_at) as month, YEAR(orders.created_at) as year, COUNT(*) as total')
+         ->groupBy('year', 'month')
+         ->orderBy('year')
+         ->orderBy('month')
+         ->get();
+
+     // Prepara i dati per il grafico
+     $data = array_fill(0, 12, 0); // 12 mesi inizializzati a 0
+
+     foreach ($ordersPerMonth as $order) {
+         $data[$order->month - 1] = $order->total; // Mappa i dati al mese (gennaio è 0)
+     }
+
+     return view('admin.restaurants.statistics', compact('restaurant', 'data'));
+ }
 }
 
 

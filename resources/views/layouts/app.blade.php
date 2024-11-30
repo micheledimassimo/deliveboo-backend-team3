@@ -75,9 +75,8 @@
                         </a>
                       </li>
                       <li class='fs-4 fw-bold'>
-                        <a href="#" class="nav-link text-white btn btn-outline-dark rounded-pill" style="width:fit-content">
-                            <i class="fa-solid fa-chart-column "></i>
-
+                        <a href="{{ route('admin.restaurants.statistics', ['slug' => $restaurant->slug]) }}" class="nav-link text-white btn btn-outline-dark rounded-pill" style="width:fit-content">
+                            <i class="fa-solid fa-file-lines"></i>
                             <span>
                                 Statistiche
                             </span>

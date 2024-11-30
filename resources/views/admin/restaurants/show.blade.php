@@ -44,7 +44,7 @@
                                 <p>
                                     <strong>Tipologie:</strong>
                                     @foreach($restaurant->typologies as $typology)
-                                        <span class="badge rounded-pill text-bg-success px-3 py-2">
+                                        <span class="badge my-badge">
                                             {{ $typology->typology_name }}
                                         </span>
                                     @endforeach
@@ -66,14 +66,19 @@
                     <h2>
                         Menu
                     </h2>
-                    <div>
-                        <button class="btn btn-warning border rounded-circle align-middle text-white fw-bold"
-                            type="button" data-bs-toggle="offcanvas"
-                            data-bs-target="#offcanvasWithBothOptions"
-                            aria-controls="offcanvasWithBothOptions">
-                            +
-                        </button>
+
+                    <div class="listing-container">
+                        <span class="js-add-sauce">
+                            <a
+                               type="button" 
+                               data-bs-toggle="offcanvas" 
+                               data-bs-target="#offcanvasWithBothOptions" 
+                               aria-controls="offcanvasWithBothOptions">
+                               <i class="icon icon-add"></i>
+                            </a>
+                        </span>
                     </div>
+                    
 
                 </div>
 
@@ -85,69 +90,52 @@
                 <div class="px-4">
                     @foreach ($restaurant->menuItems as $menuItem)
                         <div class="row align-items-center group-list-item py-2">
-                            <div class="col-2">
+                            <!-- Colonna per l'immagine -->
+                            <div class="col-12 col-md-2 col-lg-2 col-xl-2 col-xxl-1 mb-3 mb-md-0">
                                 <div class="img-container">
                                     @if (!empty($menuItem->image) && file_exists(storage_path('app/public/' . $menuItem->image)))
                                     <img class="img-width-200" src="{{ asset('storage/' . $menuItem->image) }}" alt="{{ $menuItem->item_name }}">
                                     @else
-                                    <img src="https://via.placeholder.com/100" alt="Placeholder image" class="img-thumbnail">
+                                    <img src="https://www.foodservicerewards.com/cdn/shop/t/262/assets/fsr-placeholder.png?v=45093109498714503231652397781" alt="Placeholder image" class="img-thumbnail">
                                     @endif
                                 </div>
                             </div>
-                            {{-- Info menu-items --}}
-                            <div class="col">
+                
+                            <!-- Info menu-item -->
+                            <div class="col-12 col-md-6 col-lg-5 col-xl-5 col-xxl-8 mb-3 mb-md-0">
                                 <h5>{{ $menuItem->item_name }}</h5>
                                 <small>Ingredienti: {{ $menuItem->description }}</small><br>
                                 <strong>Prezzo: €{{ $menuItem->price }}</strong>
                             </div>
-
-                            <div class="col-4 d-flex justify-content-end">
-                                @if ($menuItem->is_visible === 1)
-                                    <div class="d-flex align-items-center badge rounded-pill text-bg-secondary me-2">
-                                        <div>
-                                            <span class="align-center">Disponibile</span>
-                                        </div>
-
-                                        <div>
-                                            <span class="d-inline-block rounded-circle bg-success p-1"></span>
-                                        </div>
-                                    </div>
-
-                                    @else
-                                    <div class="d-flex align-items-center badge rounded-pill text-bg-secondary me-2">
-                                        <div>
-                                            <span class="align-center">Disponibile</span>
-                                        </div>
-                                        <div>
-                                            <span class="d-inline-block rounded-circle bg-danger p-1"></span>
-                                        </div>
-                                    </div>
-                                @endif
-
-                                {{-- BOTTONE MODIFICA PIATTO --}}
-                                <div class="me-2">
-                                    <button class="rounded-pill btn btn-warning"
-                                        type="button" data-bs-toggle="offcanvas"
-                                        data-bs-target="#offcanvasWithEdit{{ $menuItem->id }}"
-                                        aria-controls="offcanvasWithEdit">
-                                        Modifica
-                                    </button>
+                
+                            <div class="col-12 col-md-4 col-lg-5 col-xl-5 col-xxl-3 d-flex flex-wrap align-items-center ps-xxl-5">
+                                <!-- Disponibilità -->
+                                <div class="d-flex align-items-center rounded-pill my-pill text-bg-secondary me-2">
+                                    <span class="align-center">Disponibile</span>
+                                    <span class="d-inline-block rounded-circle {{ $menuItem->is_visible === 1 ? 'my-bright-green' : 'my-bright-red' }} p-2 ms-2"></span>
                                 </div>
-
-                                {{-- offcanvas con form per modifica piatto --}}
+                
+                                <!-- Modifica -->
+                                <button class="rounded-pill my-pill me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithEdit{{ $menuItem->id }}" aria-controls="offcanvasWithEdit">
+                                    Modifica
+                                </button>
+                
+                                <!-- offcanvas con form per modifica piatto -->
                                 @include('components.offcanvas-edit-menu-items', ['menuItem' => $menuItem, 'restaurantSlug' => $restaurant->slug])
-
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-danger rounded-pill" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $menuItem->id }}">
+                
+                                <!-- Bottone Elimina -->
+                                <button type="button" class="rounded-pill my-pill-red btn-danger rounded-pill" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $menuItem->id }}">
                                     Elimina
                                 </button>
-
+                
                                 <!-- Modal -->
                                 @include('components.modal-delete-menu-items', ['menuItem' => $menuItem, 'restaurantSlug' => $restaurant->slug])
                             </div>
                         </div>
                     @endforeach
                 </div>
+                
+                
             </div>
 
 

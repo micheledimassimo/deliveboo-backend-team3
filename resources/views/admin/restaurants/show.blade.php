@@ -27,7 +27,7 @@
                                     alt="Placeholder image">
                             @endif
                         </div>
-                
+
                         <div class="col-12 col-md-7 col-lg-8">
                             <div class="card-body">
                                 <!-- Nome ristorante -->
@@ -61,95 +61,97 @@
                 </div>
             </div>
 
-                <div class="card menu-item-card text-white">
-                    <div class="card-header d-flex justify-content-between">
-                        <h2>
-                            Menu
-                        </h2>
-                        <div>
-                            <button class="btn btn-warning border rounded-circle align-middle text-white fw-bold"
-                                type="button" data-bs-toggle="offcanvas"
-                                data-bs-target="#offcanvasWithBothOptions"
-                                aria-controls="offcanvasWithBothOptions">
-                                +
-                            </button>
-                        </div>
-
+            <div class="card menu-item-card text-white">
+                <div class="card-header d-flex justify-content-between">
+                    <h2>
+                        Menu
+                    </h2>
+                    <div>
+                        <button class="btn btn-warning border rounded-circle align-middle text-white fw-bold"
+                            type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasWithBothOptions"
+                            aria-controls="offcanvasWithBothOptions">
+                            +
+                        </button>
                     </div>
 
-                    {{-- offcanvas con form per aggiunta piatto --}}
-                    @include('components.offcanvas-add-menu-items', ['restaurantSlug' => $restaurant->slug])
+                </div>
 
-                    {{-- tabella visualizzazione piatti --}}
+                {{-- offcanvas con form per aggiunta piatto --}}
+                @include('components.offcanvas-add-menu-items', ['restaurantSlug' => $restaurant->slug])
 
-                    <div class="px-4">
-                        @foreach ($restaurant->menuItems as $menuItem)
-                            <div class="row align-items-center group-list-item py-2">
-                                <div class="col-2">
-                                    <div class="img-container">
-                                        @if (!empty($menuItem->image) && file_exists(storage_path('app/public/' . $menuItem->image)))
-                                        <img class="img-width-200" src="{{ asset('storage/' . $menuItem->image) }}" alt="{{ $menuItem->item_name }}">
-                                        @else
-                                        <img src="https://via.placeholder.com/100" alt="Placeholder image" class="img-thumbnail">
-                                        @endif
-                                    </div>
-                                </div>
-                                {{-- Info menu-items --}}
-                                <div class="col">
-                                    <h5>{{ $menuItem->item_name }}</h5>
-                                    <small>Ingredienti: {{ $menuItem->description }}</small><br>
-                                    <strong>Prezzo: €{{ $menuItem->price }}</strong>
-                                </div>
+                {{-- tabella visualizzazione piatti --}}
 
-                                <div class="col-4 d-flex justify-content-end">
-                                    @if ($menuItem->is_visible === 1)
-                                        <div class="d-flex align-items-center badge rounded-pill text-bg-secondary me-2">
-                                            <div>
-                                                <span class="align-center">Disponibile</span>
-                                            </div>
-
-                                            <div>
-                                                <span class="d-inline-block rounded-circle bg-success p-1"></span>
-                                            </div>
-                                        </div>
-
-                                        @else
-                                        <div class="d-flex align-items-center badge rounded-pill text-bg-secondary me-2">
-                                            <div>
-                                                <span class="align-center">Disponibile</span>
-                                            </div>
-                                            <div>
-                                                <span class="d-inline-block rounded-circle bg-danger p-1"></span>
-                                            </div>
-                                        </div>
+                <div class="px-4">
+                    @foreach ($restaurant->menuItems as $menuItem)
+                        <div class="row align-items-center group-list-item py-2">
+                            <div class="col-2">
+                                <div class="img-container">
+                                    @if (!empty($menuItem->image) && file_exists(storage_path('app/public/' . $menuItem->image)))
+                                    <img class="img-width-200" src="{{ asset('storage/' . $menuItem->image) }}" alt="{{ $menuItem->item_name }}">
+                                    @else
+                                    <img src="https://via.placeholder.com/100" alt="Placeholder image" class="img-thumbnail">
                                     @endif
-
-                                    {{-- BOTTONE MODIFICA PIATTO --}}
-                                    <div class="me-2">
-                                        <button class="rounded-pill btn btn-warning"
-                                            type="button" data-bs-toggle="offcanvas"
-                                            data-bs-target="#offcanvasWithEdit{{ $menuItem->id }}"
-                                            aria-controls="offcanvasWithEdit">
-                                            Modifica
-                                        </button>
-                                    </div>
-
-                                    {{-- offcanvas con form per modifica piatto --}}
-                                    @include('components.offcanvas-edit-menu-items', ['menuItem' => $menuItem, 'restaurantSlug' => $restaurant->slug])
-                                    
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-danger rounded-pill" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $menuItem->id }}">
-                                        Elimina
-                                    </button>
-
-                                    <!-- Modal -->
-                                    @include('components.modal-delete-menu-items', ['menuItem' => $menuItem, 'restaurantSlug' => $restaurant->slug])
                                 </div>
                             </div>
-                        @endforeach
-                    </div>
+                            {{-- Info menu-items --}}
+                            <div class="col">
+                                <h5>{{ $menuItem->item_name }}</h5>
+                                <small>Ingredienti: {{ $menuItem->description }}</small><br>
+                                <strong>Prezzo: €{{ $menuItem->price }}</strong>
+                            </div>
+
+                            <div class="col-4 d-flex justify-content-end">
+                                @if ($menuItem->is_visible === 1)
+                                    <div class="d-flex align-items-center badge rounded-pill text-bg-secondary me-2">
+                                        <div>
+                                            <span class="align-center">Disponibile</span>
+                                        </div>
+
+                                        <div>
+                                            <span class="d-inline-block rounded-circle bg-success p-1"></span>
+                                        </div>
+                                    </div>
+
+                                    @else
+                                    <div class="d-flex align-items-center badge rounded-pill text-bg-secondary me-2">
+                                        <div>
+                                            <span class="align-center">Disponibile</span>
+                                        </div>
+                                        <div>
+                                            <span class="d-inline-block rounded-circle bg-danger p-1"></span>
+                                        </div>
+                                    </div>
+                                @endif
+
+                                {{-- BOTTONE MODIFICA PIATTO --}}
+                                <div class="me-2">
+                                    <button class="rounded-pill btn btn-warning"
+                                        type="button" data-bs-toggle="offcanvas"
+                                        data-bs-target="#offcanvasWithEdit{{ $menuItem->id }}"
+                                        aria-controls="offcanvasWithEdit">
+                                        Modifica
+                                    </button>
+                                </div>
+
+                                {{-- offcanvas con form per modifica piatto --}}
+                                @include('components.offcanvas-edit-menu-items', ['menuItem' => $menuItem, 'restaurantSlug' => $restaurant->slug])
+
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-danger rounded-pill" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $menuItem->id }}">
+                                    Elimina
+                                </button>
+
+                                <!-- Modal -->
+                                @include('components.modal-delete-menu-items', ['menuItem' => $menuItem, 'restaurantSlug' => $restaurant->slug])
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
+
+
+            
         </div>
     </div>
 @endsection

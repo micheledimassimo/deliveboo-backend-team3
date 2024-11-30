@@ -57,8 +57,17 @@
 
                     <ul class="nav nav-pills flex-column mb-auto mx-auto">
 
+                        <li class='fs-4 fw-bold'>
+                            <a href="{{ route('admin.restaurants.show',[$restaurant->slug]) }}" class="nav-link text-white btn btn-outline-dark rounded-pill" style="width:fit-content">
+                                <i class="fa-solid fa-file-lines"></i>
+                                <span>
+                                    Dashboard
+                                </span>
+                            </a>
+                          </li>
+
                       <li class='fs-4 fw-bold'>
-                        <a href="#" class="nav-link text-white btn btn-outline-dark rounded-pill" style="width:fit-content">
+                        <a href="{{ route('admin.restaurants.orders', ['slug' => $restaurant->slug]) }}" class="nav-link text-white btn btn-outline-dark rounded-pill" style="width:fit-content">
                             <i class="fa-solid fa-file-lines"></i>
                             <span>
                                 Ordini

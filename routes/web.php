@@ -31,6 +31,8 @@ Route::prefix('admin')
     Route::resource('restaurants', AdminRestaurantController::class);
 
 });
+Route::get('admin/restaurants/{slug}/orders', [AdminRestaurantController::class, 'orders'])
+    ->name('admin.restaurants.orders');
 
 require __DIR__.'/auth.php';
 

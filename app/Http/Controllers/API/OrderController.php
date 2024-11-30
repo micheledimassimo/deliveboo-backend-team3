@@ -4,12 +4,16 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
 use App\Models\Order;
 
-class OrderController extends Controller
-{
+//Helpers
+use Illuminate\Support\Facades\Mail;
 
+//Mailables
+use App\Mail\NewContact;
+
+class OrderController extends Controller
+{   
     public function index(Request $request)
     {
         // Recupera lo slug del ristorante dalla richiesta
@@ -29,7 +33,7 @@ class OrderController extends Controller
         ->with(['menuItems.restaurant'])
         ->get()
         ->map(function ($order) {
-            
+
             $totalPrice = $order->menuItems->reduce(function ($total, $menuItem) {
             $quantity = $menuItem->pivot->quantity ?? 1; // Quantità (default 1 se non specificata)
             $price = $menuItem->price ?? 0; // Prezzo (default 0 se non specificato)
@@ -54,13 +58,32 @@ class OrderController extends Controller
 
     public function store(Request $request) {
         $data = $request->validate([
-            'customer_email' => 'required|email|max:255',
-            'customer_address' => 'required|string|max:255',
-            'customer_number' => 'required|string|min:10|max:15',
-            'customer_name' => 'required|string|min:3|max:64',
+            'restaurant_slug' => 'required|string',
+            'customer.email' => 'required|email|max:255',
+            'customer.address' => 'required|string|max:255',
+            'customer.number' => 'required|string|min:10|max:15',
+            'customer.name' => 'required|string|min:3|max:64',
             'total_price' => 'required|numeric|min:1',
+            'items' => 'required|array',
+            'items.*.id' => 'required|exists:menu_items,id', 
+            'items.*.quantity' => 'required|integer|min:1', 
         ]);
-        $order = Order::create($data);
+        
+        $order = Order::create([
+            'restaurant_slug' => $data['restaurant_slug'],
+            'customer_email' => $data['customer']['email'],
+            'customer_address' => $data['customer']['address'],
+            'customer_number' => $data['customer']['number'],
+            'customer_name' => $data['customer']['name'],
+            'total_price' => $data['total_price'],
+        ]);
+        $customerMail = $data['customer']['email'];
+        
+        Mail::to($customerMail)->send(new NewContact());
+
+        foreach ($data['items'] as $item) {
+            $order->menuItems()->attach($item['id'], ['quantity' => $item['quantity']]);
+        }
 
         return response()->json([
             'success' => true,

@@ -102,21 +102,21 @@
                             </div>
                 
                             <!-- Info menu-item -->
-                            <div class="col-12 col-md-6 col-lg-5 col-xl-5 col-xxl-8 mb-3 mb-md-0">
-                                <h5>{{ $menuItem->item_name }}</h5>
-                                <small>Ingredienti: {{ $menuItem->description }}</small><br>
-                                <strong>Prezzo: €{{ $menuItem->price }}</strong>
+                            <div class="col-12 col-md-6 col-lg-5 col-xl-5 col-xxl-7 mb-3 mb-md-0">
+                                <h5 class="px-3">{{ $menuItem->item_name }}</h5>
+                                <small class="px-3">Ingredienti: {{ $menuItem->description }}</small><br>
+                                <strong class="px-3">Prezzo: €{{ $menuItem->price }}</strong>
                             </div>
                 
-                            <div class="col-12 col-md-4 col-lg-5 col-xl-5 col-xxl-3 d-flex flex-wrap align-items-center ps-xxl-5">
+                            <div class="col-12 col-md-4 col-lg-5 col-xl-5 col-xxl-4 d-flex flex-wrap align-items-center ">
                                 <!-- Disponibilità -->
-                                <div class="d-flex align-items-center rounded-pill my-pill text-bg-secondary me-2">
+                                <div class="d-flex align-items-center rounded-pill my-pill text-bg-secondary me-3">
                                     <span class="align-center">Disponibile</span>
                                     <span class="d-inline-block rounded-circle {{ $menuItem->is_visible === 1 ? 'my-bright-green' : 'my-bright-red' }} p-2 ms-2"></span>
                                 </div>
                 
                                 <!-- Modifica -->
-                                <button class="rounded-pill my-pill me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithEdit{{ $menuItem->id }}" aria-controls="offcanvasWithEdit">
+                                <button class="rounded-pill my-pill ms-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithEdit{{ $menuItem->id }}" aria-controls="offcanvasWithEdit">
                                     Modifica
                                 </button>
                 
@@ -124,7 +124,7 @@
                                 @include('components.offcanvas-edit-menu-items', ['menuItem' => $menuItem, 'restaurantSlug' => $restaurant->slug])
                 
                                 <!-- Bottone Elimina -->
-                                <button type="button" class="rounded-pill my-pill-red btn-danger rounded-pill" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $menuItem->id }}">
+                                <button type="button" class="rounded-pill my-pill-red btn-danger rounded-pill ms-4" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $menuItem->id }}">
                                     Elimina
                                 </button>
                 

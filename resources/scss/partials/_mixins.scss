@@ -1,0 +1,8 @@
+// _mixins.scss
+@mixin image-container($size) {
+    width: $size;
+    height: $size;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+  }

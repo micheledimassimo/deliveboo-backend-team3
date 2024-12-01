@@ -4,7 +4,7 @@
 
 @section('main-content')
 
-    <div class="vh-100 w-85 my-bg-black text-white p-5">
+    <div class="vh-100 w-85 text-white p-5 dashboard">
 
             <div class="card text-white my-bg-dark">
 
@@ -19,15 +19,15 @@
             </div>
 
     </div>
-      
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-      
+
     <script>
         const ctx = document.getElementById('myChart');
 
         // Passa i dati dal backend
         const ordersData = @json($data);
-      
+
         new Chart(ctx, {
           type: 'bar',
           data: {
@@ -42,7 +42,7 @@
                 'Agosto',
                 'Settembre',
                 'Ottobre',
-                'Novmbre',
+                'Novembre',
                 'Dicembre',
             ],
 

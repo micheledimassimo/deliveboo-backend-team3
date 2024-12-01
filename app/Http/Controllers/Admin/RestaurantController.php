@@ -172,6 +172,7 @@ class RestaurantController extends Controller
             'customer_address' => $order->customer_address ?? 'Non disponibile', // Indirizzo cliente
             'customer_number' => $order->customer_number ?? 'Non disponibile', // Numero cliente
             'customer_name' => $order->customer_name ?? 'Non disponibile', // Nome cliente
+            'created_at' => $order->created_at,
             'menu_items' => $order->menuItems->map(function ($menuItem) {
                 return [
                     'item_name' => $menuItem->item_name,
@@ -181,6 +182,7 @@ class RestaurantController extends Controller
         ];
     });
 
+    $orders = $orders->sortByDesc('created_at');
     return view('admin.restaurants.orders', compact('restaurant', 'orders'));
 }
 

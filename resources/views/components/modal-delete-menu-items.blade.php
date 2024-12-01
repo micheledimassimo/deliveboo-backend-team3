@@ -6,7 +6,7 @@
                     <h1 class="modal-title fs-5" id="exampleModalLabel{{ $menuItem->id }}">
                         Elimina il piatto
                     </h1>
-                    <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <div class="modal-body text-start">

@@ -6,7 +6,7 @@
         </div>
 
         <div class="offcanvas-body">
-            <div class="card bg-dark text-white">
+            <div class="card my-bg-lightdark text-white">
                 <div class="card-body">
                     <h5 class="card-title" id="offcanvasWithEditLabel">Modifica i dettagli del piatto</h5>
 
@@ -21,7 +21,7 @@
                             <label for="item_name" class="form-label">Nome <span class="text-danger">*</span></label>
                             <input
                                 type="text"
-                                class="form-control text-light bg-dark @error('item_name') is-invalid @enderror"
+                                class="form-control text-light my-bg-lightdark @error('item_name') is-invalid @enderror"
                                 id="item_name"
                                 name="item_name"
                                 required
@@ -44,7 +44,7 @@
                             <label for="description" class="form-label">Descrizione</label>
                             <input
                                 type="text"
-                                class="form-control text-light bg-dark @error('description') is-invalid @enderror"
+                                class="form-control text-light my-bg-lightdark @error('description') is-invalid @enderror"
                                 id="description" name="description"
                                 required
                                 minlength="10"
@@ -66,7 +66,7 @@
                             <label for="price" class="form-label">Prezzo <span class="text-danger">*</span></label>
                             <input
                                 type="number"
-                                class="form-control text-light bg-dark @error('price') is-invalid @enderror"
+                                class="form-control text-light my-bg-lightdark @error('price') is-invalid @enderror"
                                 id="price"
                                 name="price"
                                 required
@@ -90,7 +90,7 @@
                             <label for="image" class="form-label">Immagine</label>
                             <input
                                 type="file"
-                                class="form-control text-light bg-dark @error('image') is-invalid @enderror"
+                                class="form-control text-light my-bg-lightdark @error('image') is-invalid @enderror"
                                 id="image"
                                 name="image"
                                 minlength="3"
@@ -113,7 +113,7 @@
                         <div class="mb-3">
                             <div class="form-check">
                                 <input
-                                    class="form-check-input text-light bg-dark @error('is_visible') is-invalid @enderror"
+                                    class="form-check-input text-light my-bg-lightdark @error('is_visible') is-invalid @enderror"
                                     type="checkbox"
                                     value="1"
                                     id="is_visible"

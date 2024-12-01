@@ -16,40 +16,10 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
     <body>
-        <!--<header>
-            <nav class="navbar navbar-expand-lg bg-body-tertiary">
-                <div class="container">
-                    <a class="navbar-brand" href="/">Template</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarText">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.menu_items.index') }}">Piatti</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.restaurants.index') }}">Ristoranti</a>
-                            </li>
-                        </ul>
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-
-                            <button type="submit" class="btn btn-outline-danger">
-                                Log Out
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </nav>
-        </header>-->
 
         <main>
             <div class="d-flex vh-100">
-                <div class="d-flex flex-column vh-100 flex-shrink-0 fixed-top p-3 text-white" style="width: 15%; background-color: #FF914D;">
+                <div class="d-flex flex-column vh-100 flex-shrink-0 fixed-top p-3 text-white side-bar">
 
                     <h2 class="my-4 text-center">
                         <i class="fa-solid fa-burger"></i> DeliveBoo</span>
@@ -58,8 +28,8 @@
                     <ul class="nav nav-pills flex-column mb-auto mx-auto">
 
                         <li class='fs-4 fw-bold'>
-                            <a href="{{ route('admin.restaurants.show',[$restaurant->slug]) }}" class="nav-link text-white btn btn-outline-dark rounded-pill" style="width:fit-content">
-                                <i class="fa-solid fa-file-lines"></i>
+                            <a href="{{ route('admin.restaurants.show',[$restaurant->slug]) }}" class="nav-link text-white btn btn-outline-dark rounded-pill fit-content">
+                                <i class="fa-solid fa-utensils"></i>
                                 <span>
                                     Dashboard
                                 </span>
@@ -67,7 +37,7 @@
                           </li>
 
                       <li class='fs-4 fw-bold'>
-                        <a href="{{ route('admin.restaurants.orders', ['slug' => $restaurant->slug]) }}" class="nav-link text-white btn btn-outline-dark rounded-pill" style="width:fit-content">
+                        <a href="{{ route('admin.restaurants.orders', ['slug' => $restaurant->slug]) }}" class="nav-link text-white btn btn-outline-dark rounded-pill fit-content">
                             <i class="fa-solid fa-file-lines"></i>
                             <span>
                                 Ordini
@@ -75,8 +45,8 @@
                         </a>
                       </li>
                       <li class='fs-4 fw-bold'>
-                        <a href="{{ route('admin.restaurants.statistics', ['slug' => $restaurant->slug]) }}" class="nav-link text-white btn btn-outline-dark rounded-pill" style="width:fit-content">
-                            <i class="fa-solid fa-file-lines"></i>
+                        <a href="{{ route('admin.restaurants.statistics', ['slug' => $restaurant->slug]) }}" class="nav-link text-white btn btn-outline-dark rounded-pill fit-content">
+                            <i class="fa-solid fa-chart-column"></i>
                             <span>
                                 Statistiche
                             </span>
@@ -84,7 +54,8 @@
                       </li>
                       <li class='fs-4 fw-bold'>
                         <a href="{{ env('FRONTEND_URL') }}" class="nav-link text-white btn btn-outline-dark rounded-pill" style="width:fit-content">
-                            <i class="fa-solid fa-chart-column"></i>
+
+                            <i class="fa-solid fa-house"></i>
 
                             <span>
                                 Homepage

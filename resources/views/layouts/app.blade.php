@@ -83,7 +83,7 @@
                         </a>
                       </li>
                       <li class='fs-4 fw-bold'>
-                        <a href="http://localhost:5173/" class="nav-link text-white btn btn-outline-dark rounded-pill" style="width:fit-content">
+                        <a href="{{ env('FRONTEND_URL') }}" class="nav-link text-white btn btn-outline-dark rounded-pill" style="width:fit-content">
                             <i class="fa-solid fa-chart-column"></i>
 
                             <span>

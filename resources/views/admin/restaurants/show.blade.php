@@ -105,7 +105,7 @@
                             <div class="col-12 col-md-6 col-lg-5 col-xl-5 col-xxl-7 mb-3 mb-md-0">
                                 <h5 class="px-3">{{ $menuItem->item_name }}</h5>
                                 <div class="px-3">
-                                    <small>Ingredienti: {{ $menuItem->description }}</small><br>
+                                    <small>Descrizione: {{ $menuItem->description }}</small><br>
                                     <strong>Prezzo: €{{ $menuItem->price }}</strong>
                                 </div>
 

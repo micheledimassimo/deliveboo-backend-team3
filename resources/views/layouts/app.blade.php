@@ -48,8 +48,8 @@
         </header>-->
 
         <main>
-            <div class="d-flex vh-100 w-100">
-                <div class="d-flex flex-column flex-shrink-0 p-3 text-white" style="width: 15%; background-color: #FF914D;">
+            <div class="d-flex vh-100">
+                <div class="d-flex flex-column vh-100 flex-shrink-0 fixed-top p-3 text-white" style="width: 15%; background-color: #FF914D;">
 
                     <h2 class="my-4 text-center">
                         <i class="fa-solid fa-burger"></i> DeliveBoo</span>

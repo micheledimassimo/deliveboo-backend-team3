@@ -1,11 +1,11 @@
 <div>
     <div>
-        <div class="offcanvas offcanvas-top bg-dark vh-100" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+        <div class="offcanvas restaurant-offcanvas offcanvas-top my-bg-lightdark vh-100" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
             <div class="offcanvas-header ">
                 <h5 class="offcanvas-title  text-light" id="offcanvasTopLabel">Modifica dettagli ristorante</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-            <div class="offcanvas-body ">
+            <div class="offcanvas-body" style="height: 50vh;">
             <form class="needs-validation" novalidate method="POST" action="{{ route('admin.restaurants.update', ['restaurant' => $restaurant->id]) }}" enctype="multipart/form-data">
             @method('PUT')
             @csrf
@@ -17,7 +17,7 @@
                         </label>
                         <input
                             type="text"
-                            class="form-control text-light bg-dark  @error('restaurant_name') is-invalid @enderror"
+                            class="form-control text-light my-bg-lightdark  @error('restaurant_name') is-invalid @enderror"
                             id="restaurant_name" name="restaurant_name"
                             minlength="3"
                             maxlength="128"
@@ -36,7 +36,7 @@
                     </label>
                     <input
                         type="text"
-                        class="form-control text-light bg-dark @error('address') is-invalid @enderror"
+                        class="form-control text-light my-bg-lightdark @error('address') is-invalid @enderror"
                         id="address" name="address"
                         minlength="3"
                         maxlength="128"
@@ -46,7 +46,7 @@
                     <div class="invalid-feedback">
                         L'indirizzo è obbligatorio e deve essere lungo almeno 3 caratteri.
                     </div>
-                </div>
+                    </div>
                 </div>
             </div>
             
@@ -59,7 +59,7 @@
                         </label>
                         <input
                             type="text"
-                            class="form-control bg-dark text-light @error('phone_number') is-invalid @enderror"
+                            class="form-control my-bg-lightdark text-light @error('phone_number') is-invalid @enderror"
                             id="phone_number" name="phone_number"
                             minlength="6"
                             maxlength="20"
@@ -78,7 +78,7 @@
                             Immagine del Ristorante
                         </label>
                         <input
-                            class="form-control bg-dark text-light @error('img') is-invalid @enderror"
+                            class="form-control my-bg-lightdark text-light @error('img') is-invalid @enderror"
                             type="file"
                             id="img"
                             name="img"
@@ -90,58 +90,54 @@
                     </div>
                 </div>
             </div>
-
-            
-
             
             <div class="row">
                 <div class="col-6">
-                <div class="mb-3 text-light">
-                <label for="typologies" class="form-label fs-2">
-                    Tipologie
-                </label>
-                <div class="row text-light">
-                    @foreach($typologies as $typology)
-                        <div class="col-4">
-                            <div>
-                                <label for="typologies">
-                                    {{ $typology->typology_name }}
-                                </label>
-                            </div>
-                            <input
-                                type="checkbox"
-                                id="typology_{{ $typology->id }}"
-                                name="typologies[]"
-                                value="{{ $typology->id }}"
-                                @if($restaurant->typologies->contains($typology->id)) checked @endif>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-
-                </div>
-                <div class="col-6">
-                @if ($restaurant->img)
-                <div class="mb-3 text-light text-center">
-                    <label class="form-label fs-2">Immagine attuale</label>
-                    <div class="d-flex align-items-center justify-content-around">
-                        <img src="{{ asset('storage/'.$restaurant->img) }}" alt="{{ $restaurant->restaurant_name }}" class="img-fluid" style="height: 300px; width: auto;">
-                        <div>
-                            <input type="checkbox" class="btn-check" id="remove_img" name="remove_img" autocomplete="off">
-                            <label class="btn btn-light" for="remove_img">
-                                <i class="fa-solid fa-trash fa-lg"></i> Rimuovi Immagine
-                            </label>
+                    <div class="text-light">
+                        <label for="typologies" class="form-label fs-2">
+                            Tipologie
+                        </label>
+                        <div class="row text-light">
+                            @foreach($typologies as $typology)
+                                <div class="col-3">
+                                    <div>
+                                        <label for="typologies">
+                                            {{ $typology->typology_name }}
+                                        </label>
+                                    </div>
+                                    <input
+                                        type="checkbox"
+                                        id="typology_{{ $typology->id }}"
+                                        name="typologies[]"
+                                        value="{{ $typology->id }}"
+                                        @if($restaurant->typologies->contains($typology->id)) checked @endif>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
-            @endif
+
+                <div class="col-6">
+                    @if ($restaurant->img)
+                    <div class="mb-3 text-light text-center">
+                        <label class="form-label fs-2">Immagine attuale</label>
+                        <div class="d-flex align-items-center justify-content-around">
+                            <div class="restaurant-img-container">
+                                <img src="{{ asset('storage/'.$restaurant->img) }}" alt="{{ $restaurant->restaurant_name }}">
+                            </div>
+                            <div>
+                                <input type="checkbox" class="btn-check" id="remove_img" name="remove_img" autocomplete="off">
+                                <label class="btn btn-light" for="remove_img">
+                                    <i class="fa-solid fa-trash fa-lg"></i> Rimuovi Immagine
+                                </label>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    @endif
                 </div>
             </div>
-            
-
-            
-                    
-            
+       
             <div class="text-center my-5">
                 <button type="submit" class="btn btn-success btn-lg">
                     <i class="fa-solid fa-pen-to-square"></i> Modifica

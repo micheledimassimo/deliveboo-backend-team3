@@ -1,0 +1,58 @@
+.offcanvas .form-control {
+    background-color: #2E2E2E; 
+    color: white;
+}
+
+.offcanvas .form-control:focus {
+    background-color: #2E2E2E;
+    color: white;
+    outline: none;
+}
+
+.offcanvas .form-control::placeholder {
+    color: #bbb;
+}
+
+.offcanvas .form-check-input {
+    background-color: #2E2E2E;
+    border-color: #bbb;
+    color: #fff;
+}
+
+.offcanvas .form-check-input:checked {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+}
+
+.offcanvas .form-check-input:checked::before {
+    color: #fff;
+}
+
+.offcanvas .form-check-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.5);
+}
+
+.restaurant-offcanvas {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.restaurant-img-container {
+    width: 150px;
+    height: 150px;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+}
+
+
+
+
+

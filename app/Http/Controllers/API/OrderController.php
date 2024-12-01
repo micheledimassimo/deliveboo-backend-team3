@@ -8,10 +8,14 @@ use App\Models\Order;
 
 //Helpers
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
 
 //Mailables
 use App\Mail\NewContact;
+use App\Mail\NewOrder;
 
+//Models
+use App\Models\Restaurant;
 class OrderController extends Controller
 {   
     public function index(Request $request)
@@ -56,38 +60,63 @@ class OrderController extends Controller
         return response()->json($ordersWithRestaurants);
     }
 
-    public function store(Request $request) {
-        $data = $request->validate([
-            'restaurant_slug' => 'required|string',
-            'customer.email' => 'required|email|max:255',
-            'customer.address' => 'required|string|max:255',
-            'customer.number' => 'required|string|min:10|max:15',
-            'customer.name' => 'required|string|min:3|max:64',
-            'total_price' => 'required|numeric|min:1',
-            'items' => 'required|array',
-            'items.*.id' => 'required|exists:menu_items,id', 
-            'items.*.quantity' => 'required|integer|min:1', 
-        ]);
-        
-        $order = Order::create([
-            'restaurant_slug' => $data['restaurant_slug'],
-            'customer_email' => $data['customer']['email'],
-            'customer_address' => $data['customer']['address'],
-            'customer_number' => $data['customer']['number'],
-            'customer_name' => $data['customer']['name'],
-            'total_price' => $data['total_price'],
-        ]);
-        $customerMail = $data['customer']['email'];
-        
-        Mail::to($customerMail)->send(new NewContact());
+    public function store(Request $request)
+{
+    $data = $request->validate([
+        'restaurant_slug' => 'required|string',
+        'customer.email' => 'required|email|max:255',
+        'customer.address' => 'required|string|max:255',
+        'customer.number' => 'required|string|min:10|max:15',
+        'customer.name' => 'required|string|min:3|max:64',
+        'total_price' => 'required|numeric|min:1',
+        'items' => 'required|array',
+        'items.*.id' => 'required|exists:menu_items,id',
+        'items.*.quantity' => 'required|integer|min:1',
+    ]);
 
-        foreach ($data['items'] as $item) {
-            $order->menuItems()->attach($item['id'], ['quantity' => $item['quantity']]);
-        }
+    // Recupera il ristorante tramite lo slug
+    $restaurant = Restaurant::where('slug', $data['restaurant_slug'])->with('user')->first();
 
-        return response()->json([
-            'success' => true,
-            'data' => $order
-        ]);
+    if (!$restaurant) {
+        return response()->json(['error' => 'Restaurant not found.'], 404);
     }
+
+    // Recupera l'email dello user collegato al ristorante
+    $restaurantUserEmail = $restaurant->user->email ?? null;
+
+    if (!$restaurantUserEmail) {
+        return response()->json(['error' => 'Restaurant owner email not found.'], 404);
+    }
+
+    // Crea l'ordine
+    $order = Order::create([
+        'restaurant_slug' => $data['restaurant_slug'],
+        'customer_email' => $data['customer']['email'],
+        'customer_address' => $data['customer']['address'],
+        'customer_number' => $data['customer']['number'],
+        'customer_name' => $data['customer']['name'],
+        'total_price' => $data['total_price'],
+    ]);
+
+    // Invia una mail al cliente
+    $customerMail = $data['customer']['email'];
+    Mail::to($customerMail)->send(new NewContact());
+
+    // Invia una mail allo user del ristorante (opzionale)
+    Mail::to($restaurantUserEmail)->send(new NewOrder());
+
+    // Collega gli articoli all'ordine
+    foreach ($data['items'] as $item) {
+        $order->menuItems()->attach($item['id'], ['quantity' => $item['quantity']]);
+    }
+
+    return response()->json([
+        'success' => true,
+        'data' => $order,
+        'restaurant_user_email' => $restaurantUserEmail, // Ritorna anche l'email dello user del ristorante
+    ]);
 }
+
+
+}
+

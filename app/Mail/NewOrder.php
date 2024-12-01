@@ -8,10 +8,9 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\DB;
 
-
-
-class NewContact extends Mailable
+class NewOrder extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -29,10 +28,10 @@ class NewContact extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: 'deliveboo@gmail.com',
+            from:  'delivebbo@gmail.com',
             subject: 'Deliveboo',
             
-
+            
         );
     }
 
@@ -42,7 +41,7 @@ class NewContact extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.order-completed',
+            view: 'emails.new-order',
         );
     }
 
@@ -56,5 +55,5 @@ class NewContact extends Mailable
         return [];
     }
 
-    
+   
 }

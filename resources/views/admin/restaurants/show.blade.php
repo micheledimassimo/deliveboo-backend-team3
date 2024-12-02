@@ -14,7 +14,7 @@
             <div>
                 {{-- Informazioni Ristorant --}}
                 <div class="card mb-4 restaurant-header-card text-white">
-                    <div class="row g-0 align-items-center">
+                    <div class="row pt-5 g-0 align-items-center">
                         <!-- Immagine ristorante -->
                         <div class="img-container col-12 col-md-4 col-lg-3">
                             @if (!empty($restaurant->img) && file_exists(storage_path('app/public/' . $restaurant->img)))
@@ -91,10 +91,10 @@
                     @foreach ($restaurant->menuItems as $menuItem)
                         <div class="row align-items-center group-list-item py-2">
                             <!-- Colonna per l'immagine -->
-                            <div class="col-12 col-md-2 col-lg-2 col-xl-2 col-xxl-1 mb-3 mb-md-0">
+                            <div class="responsive col-12 col-md-2 col-lg-2 col-xl-2 col-xxl-1 mb-3 mb-md-0">
                                 <div class="img-container">
                                     @if (!empty($menuItem->image) && file_exists(storage_path('app/public/' . $menuItem->image)))
-                                    <img class="img-width-200" src="{{ asset('storage/' . $menuItem->image) }}" alt="{{ $menuItem->item_name }}">
+                                    <img src="{{ asset('storage/' . $menuItem->image) }}" alt="{{ $menuItem->item_name }}">
                                     @else
                                     <img src="https://www.foodservicerewards.com/cdn/shop/t/262/assets/fsr-placeholder.png?v=45093109498714503231652397781" alt="Placeholder image" class="img-thumbnail">
                                     @endif
@@ -102,7 +102,7 @@
                             </div>
 
                             <!-- Info menu-item -->
-                            <div class="col-12 col-md-6 col-lg-5 col-xl-5 col-xxl-7 mb-3 mb-md-0">
+                            <div class="info-responsive col-12 col-md-6 col-lg-5 col-xl-5 col-xxl-7 mb-3 mb-md-0">
                                 <h5 class="px-3">{{ $menuItem->item_name }}</h5>
                                 <div class="px-3">
                                     <small>Descrizione: {{ $menuItem->description }}</small><br>
@@ -111,15 +111,15 @@
 
                             </div>
 
-                            <div class="col-12 col-md-4 col-lg-5 col-xl-5 col-xxl-4 d-flex flex-wrap align-items-center ">
+                            <div class="responsive col-12 col-md-4 col-lg-5 col-xl-5 col-xxl-4 d-flex flex-wrap align-items-center ">
                                 <!-- Disponibilità -->
-                                <div class="d-flex align-items-center rounded-pill my-pill text-bg-secondary me-3">
+                                <div class="d-flex align-items-center rounded-pill my-pill text-bg-secondary mb-2 me-3">
                                     <span class="align-center">Disponibile</span>
                                     <span class="d-inline-block rounded-circle {{ $menuItem->is_visible === 1 ? 'my-bright-green' : 'my-bright-red' }} p-2 ms-2"></span>
                                 </div>
 
                                 <!-- Modifica -->
-                                <button class="rounded-pill my-pill ms-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithEdit{{ $menuItem->id }}" aria-controls="offcanvasWithEdit">
+                                <button class="rounded-pill my-pill mb-2 ms-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithEdit{{ $menuItem->id }}" aria-controls="offcanvasWithEdit">
                                     Modifica
                                 </button>
 
@@ -127,7 +127,7 @@
                                 @include('components.offcanvas-edit-menu-items', ['menuItem' => $menuItem, 'restaurantSlug' => $restaurant->slug])
 
                                 <!-- Bottone Elimina -->
-                                <button type="button" class="rounded-pill my-pill-red btn-danger rounded-pill ms-4" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $menuItem->id }}">
+                                <button type="button" class="rounded-pill my-pill-red btn-danger rounded-pill mb-2 ms-4" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $menuItem->id }}">
                                     Elimina
                                 </button>
 

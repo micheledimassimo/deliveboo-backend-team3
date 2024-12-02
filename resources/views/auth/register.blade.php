@@ -51,9 +51,9 @@
 
     
 
-    <div class="container login-container my-3">
+    <div class="container login-container my-2">
         
-        <div class="card mb-1">
+        <div class="card">
 
             <div class="row">
                 <div class="col-md-4 rounded-start"> </div>
@@ -123,9 +123,31 @@
                                 </div>
                             </div>
     
-                            <!-- Partita IVA -->
+                            
                             <div class="row mb-4">
-                                <div class="col">
+                                <!-- Nome Attività -->
+                                <div class="col-6">
+                                    <div>
+                                        <label for="restaurant_name">
+                                            Nome attività <span class="text-danger">*</span>
+                                        </label>
+                                    </div>
+                                    <input class="form-control @error('restaurant_name') is-invalid @enderror
+                                    "
+                                            type="text"
+                                            id="restaurant_name"
+                                            name="restaurant_name"
+                                            minlength="2"
+                                            maxlength="128"
+                                            placeholder="Inserisci qui il nome della tua attività.."
+                                            value="{{ old('restaurant_name') }}"
+                                            required>
+                                            <div class="invalid-feedback">
+                                                Il nome dell'attività è obbligatorio e deve essere lungo massimo 128 caratteri.
+                                            </div>
+                                </div>
+                                <!-- Partita IVA -->
+                                <div class="col-6">
                                     <div>
                                         <label for="p_iva">
                                             Numero Partita IVA <span class="text-danger">*</span> 
@@ -147,46 +169,9 @@
                                             </div>
                                 </div>
                             </div>
-                            <!-- Nome Attività -->
-                            <div class="col mb-4">
-                                    <div>
-                                        <label for="restaurant_name">
-                                            Nome attività <span class="text-danger">*</span>
-                                        </label>
-                                    </div>
-                                    <input class="form-control @error('restaurant_name') is-invalid @enderror
-                                    "
-                                            type="text"
-                                            id="restaurant_name"
-                                            name="restaurant_name"
-                                            minlength="2"
-                                            maxlength="128"
-                                            placeholder="Inserisci qui il nome della tua attività.."
-                                            value="{{ old('restaurant_name') }}"
-                                            required>
-                                            <div class="invalid-feedback">
-                                                Il nome dell'attività è obbligatorio e deve essere lungo massimo 128 caratteri.
-                                            </div>
-                                </div>
-
-                            <!-- img -->
-                            <div class="col mb-4">
-                                <div>
-                                    <label for="img">
-                                        Foto ristorante
-                                    </label>
-                                </div>
-                                <input class="form-control"
-                                        type="file"
-                                        id="img"
-                                        name="img"
-                                        minlength="1"
-                                        maxlength="2048"
-                                        placeholder="Inserisci qui la foto del tuo ristorante..">
-                            </div>
-
-                            <!-- Indirizzo Attività -->
-                            <div class="col mb-4">
+                            <div class="row">
+                                <!-- Indirizzo Attività -->
+                                <div class="col-6 mb-4">
                                     <div>
                                         <label for="address">
                                             Indirizzo attività <span class="text-danger">*</span>
@@ -205,9 +190,9 @@
                                             <div class="invalid-feedback">
                                                 L'indirizzo è obbligatorio e deve essere lungo almeno 3 caratteri.
                                             </div>
-                            </div>
-                            <!-- Numero di telefono attività -->
-                            <div class="col mb-4">
+                                </div>
+                                <!-- Numero di telefono attività -->
+                                <div class="col-6 mb-4">
                                     <div>
                                         <label for="phone_number">
                                             Numero di telefono attività <span class="text-danger">*</span>
@@ -228,14 +213,32 @@
                                                 Il numero di telefono dell'attività è obbligatorio e deve essere lungo massimo 20 caratteri, e contenere solo numeri e simboli come + - ().
                                             </div>
                                 </div>
+                            </div>
+                            <!-- img -->
+                            <div class="col mb-4">
+                                <div>
+                                    <label for="img">
+                                        Foto ristorante
+                                    </label>
+                                </div>
+                                <input class="form-control"
+                                        type="file"
+                                        id="img"
+                                        name="img"
+                                        minlength="1"
+                                        maxlength="2048"
+                                        placeholder="Inserisci qui la foto del tuo ristorante..">
+                            </div>
+
+
                                 <!-- Typologies Checkboxes -->
-                                <div class="mb-3">
+                                <div class="mb-2">
                                     <label for="typologies" class="form-label">
                                         Tipologie Attività <span class="text-danger">*</span>
                                     </label>
-                                    <div class="row">
+                                    <div class="row" id="typologies">
                                         @foreach($typologies as $index => $typology)
-                                            <div class="col-md-2 mb-3">
+                                            <div class="col-md-2 mb-2">
                                                 <div>
                                                     <label for="typology_{{ $typology->id }}">
                                                         {{ $typology->typology_name }}
@@ -254,7 +257,7 @@
                                     
                                 </div>
                             <!-- Email Address -->
-                            <div class="row mb-4">
+                            <div class="row mb-3">
                                 <div class="col">
                                     <div>
                                         <label for="email">
@@ -268,7 +271,7 @@
                                             name="email"
                                             maxlength="255"
                                             placeholder="Inserisci qui la tua email.."
-                                            value="{{ old('restaurant_name') }}"
+                                            value="{{ old('email') }}"
                                             required>
                                             <div class="invalid-feedback">
                                                 L'indirizzo email è obbligatorio e deve essere lungo massimo 255 caratteri, SENZA maiuscole.
@@ -277,7 +280,7 @@
                             </div>
     
                             <!-- Password + conferma -->
-                            <div class="row mb-4">
+                            <div class="row mb-3">
                                 <div class="col">
                                     <div>
                                     <label for="password">
@@ -322,7 +325,7 @@
                             </div>
 
                             {{-- submit --}}
-                            <div class="mb-4">
+                            <div class="mb-2">
                                 <p>
                                     <span class="text-danger">*</span> Tutti i campi sono obbligatori
                                 </p>
@@ -347,6 +350,10 @@
     <style scoped>
         .col-md-4{
             background-image: url('https://i.pinimg.com/736x/e9/3b/26/e93b26ba393c37f7846ad1978324d621.jpg')
+        }
+
+        #typologies {
+            font-size: 0.9rem;
         }
     </style>
 

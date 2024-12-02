@@ -25,9 +25,11 @@ class RestaurantController extends Controller
 
         // Se è stato specificato un filtro per la typology, aggiungilo alla query
         if (!empty($typologyNames)) {
-            $query->whereHas('typologies', function ($q) use ($typologyNames) {
-                $q->whereIn('typology_name', $typologyNames);
-            });
+            foreach ($typologyNames as $typologyName) {
+                $query->whereHas('typologies', function ($q) use ($typologyName) {
+                    $q->where('typology_name', $typologyName);
+                });
+            }
         }
         $restaurants = $query->paginate(8);
 

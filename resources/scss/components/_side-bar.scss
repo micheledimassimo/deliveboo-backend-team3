@@ -9,3 +9,23 @@
 
     width:fit-content;
 }
+
+
+@media (max-width: 1050px) {
+
+    .side-bar{
+        i{
+            display: block;
+        }
+    }
+
+}
+
+/* Mobile (max 767px) */
+@media (max-width: 767px) {
+    .side-bar{
+        span{
+            display: none;
+        }
+    }
+}

@@ -15,7 +15,7 @@
 
             <div class="row">
                 @foreach ($orders as $order)
-                    <div class="col-4 pt-4">
+                    <div class="col-lg-4 col-md-6 col-sm-12 pt-4">
                         <div class="card h-100 text-white my-bg-dark">
                             <div class="card-body">
                                 <h5>Ordine N. {{ $order['order_id'] }}</h5>

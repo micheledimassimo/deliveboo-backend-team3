@@ -10,7 +10,7 @@
             @method('PUT')
             @csrf
             <div class="row">
-                <div class="col-6">
+                <div class="col-md-6 col-sm-12">
                     <div class="mb-3">
                         <label for="restaurant_name" class="form-label fs-3 text-light">
                             <span class="text-danger t">*</span> Nome Attività
@@ -29,7 +29,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-6">
+                <div class="col-md-6 col-sm-12">
                     <div class="mb-3">
                     <label for="address" class="form-label text-light fs-3">
                         <span class="text-danger">*</span> Indirizzo
@@ -49,10 +49,10 @@
                     </div>
                 </div>
             </div>
-            
+
 
             <div class="row mb-3">
-                <div class="col-6">
+                <div class="col-md-6 col-sm-12">
                     <div class="mb-3">
                         <label for="phone_number" class="form-label text-light fs-3">
                             <span class="text-danger">*</span> Numero di telefono
@@ -71,8 +71,8 @@
                         </div>
                     </div>
                 </div>
-                
-                <div class="col-6">
+
+                <div class="col-md-6 col-sm-12">
                     <div class="mb-3">
                         <label for="img" class="form-label text-light fs-3">
                             Immagine del Ristorante
@@ -90,9 +90,28 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="row">
-                <div class="col-6">
+
+            <div class="row  flex-md-row-reverse">
+                <div class="col-md-6 col-sm-12">
+                    @if ($restaurant->img)
+                    <div class="mb-3 text-light text-center">
+                        <label class="form-label fs-2">Immagine attuale</label>
+                        <div class="d-flex align-items-center justify-content-around">
+                            <div class="restaurant-img-container">
+                                <img src="{{ asset('storage/'.$restaurant->img) }}" alt="{{ $restaurant->restaurant_name }}">
+                            </div>
+                            <div>
+                                <input type="checkbox" class="btn-check" id="remove_img" name="remove_img" autocomplete="off">
+                                <label class="btn btn-light" for="remove_img">
+                                    <i class="fa-solid fa-trash fa-lg"></i> Rimuovi Immagine
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+                    @endif
+                </div>
+                <div class="col-md-6 col-sm-12 ">
                     <div class="text-light">
                         <label for="typologies" class="form-label fs-2">
                             Tipologie
@@ -117,27 +136,9 @@
                     </div>
                 </div>
 
-                <div class="col-6">
-                    @if ($restaurant->img)
-                    <div class="mb-3 text-light text-center">
-                        <label class="form-label fs-2">Immagine attuale</label>
-                        <div class="d-flex align-items-center justify-content-around">
-                            <div class="restaurant-img-container">
-                                <img src="{{ asset('storage/'.$restaurant->img) }}" alt="{{ $restaurant->restaurant_name }}">
-                            </div>
-                            <div>
-                                <input type="checkbox" class="btn-check" id="remove_img" name="remove_img" autocomplete="off">
-                                <label class="btn btn-light" for="remove_img">
-                                    <i class="fa-solid fa-trash fa-lg"></i> Rimuovi Immagine
-                                </label>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    @endif
-                </div>
+
             </div>
-       
+
             <div class="text-center my-5">
                 <button type="submit" class="btn btn-success btn-lg">
                     <i class="fa-solid fa-pen-to-square"></i> Modifica

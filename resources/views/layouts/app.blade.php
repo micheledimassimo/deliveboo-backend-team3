@@ -19,15 +19,18 @@
 
         <main>
             <div class="d-flex vh-100">
-                <div class="d-flex flex-column vh-100 flex-shrink-0 fixed-top p-3 text-white side-bar">
+                <div class="d-flex flex-column vh-100 flex-shrink-0 fixed-top py-3 text-white side-bar">
 
-                    <h2 class="my-4 text-center">
-                        <i class="fa-solid fa-burger"></i> DeliveBoo</span>
-                    </h2>
+                    <h3 class="my-4 text-center">
 
-                    <ul class="nav nav-pills flex-column mb-auto mx-auto">
+                        <i class="fa-solid fa-burger"></i><span> DeliveBoo</span>
 
-                        <li class='fs-4 fw-bold'>
+
+                    </h3>
+
+                    <ul class="nav nav-pills mb-auto d-flex flex-column">
+
+                        <li class='fs-5 fw-bold d-flex justify-content-center'>
                             <a href="{{ route('admin.restaurants.show',[$restaurant->slug]) }}" class="nav-link text-white btn btn-outline-dark rounded-pill fit-content">
                                 <i class="fa-solid fa-utensils"></i>
                                 <span>
@@ -36,7 +39,7 @@
                             </a>
                           </li>
 
-                      <li class='fs-4 fw-bold'>
+                      <li class='fs-5 fw-bold d-flex justify-content-center'>
                         <a href="{{ route('admin.restaurants.orders', ['slug' => $restaurant->slug]) }}" class="nav-link text-white btn btn-outline-dark rounded-pill fit-content">
                             <i class="fa-solid fa-file-lines"></i>
                             <span>
@@ -44,7 +47,7 @@
                             </span>
                         </a>
                       </li>
-                      <li class='fs-4 fw-bold'>
+                      <li class='fs-5 fw-bold d-flex justify-content-center'>
                         <a href="{{ route('admin.restaurants.statistics', ['slug' => $restaurant->slug]) }}" class="nav-link text-white btn btn-outline-dark rounded-pill fit-content">
                             <i class="fa-solid fa-chart-column"></i>
                             <span>
@@ -52,7 +55,7 @@
                             </span>
                         </a>
                       </li>
-                      <li class='fs-4 fw-bold'>
+                      <li class='fs-5 fw-bold d-flex justify-content-center'>
                         <a href="{{ env('FRONTEND_URL') }}" class="nav-link text-white btn btn-outline-dark rounded-pill" style="width:fit-content">
 
                             <i class="fa-solid fa-house"></i>
@@ -65,14 +68,14 @@
 
                     </ul>
 
-                    <div class="d-flex justify-content-end">
+                    <div class="d-flex justify-content-end mx-2">
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
                             <button type="submit" class="btn btn-outline-danger">
-                                <span class="fw-bold">
+                                <h6 class="fw-bold">
                                     Log Out
-                                </span>
+                                </h6>
 
                             </button>
                         </form>

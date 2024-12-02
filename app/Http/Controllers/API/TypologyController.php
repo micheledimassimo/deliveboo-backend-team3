@@ -16,7 +16,7 @@ class TypologyController extends Controller
 
         // eager loading con with per portarsi dietro le categorie
         // paginazione per mostrarne 5 a pagina
-        $typologies = Typology::all();
+        $typologies = Typology::orderBy('typology_name', 'asc')->get();
 
         return response()->json([
             'success' => true,
@@ -28,7 +28,7 @@ class TypologyController extends Controller
     }
 
     public function show(Typology $typology){
-        $typology = Typology::all();
+        $typology = Typology::orderBy('typology_name', 'asc')->get();
 
         if($typology){
             return response()->json([

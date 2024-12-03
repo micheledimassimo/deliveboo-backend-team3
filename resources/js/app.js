@@ -1,10 +1,10 @@
 import './bootstrap';
 
 import '~resources/scss/app.scss';
-import './carouselControls.js';
+
 
 import * as bootstrap from 'bootstrap';
-
+import './carouselControls.js';
 
 import.meta.glob([
     '../img/**'

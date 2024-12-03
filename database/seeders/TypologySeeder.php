@@ -75,7 +75,10 @@ class TypologySeeder extends Seeder
             'Panda Express' => ['Cinese', 'Fast Food'],
             'Olive Garden' => ['Italiano', 'Vegetariano', 'Mediterraneo'],
             'Red Lobster' => ['Pesce', 'Fast Food'],
-            'The Cheesecake Factory' => ['Mediterraneo', 'Vegetariano', 'Fast Food']
+            'The Cheesecake Factory' => ['Mediterraneo', 'Vegetariano', 'Fast Food'],
+            '140 Grammi' => ['Pasta'],
+            'Old Wild West' => ['Hamburgeria', 'Carne'],
+            'Yama Sushi Restaurant' => ['Sushi', 'Pasta', 'Ramen']
         ];
 
         foreach ($restaurants as $restaurant) {

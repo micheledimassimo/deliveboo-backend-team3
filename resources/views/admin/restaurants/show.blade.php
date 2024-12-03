@@ -68,6 +68,7 @@
             </div>
         </div>
 
+        {{-- menu --}}
         <div class="card menu-item-card text-white">
             <div class="card-header d-flex justify-content-between">
                 <h3>
@@ -101,13 +102,13 @@
             @include('components.offcanvas-add-menu-items', ['restaurantSlug' => $restaurant->slug])
 
             {{-- tabella visualizzazione piatti --}}
-            <div class="overflow-y-auto px-4" id="menuItemsContainer">
+            <div class="overflow-y-auto p-3" id="menuItemsContainer">
                 @foreach ($restaurant->menuItems as $menuItem)
-                    <div class="row align-items-center group-list-item py-2 menu-item" data-name="{{ strtolower($menuItem->item_name) }}">
+                    <div class="row align-items-center group-list-item py-2" data-name="{{ strtolower($menuItem->item_name) }}">
 
                         {{-- immagine --}}
-                        <div class="responsive col-12 col-md-2 col-lg-2 col-xl-2 col-xxl-1 mb-3 mb-md-0">
-                            <div class="img-container">
+                        <div class="responsive col-12 mt-2 mb-3 col-md-2 me-md-2 mb-md-0 col-lg-2 col-xxl-1">
+                            <div class="img-container rounded">
                                 @if (!empty($menuItem->image) && file_exists(storage_path('app/public/' . $menuItem->image)))
                                 <img src="{{ asset('storage/' . $menuItem->image) }}" alt="{{ $menuItem->item_name }}">
                                 @else
@@ -117,7 +118,7 @@
                         </div>
 
                         {{-- info menu item --}}
-                        <div class="info-responsive col-12 col-md-6 col-lg-5 col-xl-5 col-xxl-7 mb-3 mb-md-0">
+                        <div class="info-responsive col-12 mb-3 col-md-6 mb-md-0 col-lg-6 col-xxl-7">
                             <h5 class="px-3">{{ $menuItem->item_name }}</h5>
                             <div class="px-3">
                                 <small>Descrizione: {{ $menuItem->description }}</small><br>
@@ -126,15 +127,15 @@
                         </div>
 
                         {{-- azioni + disponibile --}}
-                        <div class="responsive col-12 col-md-4 col-lg-5 col-xl-5 col-xxl-4 d-flex flex-wrap align-items-center ">
+                        <div class="responsive col-12 col-md-3 col-lg-3 col-xxl-auto d-flex flex-wrap align-items-center justify-content-center">
                             {{-- Disponibilità --}}
-                            <div class="d-flex align-items-center rounded-pill my-pill text-bg-secondary mb-2 me-3">
+                            <div class="d-flex align-items-center rounded-pill my-pill text-bg-secondary mb-2 me-sm-3 me-md-0 me-xxl-2 mb-xxl-0">
                                 <span class="align-center">Disponibile</span>
                                 <span class="d-inline-block rounded-circle {{ $menuItem->is_visible === 1 ? 'my-bright-green' : 'my-bright-red' }} p-2 ms-2"></span>
                             </div>
 
                             {{-- Modifica --}}
-                            <button class="rounded-pill my-pill mb-2 ms-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithEdit{{ $menuItem->id }}" aria-controls="offcanvasWithEdit">
+                            <button class="rounded-pill my-pill mb-2 ms-sm-3 ms-md-0 mb-xl-0 me-xl-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithEdit{{ $menuItem->id }}" aria-controls="offcanvasWithEdit">
                                 Modifica
                             </button>
 
@@ -142,7 +143,7 @@
                             @include('components.offcanvas-edit-menu-items', ['menuItem' => $menuItem, 'restaurantSlug' => $restaurant->slug])
 
                             {{-- Bottone Elimina --}}
-                            <button type="button" class="rounded-pill my-pill-red btn-danger rounded-pill mb-2 ms-4" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $menuItem->id }}">
+                            <button type="button" class="rounded-pill my-pill-red btn-danger rounded-pill mb-2 mb-md-0 ms-sm-3 ms-md-0 ms-xl-1" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $menuItem->id }}">
                                 Elimina
                             </button>
 

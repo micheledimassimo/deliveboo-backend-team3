@@ -2,16 +2,11 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-
-// Helpers
 use Illuminate\Support\Facades\Schema;
-
-//Models
-
 use App\Models\MenuItem;
 use App\Models\Restaurant;
+use Illuminate\Support\Facades\File;
 
 class MenuItemSeeder extends Seeder
 {
@@ -24,29 +19,27 @@ class MenuItemSeeder extends Seeder
             MenuItem::truncate();
         });
 
-        for ($i = 0; $i < 20; $i ++){
+        $json = File::get(database_path('seeders/menu_items.json'));
+        $menuItems = json_decode($json, true);
 
-            $name = fake()->word(2);
-            $slug = MenuItem::getUniqueSlug($name);
+        foreach ($menuItems as $restaurantName => $items) {
+            $restaurant = Restaurant::where('restaurant_name', $restaurantName)->first();
 
-            /* Prendo una categoria casuale dal db */
-            $randomRestaurantId = null;
-            $randomRestaurant = Restaurant::inRandomOrder()->first();
-            $randomRestaurantId = $randomRestaurant->id;
-
-
-            MenuItem::create([
-
-            'item_name'=> $name,
-            'slug'=> $slug,
-            'description' => fake()->paragraph(),
-            'price'=> fake()->randomFloat(2, 1, 99),
-            'is_visible'=> fake()->boolean(70),
-            'image'=> fake()->word(3),
-            'restaurant_id' => $randomRestaurantId
-
-            ]);
-
+            if ($restaurant) {
+                foreach ($items as $item) {
+                    $slug = MenuItem::getUniqueSlug($item['name']);
+                    MenuItem::create([
+                        'item_name' => $item['name'],
+                        'slug' => $slug,
+                        'description' => $item['description'],
+                        'price' => $item['price'],
+                        'is_visible' => rand(0, 1),
+                        'restaurant_id' => $restaurant->id,
+                    ]);
+                }
+            }
         }
     }
 }
+
+

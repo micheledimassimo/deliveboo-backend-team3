@@ -4,15 +4,10 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-
-// Helpers
-
 use Illuminate\Support\Facades\Schema;
-
-// Models
-
 use App\Models\Restaurant;
-use app\Models\User;
+use App\Models\User;
+use Illuminate\Support\Facades\File;
 
 class RestaurantSeeder extends Seeder
 {
@@ -25,26 +20,31 @@ class RestaurantSeeder extends Seeder
             Restaurant::truncate();
         });
 
-        // Da riguardare
+        $restaurantData = json_decode(File::get(database_path('seeders/restaurants.json')), true);
 
-        for($i = 0; $i < 10; $i++) {
-            $name = fake()->company();
-            $slug = Restaurant::getUniqueSlug($name);
-            $randomUser = User::inRandomOrder()->first();
-            $restaurant = Restaurant::create([
-                'restaurant_name' => $name,
+        $users = User::all();
+
+        if ($users->count() < count($restaurantData)) {
+            $this->command->error("There are not enough users to assign one restaurant to each user.");
+            return;
+        }
+
+        foreach ($users as $index => $user) {
+            if (!isset($restaurantData[$index])) {
+                break;
+            }
+
+            $restaurant = $restaurantData[$index]; 
+            $slug = Restaurant::getUniqueSlug($restaurant['name']); 
+
+            Restaurant::create([
+                'restaurant_name' => $restaurant['name'], 
                 'address' => fake()->address(),
                 'phone_number' => fake()->phoneNumber(),
+                'img' => $restaurant['image_url'], 
                 'slug' => $slug,
-                'user_id' => $randomUser->id,
+                'user_id' => $user->id,
             ]);
-            $usersIds = [];
-            for($j = 0; $j < rand(0, User::count()); $j++) {
-                $randomUser = User::inRandomOrder()->first();
-                if (!in_array($randomUser->id, $usersIds)) {
-                    $usersIds[] = $randomUser->id;
-                }
         }
     }
-}
 }

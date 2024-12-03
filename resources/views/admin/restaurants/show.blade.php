@@ -6,60 +6,65 @@
 
     <div class="vh-100 w-85 dashboard">
 
-        <div class="my-5 px-5">
+        <div class="d-flex flex-column my-5 px-5">
 
-            <h3 class="text-white">
-                Dashboard
-            </h3>
             <div>
-                {{-- Informazioni Ristorant --}}
-                <div class="card mb-4 restaurant-header-card text-white">
-                    <div class="row pt-5 g-0 align-items-center">
-                        <!-- Immagine ristorante -->
-                        <div class="img-container col-12 col-md-4 col-lg-3">
-                            @if (!empty($restaurant->img) && file_exists(storage_path('app/public/' . $restaurant->img)))
-                                <img
-                                    src="{{ asset('storage/' . $restaurant->img) }}"
-                                    alt="{{ $restaurant->restaurant_name }}">
-                            @else
-                                <img
-                                    src="https://via.placeholder.com/300x200"
-                                    alt="Placeholder image">
-                            @endif
-                        </div>
 
-                        <div class="col-12 col-md-7 col-lg-8">
-                            <div class="card-body">
-                                <!-- Nome ristorante -->
-                                <h1 class="card-title">{{ $restaurant->restaurant_name }}</h1>
-                                <!-- Indirizzo -->
-                                <p class="mb-2">
-                                    <strong>Indirizzo:</strong> {{ $restaurant->address }}
-                                </p>
-                                <!-- Telefono -->
-                                <p class="mb-2">
-                                    <strong>Telefono:</strong> {{ $restaurant->phone_number }}
-                                </p>
-                                <!-- Tipologie -->
-                                <p>
-                                    <strong>Tipologie:</strong>
-                                    @foreach($restaurant->typologies as $typology)
-                                        <span class="badge my-badge">
-                                            {{ $typology->typology_name }}
-                                        </span>
-                                    @endforeach
-                                </p>
+                <h3 class="text-white">
+                    Dashboard
+                </h3>
+                <div>
+                    {{-- Informazioni Ristorant --}}
+                    <div class="card mb-4 restaurant-header-card text-white">
+                        <div class="row pt-5 g-0 align-items-center">
+                            <!-- Immagine ristorante -->
+                            <div class="img-container col-12 col-md-4 col-lg-3">
+                                @if (!empty($restaurant->img) && file_exists(storage_path('app/public/' . $restaurant->img)))
+                                    <img
+                                        src="{{ asset('storage/' . $restaurant->img) }}"
+                                        alt="{{ $restaurant->restaurant_name }}">
+                                @else
+                                    <img
+                                        src="https://via.placeholder.com/300x200"
+                                        alt="Placeholder image">
+                                @endif
                             </div>
-                        </div>
 
-                        {{-- OFFCANVAS RESTAURANT EDIT + BUTTON --}}
-                        <div class="col-12 col-md-1 text-md-end">
-                            <button class="rounded-pill btn-orange" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Modifica Info</button>
+                            <div class="col-12 col-md-7 col-lg-8">
+                                <div class="card-body">
+                                    <!-- Nome ristorante -->
+                                    <h1 class="card-title">{{ $restaurant->restaurant_name }}</h1>
+                                    <!-- Indirizzo -->
+                                    <p class="mb-2">
+                                        <strong>Indirizzo:</strong> {{ $restaurant->address }}
+                                    </p>
+                                    <!-- Telefono -->
+                                    <p class="mb-2">
+                                        <strong>Telefono:</strong> {{ $restaurant->phone_number }}
+                                    </p>
+                                    <!-- Tipologie -->
+                                    <p>
+                                        <strong>Tipologie:</strong>
+                                        @foreach($restaurant->typologies as $typology)
+                                            <span class="badge my-badge">
+                                                {{ $typology->typology_name }}
+                                            </span>
+                                        @endforeach
+                                    </p>
+                                </div>
+                            </div>
+
+                            {{-- OFFCANVAS RESTAURANT EDIT + BUTTON --}}
+                            <div class="col-12 col-md-1 text-md-end">
+                                <button class="rounded-pill btn-orange" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Modifica Info</button>
+                            </div>
+                            @include('components.off-canvas-edit-restaurant')
                         </div>
-                        @include('components.off-canvas-edit-restaurant')
                     </div>
                 </div>
             </div>
+
+
 
             <div class="card menu-item-card text-white">
                 <div class="card-header d-flex justify-content-between">
@@ -87,7 +92,7 @@
 
                 {{-- tabella visualizzazione piatti --}}
 
-                <div class="px-4">
+                <div class="overflow-y-auto px-4">
                     @foreach ($restaurant->menuItems as $menuItem)
                         <div class="row align-items-center group-list-item py-2">
                             <!-- Colonna per l'immagine -->

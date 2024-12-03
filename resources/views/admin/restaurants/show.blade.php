@@ -100,11 +100,17 @@
                             <!-- Colonna per l'immagine -->
                             <div class="responsive col-12 col-md-2 col-lg-2 col-xl-2 col-xxl-1 mb-3 mb-md-0">
                                 <div class="img-container">
-                                    @if (!empty($menuItem->image) && file_exists(storage_path('app/public/' . $menuItem->image)))
-                                    <img src="{{ asset('storage/' . $menuItem->image) }}" alt="{{ $menuItem->item_name }}">
+                                    @if (!empty($menuItem->image))
+                                    @if (Str::startsWith($menuItem->image, ['http://', 'https://']))
+                                        <img src="{{ $menuItem->image }}" alt="{{ $menuItem->item_name }}">
+                                    @elseif (file_exists(storage_path('app/public/' . $menuItem->image)))
+                                        <img src="{{ asset('storage/' . $menuItem->image) }}" alt="{{ $menuItem->item_name}}">
                                     @else
-                                    <img src="https://www.foodservicerewards.com/cdn/shop/t/262/assets/fsr-placeholder.png?v=45093109498714503231652397781" alt="Placeholder image" class="img-thumbnail">
+                                        <img src="https://via.placeholder.com/300x200" alt="Placeholder image">
                                     @endif
+                                @else
+                                    <img src="https://via.placeholder.com/300x200" alt="Placeholder image">
+                                @endif
                                 </div>
                             </div>
 

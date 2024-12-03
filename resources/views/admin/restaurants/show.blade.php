@@ -19,14 +19,16 @@
                         <div class="row pt-5 g-0 align-items-center">
                             <!-- Immagine ristorante -->
                             <div class="img-container col-12 col-md-4 col-lg-3">
-                                @if (!empty($restaurant->img) && file_exists(storage_path('app/public/' . $restaurant->img)))
-                                    <img
-                                        src="{{ asset('storage/' . $restaurant->img) }}"
-                                        alt="{{ $restaurant->restaurant_name }}">
+                                @if (!empty($restaurant->img))
+                                    @if (Str::startsWith($restaurant->img, ['http://', 'https://']))
+                                        <img src="{{ $restaurant->img }}" alt="{{ $restaurant->restaurant_name }}">
+                                    @elseif (file_exists(storage_path('app/public/' . $restaurant->img)))
+                                        <img src="{{ asset('storage/' . $restaurant->img) }}" alt="{{ $restaurant->restaurant_name }}">
+                                    @else
+                                        <img src="https://via.placeholder.com/300x200" alt="Placeholder image">
+                                    @endif
                                 @else
-                                    <img
-                                        src="https://via.placeholder.com/300x200"
-                                        alt="Placeholder image">
+                                    <img src="https://via.placeholder.com/300x200" alt="Placeholder image">
                                 @endif
                             </div>
 

@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
             User::truncate();
         });
 
-        for($i = 0; $i < 10; $i++) {
+        for($i = 0; $i < 11; $i++) {
             $firstName = fake()->firstName();
             $lastName = fake()->lastName();
             $user = User::create([

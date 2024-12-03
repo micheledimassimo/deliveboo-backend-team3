@@ -4,163 +4,158 @@
 
 @section('main-content')
 
-    <div class="vh-100 w-85 dashboard">
+    <div class="w-85 dashboard p-5">
 
-        <div class="d-flex flex-column p-5">
+        <h3 class="text-white">
+            Dashboard
+        </h3>
 
-            <div>
-                <h3 class="text-white">
-                    Dashboard
-                </h3>
-                <div>
-                    {{-- Ristorante --}}
-                    <div class="card mb-2 restaurant-header-card text-white">
-                        <div class="row p-3">
+        {{-- Ristorante --}}
+        <div class="card mb-2 restaurant-header-card text-white">
+            <div class="row p-3">
 
-                            {{-- foto ristorante --}}
-                            <div class="col-6 col-lg-auto">
-                                <div class="img-container mb-sm-3 mb-lg-0">
-                                    @if (!empty($restaurant->img) && file_exists(storage_path('app/public/' . $restaurant->img)))
-                                        <img class="rounded"
-                                            src="{{ asset('storage/' . $restaurant->img) }}"
-                                            alt="{{ $restaurant->restaurant_name }}">
-                                    @else
-                                        <img
-                                            src="https://via.placeholder.com/300x200"
-                                            alt="Placeholder image">
-                                    @endif
-                                </div>
-                            </div>
-
-                            {{-- bottone offcanvas SOLO sm + md --}}
-                            <div class="col-6 text-end d-lg-none">
-                                <button class="rounded-pill btn-orange" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Modifica Info</button>
-                            </div>
-
-                            {{-- info Ristorante --}}
-                            <div class="col-12 col-lg">
-                                <!-- Nome ristorante -->
-                                <h3 class="card-title">{{ $restaurant->restaurant_name }}</h3>
-                                <!-- Indirizzo -->
-                                <p class="mb-2">
-                                    <strong>Indirizzo:</strong> {{ $restaurant->address }}
-                                </p>
-                                <!-- Telefono -->
-                                <p class="mb-2">
-                                    <strong>Telefono:</strong> {{ $restaurant->phone_number }}
-                                </p>
-                                <!-- Tipologie -->
-                                <p class="m-0">
-                                    <strong>Tipologie:</strong>
-                                    @foreach($restaurant->typologies as $typology)
-                                        <span class="badge my-badge">
-                                            {{ $typology->typology_name }}
-                                        </span>
-                                    @endforeach
-                                </p>
-                            </div>
-
-                            {{-- bottone offcanvas SOLO da lg --}}
-                            <div class="d-none d-lg-block text-end col-lg-auto">
-                                <button class="rounded-pill btn-orange" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Modifica Info</button>
-                            </div>
-
-                            {{-- offcanvas edit Ristorante --}}
-                            @include('components.off-canvas-edit-restaurant')
-
-                        </div>
+                {{-- foto ristorante --}}
+                <div class="col-6 col-lg-auto">
+                    <div class="img-container mb-sm-3 mb-lg-0">
+                        @if (!empty($restaurant->img) && file_exists(storage_path('app/public/' . $restaurant->img)))
+                            <img class="rounded"
+                                src="{{ asset('storage/' . $restaurant->img) }}"
+                                alt="{{ $restaurant->restaurant_name }}">
+                        @else
+                            <img
+                                src="https://via.placeholder.com/300x200"
+                                alt="Placeholder image">
+                        @endif
                     </div>
+                </div>
+
+                {{-- bottone offcanvas SOLO sm + md --}}
+                <div class="col-6 text-end d-lg-none">
+                    <button class="rounded-pill btn-orange" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Modifica Info</button>
+                </div>
+
+                {{-- info Ristorante --}}
+                <div class="col-12 col-lg">
+                    <!-- Nome ristorante -->
+                    <h3 class="card-title">{{ $restaurant->restaurant_name }}</h3>
+                    <!-- Indirizzo -->
+                    <p class="mb-2">
+                        <strong>Indirizzo:</strong> {{ $restaurant->address }}
+                    </p>
+                    <!-- Telefono -->
+                    <p class="mb-2">
+                        <strong>Telefono:</strong> {{ $restaurant->phone_number }}
+                    </p>
+                    <!-- Tipologie -->
+                    <p class="m-0">
+                        <strong>Tipologie:</strong>
+                        @foreach($restaurant->typologies as $typology)
+                            <span class="badge my-badge">
+                                {{ $typology->typology_name }}
+                            </span>
+                        @endforeach
+                    </p>
+                </div>
+
+                {{-- bottone offcanvas SOLO da lg --}}
+                <div class="d-none d-lg-block text-end col-lg-auto">
+                    <button class="rounded-pill btn-orange" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Modifica Info</button>
+                </div>
+
+                {{-- offcanvas edit Ristorante --}}
+                @include('components.off-canvas-edit-restaurant')
+
+            </div>
+        </div>
+
+        <div class="card menu-item-card text-white">
+            <div class="card-header d-flex justify-content-between">
+                <h3>
+                    Menu
+                </h3>
+
+                {{-- bottone aggiunta piatto --}}
+                <div class="listing-container d-flex">
+                    <span class="search-sauce">
+                        <input 
+                            type="text" 
+                            id="searchMenuItems" 
+                            class="form-control w-75 bg-transparent"
+                            data-bs-theme="dark" 
+                            placeholder="Cerca un piatto..."
+                            onkeyup="filterMenuItems()">
+                    </span>
+                    <span class="js-add-sauce">
+                        <a
+                            type="button"
+                            data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasWithBothOptions"
+                            aria-controls="offcanvasWithBothOptions">
+                            <i class="icon icon-add"></i>
+                        </a>
+                    </span>
                 </div>
             </div>
 
-            <div class="card menu-item-card text-white">
-                <div class="card-header d-flex justify-content-between">
-                    <h3>
-                        Menu
-                    </h3>
+            {{-- offcanvas con form per aggiunta piatto --}}
+            @include('components.offcanvas-add-menu-items', ['restaurantSlug' => $restaurant->slug])
 
-                    {{-- bottone aggiunta piatto --}}
-                    <div class="listing-container d-flex">
-                        <span class="search-sauce">
-                            <input 
-                                type="text" 
-                                id="searchMenuItems" 
-                                class="form-control w-75 bg-transparent" data-bs-theme="dark" 
-                                placeholder="Cerca un piatto..."
-                                onkeyup="filterMenuItems()">
-                        </span>
-                        <span class="js-add-sauce">
-                            <a
-                                type="button"
-                                data-bs-toggle="offcanvas"
-                                data-bs-target="#offcanvasWithBothOptions"
-                                aria-controls="offcanvasWithBothOptions">
-                                <i class="icon icon-add"></i>
-                            </a>
-                        </span>
-                    </div>
-                </div>
+            {{-- tabella visualizzazione piatti --}}
+            <div class="overflow-y-auto px-4" id="menuItemsContainer">
+                @foreach ($restaurant->menuItems as $menuItem)
+                    <div class="row align-items-center group-list-item py-2 menu-item" data-name="{{ strtolower($menuItem->item_name) }}">
 
-                {{-- offcanvas con form per aggiunta piatto --}}
-                @include('components.offcanvas-add-menu-items', ['restaurantSlug' => $restaurant->slug])
-
-                {{-- tabella visualizzazione piatti --}}
-                <div class="overflow-y-auto px-4" id="menuItemsContainer">
-                    @foreach ($restaurant->menuItems as $menuItem)
-                        <div class="row align-items-center group-list-item py-2 menu-item" data-name="{{ strtolower($menuItem->item_name) }}">
-
-                            {{-- immagine --}}
-                            <div class="responsive col-12 col-md-2 col-lg-2 col-xl-2 col-xxl-1 mb-3 mb-md-0">
-                                <div class="img-container">
-                                    @if (!empty($menuItem->image) && file_exists(storage_path('app/public/' . $menuItem->image)))
-                                    <img src="{{ asset('storage/' . $menuItem->image) }}" alt="{{ $menuItem->item_name }}">
-                                    @else
-                                    <img src="https://www.foodservicerewards.com/cdn/shop/t/262/assets/fsr-placeholder.png?v=45093109498714503231652397781" alt="Placeholder image" class="img-thumbnail">
-                                    @endif
-                                </div>
+                        {{-- immagine --}}
+                        <div class="responsive col-12 col-md-2 col-lg-2 col-xl-2 col-xxl-1 mb-3 mb-md-0">
+                            <div class="img-container">
+                                @if (!empty($menuItem->image) && file_exists(storage_path('app/public/' . $menuItem->image)))
+                                <img src="{{ asset('storage/' . $menuItem->image) }}" alt="{{ $menuItem->item_name }}">
+                                @else
+                                <img src="https://www.foodservicerewards.com/cdn/shop/t/262/assets/fsr-placeholder.png?v=45093109498714503231652397781" alt="Placeholder image" class="img-thumbnail">
+                                @endif
                             </div>
-
-                            {{-- info menu item --}}
-                            <div class="info-responsive col-12 col-md-6 col-lg-5 col-xl-5 col-xxl-7 mb-3 mb-md-0">
-                                <h5 class="px-3">{{ $menuItem->item_name }}</h5>
-                                <div class="px-3">
-                                    <small>Descrizione: {{ $menuItem->description }}</small><br>
-                                    <strong>Prezzo: €{{ $menuItem->price }}</strong>
-                                </div>
-                            </div>
-
-                            {{-- azioni + disponibile --}}
-                            <div class="responsive col-12 col-md-4 col-lg-5 col-xl-5 col-xxl-4 d-flex flex-wrap align-items-center ">
-                                {{-- Disponibilità --}}
-                                <div class="d-flex align-items-center rounded-pill my-pill text-bg-secondary mb-2 me-3">
-                                    <span class="align-center">Disponibile</span>
-                                    <span class="d-inline-block rounded-circle {{ $menuItem->is_visible === 1 ? 'my-bright-green' : 'my-bright-red' }} p-2 ms-2"></span>
-                                </div>
-
-                                {{-- Modifica --}}
-                                <button class="rounded-pill my-pill mb-2 ms-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithEdit{{ $menuItem->id }}" aria-controls="offcanvasWithEdit">
-                                    Modifica
-                                </button>
-
-                                {{-- offcanvas con form per modifica piatto --}}
-                                @include('components.offcanvas-edit-menu-items', ['menuItem' => $menuItem, 'restaurantSlug' => $restaurant->slug])
-
-                                {{-- Bottone Elimina --}}
-                                <button type="button" class="rounded-pill my-pill-red btn-danger rounded-pill mb-2 ms-4" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $menuItem->id }}">
-                                    Elimina
-                                </button>
-
-                                {{-- Modal --}}
-                                @include('components.modal-delete-menu-items', ['menuItem' => $menuItem, 'restaurantSlug' => $restaurant->slug])
-                            </div>
-
                         </div>
-                    @endforeach
-                </div>
 
+                        {{-- info menu item --}}
+                        <div class="info-responsive col-12 col-md-6 col-lg-5 col-xl-5 col-xxl-7 mb-3 mb-md-0">
+                            <h5 class="px-3">{{ $menuItem->item_name }}</h5>
+                            <div class="px-3">
+                                <small>Descrizione: {{ $menuItem->description }}</small><br>
+                                <strong>Prezzo: €{{ $menuItem->price }}</strong>
+                            </div>
+                        </div>
+
+                        {{-- azioni + disponibile --}}
+                        <div class="responsive col-12 col-md-4 col-lg-5 col-xl-5 col-xxl-4 d-flex flex-wrap align-items-center ">
+                            {{-- Disponibilità --}}
+                            <div class="d-flex align-items-center rounded-pill my-pill text-bg-secondary mb-2 me-3">
+                                <span class="align-center">Disponibile</span>
+                                <span class="d-inline-block rounded-circle {{ $menuItem->is_visible === 1 ? 'my-bright-green' : 'my-bright-red' }} p-2 ms-2"></span>
+                            </div>
+
+                            {{-- Modifica --}}
+                            <button class="rounded-pill my-pill mb-2 ms-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithEdit{{ $menuItem->id }}" aria-controls="offcanvasWithEdit">
+                                Modifica
+                            </button>
+
+                            {{-- offcanvas con form per modifica piatto --}}
+                            @include('components.offcanvas-edit-menu-items', ['menuItem' => $menuItem, 'restaurantSlug' => $restaurant->slug])
+
+                            {{-- Bottone Elimina --}}
+                            <button type="button" class="rounded-pill my-pill-red btn-danger rounded-pill mb-2 ms-4" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $menuItem->id }}">
+                                Elimina
+                            </button>
+
+                            {{-- Modal --}}
+                            @include('components.modal-delete-menu-items', ['menuItem' => $menuItem, 'restaurantSlug' => $restaurant->slug])
+                        </div>
+
+                    </div>
+                @endforeach
             </div>
 
         </div>
+
     </div>
 
     {{-- ricerca piatto --}}

@@ -1,6 +1,7 @@
 .menu-item-card {
   background-color: #252525;
-  height: 500px;
+  height: 70%;
+  overflow: hidden;
 
   .img-container {
     width: 100px;
@@ -112,6 +113,7 @@
 @media (max-width: 767px) {
 
   .menu-item-card {
+    height: 60%;
 
     .responsive {
 

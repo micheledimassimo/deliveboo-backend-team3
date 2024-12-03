@@ -104,7 +104,7 @@
             {{-- tabella visualizzazione piatti --}}
             <div class="overflow-y-auto p-3" id="menuItemsContainer">
                 @foreach ($restaurant->menuItems as $menuItem)
-                    <div class="row align-items-center group-list-item py-2" data-name="{{ strtolower($menuItem->item_name) }}">
+                    <div class="row align-items-center group-list-item py-2 menu-item" data-name="{{ strtolower($menuItem->item_name) }}">
 
                         {{-- immagine --}}
                         <div class="responsive col-12 mt-2 mb-3 col-md-2 me-md-2 mb-md-0 col-lg-2 col-xxl-1">

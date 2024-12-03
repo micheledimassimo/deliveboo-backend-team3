@@ -34,7 +34,7 @@ class MenuItemSeeder extends Seeder
                         'description' => $item['description'],
                         'price' => $item['price'],
                         'image' => $item['image'],
-                        'is_visible' => rand(0, 1),
+                        'is_visible' => 1,
                         'restaurant_id' => $restaurant->id,
                     ]);
                 }

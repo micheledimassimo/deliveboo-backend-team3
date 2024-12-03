@@ -10,43 +10,43 @@
             "name": "Quarter Pounder with Cheese",
             "description": "Un hamburger di manzo da 113 grammi con formaggio cheddar, cipolle, sottaceti e ketchup.",
             "price": 6.49,
-            "image": null
+            "image": "https://s7d1.scene7.com/is/image/mcdonaldsstage/DC_202201_0007-005_QuarterPounderwithCheese_1564x1564:product-header-mobile?wid=1313&hei=1313&dpr=off"
         },
         {
             "name": "McChicken",
             "description": "Un filetto di pollo croccante con lattuga e maionese, servito su un panino morbido.",
             "price": 4.29,
-            "image": null
+            "image": "https://s7d1.scene7.com/is/image/mcdonalds/PRODUCTS-HERO-WEBSITE_832x472-McChicken:nutrition-calculator-tile?wid=472&hei=472&dpr=off"
         },
         {
             "name": "Filet-O-Fish",
             "description": "Un filetto di pesce impanato con salsa tartara e lattuga su un panino morbido.",
             "price": 4.49,
-            "image": null
+            "image": "https://www.mcdonalds.it/sites/default/files/products/filet-o-fish--hero-isolated.png"
         },
         {
             "name": "Egg McMuffin",
             "description": "Un panino con uovo, formaggio cheddar e prosciutto, perfetto per una colazione veloce.",
             "price": 3.79,
-            "image": null
+            "image": "https://s7d1.scene7.com/is/image/mcdonalds/mcdonalds-Egg-Cheese-McMuffin-2:1-3-product-tile-desktop?wid=829&hei=515&dpr=off"
         },
         {
             "name": "McFlurry",
             "description": "Un delizioso gelato con vari mix-ins come M&M's o Oreo.",
             "price": 3.49,
-            "image": null
+            "image": "https://www.mcdonalds.it/sites/default/files/products/mcflurry-oreo--isolated_0.png"
         },
         {
             "name": "French Fries",
             "description": "Patatine fritte croccanti, perfette da accompagnare a qualsiasi piatto.",
             "price": 2.49,
-            "image": null
+            "image": "https://s7d1.scene7.com/is/image/mcdonalds/mcdonalds-fries-medium-april-promo:nutrition-calculator-tile?wid=822&hei=822&dpr=off"
         },
         {
             "name": "Apple Pie",
             "description": "Una torta di mele calda con una crosta dorata e croccante.",
             "price": 1.99,
-            "image": null
+            "image": "https://mcdonalds.com.mt/wp-content/uploads/2018/05/applepie.jpg"
         }
     ],
     "Burger King": [
@@ -54,49 +54,49 @@
             "name": "Whopper",
             "description": "Un hamburger di manzo con lattuga, pomodoro, cipolla, maionese, ketchup e sottaceti su un panino morbido.",
             "price": 6.19,
-            "image": null
+            "image": "https://cdn.prod.website-files.com/631b4b4e277091ef01450237/65947cd2a2c28c35b5ca6fb1_Whopper%20w%20Cheese.png"
         },
         {
             "name": "Cheeseburger",
             "description": "Un hamburger di manzo con formaggio cheddar, ketchup e senape su un panino morbido.",
             "price": 3.49,
-            "image": null
+            "image": "https://www.burgerking.it/assets/img/console/mo/products/566image_sito_slide_it.png?v=1709568747"
         },
         {
             "name": "Chicken Fries",
             "description": "Strisce di pollo croccanti a forma di patatine, servite con una salsa per intingerle.",
             "price": 3.99,
-            "image": null
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSzhUdUC0NZA3LmgZG1OPtPfsBAY5Q5Bt1sQ&s"
         },
         {
             "name": "Big Fish Sandwich",
             "description": "Filetto di pesce croccante con lattuga e salsa tartara su un panino morbido.",
             "price": 4.99,
-            "image": null
+            "image": "https://www.alaskapollock.org/media/1907/bk_big-fish.jpg"
         },
         {
             "name": "Onion Rings",
             "description": "Anelli di cipolla croccanti e dorati, perfetti da gustare come snack o contorno.",
             "price": 2.99,
-            "image": null
+            "image": "https://burgerking.com.mt/wp-content/uploads/2020/03/or-site.png"
         },
         {
             "name": "Chicken Nuggets",
             "description": "Piccole crocchette di pollo, servite con una varietà di salse per intingerle.",
             "price": 4.49,
-            "image": null
+            "image": "https://dynaimage.cdn.cnn.com/cnn/c_fill,g_auto,w_1200,h_675,ar_16:9/https%3A%2F%2Fcdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F210517091115-burger-king-crown-nuggets.jpg"
         },
         {
             "name": "Whopper Jr.",
             "description": "Una versione più piccola del Whopper, con gli stessi ingredienti freschi.",
             "price": 4.29,
-            "image": null
+            "image": "https://www.burgerking.ee/images/optimized/products/whopper-jr-cheese-desktop-8b9471b07b5d6a1ed2af58f83341348e.png"
         },
         {
             "name": "BK Mocha Joe",
             "description": "Caffè espresso con cioccolato caldo e schiuma di latte.",
             "price": 2.79,
-            "image": null
+            "image": "https://images.summitmedia-digital.com/spotph/images/2023/05/23/burger-king-mocha-joe-frost-discontinue-phaseout-1684837199.jpg"
         }
     ],
     "KFC": [

@@ -42,5 +42,17 @@
     {
         "name": "Five Guys",
         "image_url": "https://play-lh.googleusercontent.com/m0CcFAL11ZAZH_-gCclHAnpiq-jgrd5ZBaIgGQHd0iZA_vYYMamjjOKTBQYiE2KQdQ"
+    },
+    {
+        "name": "140 Grammi",
+        "image_url": "https://publikendi.com/wp-content/uploads/2024/03/140-grammi.png"
+    },
+    {
+        "name": "Old Wild West",
+        "image_url": "https://maximoshopping.it/wp-content/uploads/media/negozi/logo/logo-old-wild-west.png"
+    },
+    {
+        "name": "Yama Sushi Restaurant",
+        "image_url": "https://yamasushipadova.it/wp-content/uploads/2020/10/IMG_9404-copia-2.png"
     }
 ]

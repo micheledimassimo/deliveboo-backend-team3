@@ -25,7 +25,6 @@
 
                         <i class="fa-solid fa-burger"></i><span> DeliveBoo</span>
 
-
                     </h3>
 
                     <ul class="nav nav-pills mb-auto d-flex flex-column">
@@ -37,7 +36,7 @@
                                     Dashboard
                                 </span>
                             </a>
-                          </li>
+                        </li>
 
                       <li class='fs-5 fw-bold d-flex justify-content-center'>
                         <a href="{{ route('admin.restaurants.orders', ['slug' => $restaurant->slug]) }}" class="nav-link text-white btn btn-outline-dark rounded-pill fit-content">
@@ -47,6 +46,7 @@
                             </span>
                         </a>
                       </li>
+
                       <li class='fs-5 fw-bold d-flex justify-content-center'>
                         <a href="{{ route('admin.restaurants.statistics', ['slug' => $restaurant->slug]) }}" class="nav-link text-white btn btn-outline-dark rounded-pill fit-content">
                             <i class="fa-solid fa-chart-column"></i>
@@ -55,6 +55,7 @@
                             </span>
                         </a>
                       </li>
+                      
                       <li class='fs-5 fw-bold d-flex justify-content-center'>
                         <a href="{{ env('FRONTEND_URL') }}" class="nav-link text-white btn btn-outline-dark rounded-pill" style="width:fit-content">
 
@@ -68,15 +69,14 @@
 
                     </ul>
 
-                    <div class="d-flex justify-content-end mx-2">
+                    <div class="d-flex justify-content-end mx-3">
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
                             <button type="submit" class="btn btn-outline-danger">
-                                <h6 class="fw-bold">
+                                <div class="fw-bold">
                                     Log Out
-                                </h6>
-
+                                </div>
                             </button>
                         </form>
                     </div>

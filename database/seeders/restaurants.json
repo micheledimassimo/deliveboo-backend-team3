@@ -16,6 +16,22 @@
         "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9Tr3d9dS73dHJwi7QPXVHJr-OgEEt1wrw9Q&s"
     },
     {
+        "name": "140 Grammi",
+        "image_url": "https://publikendi.com/wp-content/uploads/2024/03/140-grammi.png"
+    },
+    {
+        "name": "Old Wild West",
+        "image_url": "https://maximoshopping.it/wp-content/uploads/media/negozi/logo/logo-old-wild-west.png"
+    },
+    {
+        "name": "Yama Sushi Restaurant",
+        "image_url": "https://yamasushipadova.it/wp-content/uploads/2020/10/IMG_9404-copia-2.png"
+    },
+    {
+        "name": "Starbucks",
+        "image_url": "https://www.salvatorepumo.it/wp-content/uploads/2021/09/logo-starbucks-1992.jpg"
+    },
+    {
         "name": "Pizza Hut",
         "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbLo9pFD4di7U3SDkQZVfCGtSLDsarN7eJNA&s"
     },
@@ -23,10 +39,7 @@
         "name": "Domino's Pizza",
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Dominos_pizza_logo.svg/512px-Dominos_pizza_logo.svg.png"
     },
-    {
-        "name": "Starbucks",
-        "image_url": "https://www.salvatorepumo.it/wp-content/uploads/2021/09/logo-starbucks-1992.jpg"
-    },
+    
     {
         "name": "Taco Bell",
         "image_url": "https://assets.simpleviewinc.com/simpleview/image/upload/crm/GrandJunctionCO/7143_640x480_a385f4ea-8a91-4374-9648-b3928f18bdc7.jpg"
@@ -41,18 +54,6 @@
     },
     {
         "name": "Five Guys",
-        "image_url": "https://play-lh.googleusercontent.com/m0CcFAL11ZAZH_-gCclHAnpiq-jgrd5ZBaIgGQHd0iZA_vYYMamjjOKTBQYiE2KQdQ"
-    },
-    {
-        "name": "140 Grammi",
-        "image_url": "https://publikendi.com/wp-content/uploads/2024/03/140-grammi.png"
-    },
-    {
-        "name": "Old Wild West",
-        "image_url": "https://maximoshopping.it/wp-content/uploads/media/negozi/logo/logo-old-wild-west.png"
-    },
-    {
-        "name": "Yama Sushi Restaurant",
-        "image_url": "https://yamasushipadova.it/wp-content/uploads/2020/10/IMG_9404-copia-2.png"
+        "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwEFVY5iBOlNs6V5zojcE7O9D2V2mgl7gEcQ&s"
     }
 ]

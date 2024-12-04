@@ -1,11 +1,11 @@
 <div>
-    <div class="offcanvas offcanvas-end my-bg-black" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+    <div class="offcanvas offcanvas-end my-bg-lightdark" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
         {{-- bottone chiusura offcanvas --}}
         <div class="offcanvas-header">
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-            <div class="card my-bg-lightdark text-light">
+            <div class="card my-bg-lightdark text-light border-0">
                 <div class="card-body">
                     <h5 class="card-title" id="offcanvasWithBothOptionsLabel">Aggiungi i dettagli del nuovo piatto</h5>
 

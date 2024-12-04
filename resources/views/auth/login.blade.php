@@ -3,13 +3,13 @@
 @section('main-content')
 
 
-    <div class="container d-flex justify-content-center my-5">
-        <div class="card mb-3 shadow">
+    <div class="container d-flex justify-content-center my-3">
+        <div class="card shadow">
             <div class="card-img-top"></div>
             
             <div class="card-body">
                 <div class="text-center">
-                    <h2 class="card-title mb-3">
+                    <h2 class="card-title">
                         <i class="fa-solid fa-burger text-warning"></i> Delive<span class="text-warning">Boo</span>
                     </h2>
                     <h5 class="card-text mb-0">

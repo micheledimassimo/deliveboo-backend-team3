@@ -1,0 +1,61 @@
+.custom-dropdown-register {
+    position: relative;
+    width: 100%;
+
+    .dropdown-button {
+        width: 100%;
+        padding: 6px 10px;
+        background-color: white;
+        border-radius: 6px;
+        text-align: left;
+        cursor: pointer;
+        border: 1px solid lightgray;
+        
+        .selected-values {
+            color: black;
+        }
+
+        .dropdown-placeholder {
+            color: black;
+        }
+    }
+
+    .dropdown-list {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #F8F9FA;
+        border: 1px solid #DEE2E6;
+        height: 260px;
+        overflow-y: auto;
+        z-index: 10;
+
+        &.show {
+            display: block;
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        li {
+            padding: 10px;
+            cursor: pointer;
+            color: black;
+
+            
+
+            input[type="checkbox"] {
+                margin-right: 10px;
+            }
+        }
+    }
+    .dropdown-list li.disabled {
+        pointer-events: none;
+        opacity: 0.6;
+    }
+}

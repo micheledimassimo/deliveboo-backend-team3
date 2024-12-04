@@ -51,9 +51,10 @@ class RegisteredUserController extends Controller
             'address' => ['required', 'string','min:5', 'max:128'],
             'phone_number' => ['required', 'string','min:5', 'max:64', 'regex:/^[\d+\-() ]+$/'],
             'img' => ['nullable', 'image', 'max:2048'],
-            'typologies' => 'required|array|min:1|max:7', // Deve essere un array con almeno un elemento
-            'typologies.*' => 'exists:typologies,id', // Ogni elemento deve esistere nella tabella 'typologies'
+            'typologies' => 'required|array|min:1|max:4', // Deve essere un array con almeno un elemento
+            'typologies.*' => 'integer|exists:typologies,id', // Ogni elemento deve esistere nella tabella 'typologies'
         ]);
+        
 
         $data = $request->all();
 

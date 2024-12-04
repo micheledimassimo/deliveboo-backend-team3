@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>@yield('page-title') | {{ config('app.name', 'Laravel') }}</title>
+        <title>@yield('page-title') | DeliveBoo</title>
 
         <!-- Scripts -->
         @vite('resources/js/app.js')
@@ -15,7 +15,7 @@
         integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
-    <body>
+    <body class="my-bg-yellow">
         <header>
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container">
@@ -57,7 +57,7 @@
             </nav>
         </header>
 
-        <main class="py-4">
+        <main class="py-4 my-bg-lightgray">
             <div class="container">
                 @yield('main-content')
             </div>

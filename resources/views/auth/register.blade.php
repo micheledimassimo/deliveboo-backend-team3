@@ -214,47 +214,59 @@
                                             </div>
                                 </div>
                             </div>
-                            <!-- img -->
-                            <div class="col mb-4">
-                                <div>
-                                    <label for="img">
-                                        Foto ristorante
-                                    </label>
-                                </div>
-                                <input class="form-control"
+                            <div class="row">
+                                <!-- Foto Ristorante -->
+                                <div class="col-md-6 mb-4">
+                                    <div>
+                                        <label for="img">
+                                            Foto ristorante
+                                        </label>
+                                    </div>
+                                    <input class="form-control"
                                         type="file"
                                         id="img"
                                         name="img"
                                         minlength="1"
                                         maxlength="2048"
                                         placeholder="Inserisci qui la foto del tuo ristorante..">
-                            </div>
+                                </div>
 
-
-                                <!-- Typologies Checkboxes -->
-                                <div class="mb-2">
-                                    <label for="typologies" class="form-label">
-                                        Tipologie Attività <span class="text-danger">*</span>
-                                    </label>
-                                    <div class="row" id="typologies">
-                                        @foreach($typologies as $index => $typology)
-                                            <div class="col-md-2 mb-2">
-                                                <div>
-                                                    <label for="typology_{{ $typology->id }}">
-                                                        {{ $typology->typology_name }}
-                                                    </labe>
-                                                    <input
-                                                        type="checkbox"
-                                                        id="typology_{{ $typology->id }}"
-                                                        name="typologies[]"
-                                                        value="{{ $typology->id }}"
-                                                        @if(old('typologies') && in_array($typology->id, old('typologies'))) checked @endif>
+                                <!-- Tipologie Attività -->
+                                <div class=" col-md-6 mb-3">
+                                <label for="typologies" class="form-label p-0 m-0">
+                                    Tipologie <span class="text-danger">*</span>
+                                </label>
+                                <div class="custom-dropdown-register">
+                                    <button type="button" class="dropdown-button">
+                                        <div class="row">
+                                            <div class="col-11">
+                                                <span class="dropdown-placeholder">
+                                                   
+                                                        Seleziona massimo 4 tipologie
                                                     
-                                                </div>
+                                                </span>
+                                                <span class="selected-values"></span>
                                             </div>
-                                        @endforeach
+                                            <div class="col-1 px-1">
+                                                <span>
+                                                    <i class="fa-solid fa-chevron-down"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </button>
+                                    <div class="dropdown-list">
+                                        <ul>
+                                            @foreach($typologies as $index => $typology)
+                                                <li>
+                                                    <input  type="checkbox" value="{{ $typology->id }}" id="typology_{{ $typology->id }}"
+                                                           name="typologies[]" 
+                                                           @if(old('typologies') && in_array($typology->id, old('typologies'))) checked @endif />
+                                                    {{ $typology->typology_name }}
+                                                </li>
+                                            @endforeach
+                                        </ul>
                                     </div>
-                                    
+                                </div>
                                 </div>
                             <!-- Email Address -->
                             <div class="row mb-3">
@@ -348,6 +360,7 @@
     </div>
 
     <style scoped>
+
         .col-md-4{
             background-image: url('https://i.pinimg.com/736x/e9/3b/26/e93b26ba393c37f7846ad1978324d621.jpg')
         }
@@ -359,5 +372,52 @@
             border-radius: 2%;
         }
     </style>
+
+<script>
+    // Typologies dropdown functionality
+    const dropdownButton = document.querySelector('.dropdown-button');
+    const dropdownList = document.querySelector('.dropdown-list');
+    const selectedSpan = document.querySelector('.selected-values');
+    const placeholderSpan = document.querySelector('.dropdown-placeholder');
+    const checkboxes = document.querySelectorAll('.dropdown-list input[type="checkbox"]');
+
+    dropdownButton?.addEventListener('click', e => {
+        e.preventDefault();
+        dropdownList.classList.toggle('show');
+    });
+
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', handleCheckboxChange);
+    });
+
+    function handleCheckboxChange() {
+        const selectedCheckboxes = [...checkboxes].filter(cb => cb.checked);
+        
+        // Disable unchecked checkboxes if 4 are selected
+        if (selectedCheckboxes.length >= 4) {
+            checkboxes.forEach(cb => {
+                if (!cb.checked) {
+                    cb.disabled = true; // Disable unchecked checkboxes
+                }
+            });
+        } else {
+            checkboxes.forEach(cb => cb.disabled = false); // Enable all checkboxes if less than 4 are selected
+        }
+
+        updateSelectedValues();
+    }
+
+    function updateSelectedValues() {
+        const selectedValues = [...checkboxes]
+            .filter(checkbox => checkbox.checked)
+            .map(checkbox => checkbox.parentElement.textContent.trim());
+        selectedSpan.textContent = selectedValues.join(', ');
+        placeholderSpan.style.display = selectedValues.length ? 'none' : 'inline';
+    }
+
+    document.addEventListener('click', e => {
+        if (!e.target.closest('.custom-dropdown-register')) dropdownList?.classList.remove('show');
+    });
+</script>
 
 @endsection

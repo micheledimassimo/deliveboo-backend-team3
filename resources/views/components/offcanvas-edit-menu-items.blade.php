@@ -97,17 +97,23 @@
                                 maxlength="2048"
                                 placeholder="Carica un immagine per il tuo piatto...">
 
-                            @if ($menuItem->image)
+                                @if ($menuItem->image)
                                 <div class="mt-2 d-flex flex-column">
                                     <h5>Immagine attuale:</h5>
-                                    <img class="h-150" src="{{ asset('storage/'.$menuItem->image) }}" alt="{{ $menuItem->itemname }}">
+                                    
+                                    @if (filter_var($menuItem->image, FILTER_VALIDATE_URL))
+                                        <img class="h-150" src="{{ $menuItem->image }}" alt="{{ $menuItem->itemname }}">
+                                    @else
+                                        <img class="h-150" src="{{ asset('storage/'.$menuItem->image) }}" alt="{{ $menuItem->itemname }}">
+                                    @endif
+                            
                                     <button type="button" class="btn btn-danger btn-sm mt-2" id="remove_image{{ $menuItem->id }}"
                                             onclick="document.getElementById('removeimage_input{{ $menuItem->id }}').checked = true;">
                                         <i class="fas fa-times"></i>
                                     </button>
                                     <input class="d-none" type="checkbox" id="removeimage_input{{ $menuItem->id }}" name="remove_image" value="1">
                                 </div>
-                            @endif
+                                @endif
                         </div>
 
                         <div class="mb-3">

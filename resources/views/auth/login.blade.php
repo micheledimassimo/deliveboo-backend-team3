@@ -35,12 +35,12 @@
 
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
-                    <div class="text-center text-uppercase fw-light text-warning mb-2">
+                    <div class="text-center text-uppercase fw-medium text-warning mb-2">
                        User Login
                     </div>
                     <!-- Email Address -->
                     <div class="row mb-4 mt-3">
-                        <div class="col input-group ">
+                        <div class="col input-group px-5">
                             <div class="input-group-text rounded-left border-0 border-warning bg-warning" id="basic-addon1">
                                 <label for="email">
                                     <i class="fa-solid fa-user"></i>
@@ -59,28 +59,36 @@
         
                     <!-- Password -->
                     <div class="row mb-4">
-                        <div class="col">
-                            <div>
+                        <div class="col input-group px-5">
+                            <div class="input-group-text rounded-left border-0 border-warning bg-warning" id="basic-addon1">
                                 <label for="password">
-                                    Password
+                                    <i class="fa-solid fa-lock"></i>
                                 </label>
                             </div>
-                            <input class="form-control 
+                            <input class="form-control rounded-right border-0 bg-warning
                             @error('password') @enderror
                             "
                                     type="password"
                                     id="password"
-                                    name="password">
+                                    name="password"
+                                    placeholder="Password">
                         </div>
                     </div>
         
                     <!-- Remember Me -->
-                    <div class="row text-center mb-4">
-                        <div class="col">
+                    <div class="row justify-content-between ms-3 mb-4 p-1">
+                        <div class="col ms-2">
                             <label for="remember_me">
                                 <input id="remember_me" type="checkbox" name="remember">
                                 <span>Rimani collegato</span>
                             </label>
+                        </div>
+                        <div class="col ms-5">
+                            @if (Route::has('password.request'))
+                                <a href="{{ route('password.request') }}">
+                                    {{ __('Password dimenticata?') }}
+                                </a>
+                            @endif
                         </div>
                     </div>
         
@@ -90,13 +98,7 @@
                             Log in
                         </button>
 
-                        <div>
-                            @if (Route::has('password.request'))
-                                <a href="{{ route('password.request') }}">
-                                    {{ __('Password dimenticata?') }}
-                                </a>
-                            @endif
-                        </div>
+                       
                     </div>
                 </form>
             </div>

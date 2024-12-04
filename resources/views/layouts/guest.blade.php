@@ -57,7 +57,7 @@
             </nav>
         </header>
 
-        <main class="py-4 my-bg-lightgray">
+        <main class="py-4">
             <div class="container">
                 @yield('main-content')
             </div>

@@ -1,12 +1,12 @@
 <div>
-    <div class="offcanvas offcanvas-end my-bg-black" data-bs-scroll="true" tabindex="-1" id="offcanvasWithEdit{{ $menuItem->id }}" aria-labelledby="offcanvasWithEditLabel">
+    <div class="offcanvas offcanvas-end my-bg-lightdark" data-bs-scroll="true" tabindex="-1" id="offcanvasWithEdit{{ $menuItem->id }}" aria-labelledby="offcanvasWithEditLabel">
         {{-- bottone chiusura offcanvas --}}
         <div class="offcanvas-header">
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
 
         <div class="offcanvas-body">
-            <div class="card my-bg-lightdark text-white">
+            <div class="card my-bg-lightdark text-white border-0">
                 <div class="card-body">
                     <h5 class="card-title" id="offcanvasWithEditLabel">Modifica i dettagli del piatto</h5>
 

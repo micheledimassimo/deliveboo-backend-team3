@@ -102,7 +102,7 @@
                                     <div class="dropdown-list">
                                         <ul>
                                             @foreach($typologies as $typology)
-                                                <li>
+                                                <li data-checkbox-id="typology_{{ $typology->id }}">
                                                     <input type="checkbox" value="{{ $typology->id }}" 
                                                            name="typologies[]" 
                                                            @if($restaurant->typologies->contains($typology->id)) checked @endif />

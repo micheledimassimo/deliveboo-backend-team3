@@ -136,7 +136,9 @@ class RestaurantController extends Controller
             'address' => 'required|min:3|max:128',
             'phone_number' => 'required|min:3|max:64|regex:/^[\d+\-() ]+$/',
             'img' => 'nullable|image|max:2048',
-            'user_id' => 'nullable|exists:user,id'
+            'user_id' => 'nullable|exists:user,id',
+            'typologies' => 'required|array|min:1|max:4',
+            'typologies.*' => 'integer|exists:typologies,id',
         ]);
     }
 

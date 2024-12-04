@@ -3,10 +3,19 @@ const carousel = document.getElementById('ordersCarousel');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
 
-// Aggiungi evento per aggiornare lo stato dei pulsanti
-carousel.addEventListener('slid.bs.carousel', function() {
-    const totalItems = document.querySelectorAll('.carousel-item').length;
-    const activeIndex = Array.from(document.querySelectorAll('.carousel-item')).indexOf(document.querySelector('.carousel-item.active')) + 1;
+// Funzione per aggiornare lo stato dei pulsanti
+function updateCarouselButtons() {
+    const items = document.querySelectorAll('.carousel-item');
+    const totalItems = items.length;
+
+    // Disabilita entrambi i pulsanti se non ci sono ordini
+    if (totalItems === 0) {
+        prevBtn.setAttribute('disabled', 'true');
+        nextBtn.setAttribute('disabled', 'true');
+        return;
+    }
+
+    const activeIndex = Array.from(items).indexOf(document.querySelector('.carousel-item.active')) + 1;
 
     // Disabilita il pulsante "prev" se siamo sulla prima pagina
     if (activeIndex === 1) {
@@ -21,5 +30,10 @@ carousel.addEventListener('slid.bs.carousel', function() {
     } else {
         nextBtn.removeAttribute('disabled');
     }
-});
+}
 
+// Aggiungi evento per aggiornare lo stato dei pulsanti
+carousel.addEventListener('slid.bs.carousel', updateCarouselButtons);
+
+// Inizializza lo stato dei pulsanti all'avvio
+updateCarouselButtons();

@@ -17,7 +17,7 @@
                 <button class="btn my-btn-carousel me-3 rounded-circle" id="prevBtn" type="button" data-bs-target="#ordersCarousel" data-bs-slide="prev" disabled>
                     <i class="fa-solid fa-chevron-left"></i>
                 </button>
-                <button class="btn my-btn-carousel rounded-circle" id="nextBtn" type="button" data-bs-target="#ordersCarousel" data-bs-slide="next">
+                <button class="btn my-btn-carousel rounded-circle" id="nextBtn" type="button" data-bs-target="#ordersCarousel" data-bs-slide="next" >
                     <i class="fa-solid fa-chevron-right"></i>
                 </button>
             </div>

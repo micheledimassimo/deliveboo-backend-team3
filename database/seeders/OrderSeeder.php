@@ -2,12 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-
 use App\Models\Order;
 use App\Models\MenuItem;
-
+use App\Models\Restaurant;
 
 class OrderSeeder extends Seeder
 {
@@ -16,23 +14,39 @@ class OrderSeeder extends Seeder
      */
     public function run(): void
     {
-        foreach (range(1, 10) as $index) {
-            $order = Order::create([
-                'customer_email' => fake()->email(),
-                'customer_address' => fake()->address(),
-                'customer_number' => fake()->phoneNumber(),
-                'customer_name' => fake()->name(),
-                'total_price' => fake()->randomFloat(2, 10, 100),
-            ]);
+        // Itera attraverso tutti i ristoranti
+        $restaurants = Restaurant::all();
 
-            $menuItems = MenuItem::inRandomOrder()->take(3)->pluck('id');
-            
-            $menuItemsWithQuantities = [];
-            foreach ($menuItems as $menuItemId) {
-                $menuItemsWithQuantities[$menuItemId] = ['quantity' => fake()->numberBetween(1, 5)];
+        foreach ($restaurants as $restaurant) {
+            // Crea un numero casuale di ordini per ogni ristorante
+            foreach (range(1, rand(0, 10)) as $index) {
+                $order = Order::create([
+                    'customer_email' => fake()->email(),
+                    'customer_address' => fake()->address(),
+                    'customer_number' => fake()->phoneNumber(),
+                    'customer_name' => fake()->name(),
+                    'created_at' => fake()->dateTimeBetween('-1 year', 'now'),
+                    'total_price' => 0, // Calcolato successivamente
+                ]);
+
+                // Ottieni menuItems casuali del ristorante corrente
+                $menuItems = $restaurant->menuItems()->inRandomOrder()->take(rand(1, 5))->get();
+
+                $totalPrice = 0;
+                $menuItemsWithQuantities = [];
+
+                foreach ($menuItems as $menuItem) {
+                    $quantity = fake()->numberBetween(1, 5);
+                    $menuItemsWithQuantities[$menuItem->id] = ['quantity' => $quantity];
+                    $totalPrice += $menuItem->price * $quantity;
+                }
+
+                // Associa i menuItems all'ordine tramite tabella pivot
+                $order->menuItems()->attach($menuItemsWithQuantities);
+
+                // Aggiorna il prezzo totale dell'ordine
+                $order->update(['total_price' => $totalPrice]);
             }
-
-            $order->menuItems()->attach($menuItemsWithQuantities);
         }
     }
 }

@@ -3,7 +3,7 @@
 @section('main-content')
 
 
-    <div class="container d-flex justify-content-center mt-5">
+    <div class="container d-flex justify-content-center mt-4">
         <div class="card shadow">
             <div class="card-img-top"></div>
             
@@ -41,13 +41,13 @@
                     <!-- Email Address -->
                     <div class="row mb-4 mt-3">
                         <div class="col input-group px-5">
-                            <div class="input-group-text rounded-left border-0 border-warning bg-warning" id="basic-addon1">
+                            <div class="input-group-text rounded-left border-right-0 border-warning bg-warning" id="basic-addon1">
                                 <label for="email">
                                     <i class="fa-solid fa-user"></i>
                                 </label>
                             </div>
 
-                            <input class="form-control rounded-right border-0 bg-warning
+                            <input class="form-control rounded-right border-left-0 
                             @error('email') @enderror
                             "
                                     type="email"
@@ -60,12 +60,12 @@
                     <!-- Password -->
                     <div class="row mb-4">
                         <div class="col input-group px-5">
-                            <div class="input-group-text rounded-left border-0 border-warning bg-warning" id="basic-addon1">
+                            <div class="input-group-text rounded-left border-right-0 border-warning bg-warning" id="basic-addon1">
                                 <label for="password">
                                     <i class="fa-solid fa-lock"></i>
                                 </label>
                             </div>
-                            <input class="form-control rounded-right border-0 bg-warning
+                            <input class="form-control rounded-right border-left-0 
                             @error('password') @enderror
                             "
                                     type="password"
@@ -108,8 +108,9 @@
     <style scoped>
         .card{
             width: 50%;
-            border: 1px solid #EAD839;
-            border-radius: 5%;
+            
+            border-bottom-left-radius: 5%;
+            border-bottom-right-radius: 5%;
             position: relative;
         }
         .card-top {

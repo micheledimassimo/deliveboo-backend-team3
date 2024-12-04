@@ -15,7 +15,7 @@
         integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
-    <body class="my-bg-yellow">
+    <body class="my-bg-lightgray">
         <header>
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container">

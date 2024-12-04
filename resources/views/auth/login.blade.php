@@ -3,12 +3,12 @@
 @section('main-content')
 
 
-    <div class="container d-flex justify-content-center my-3">
+    <div class="container d-flex justify-content-center mt-4">
         <div class="card shadow">
             <div class="card-img-top"></div>
             
-            <div class="card-body">
-                <div class="text-center">
+            <div class="card-body p-5">
+                <div class="text-center card-top">
                     <h2 class="card-title">
                         <i class="fa-solid fa-burger text-warning"></i> Delive<span class="text-warning">Boo</span>
                     </h2>
@@ -30,77 +30,75 @@
                     </div>
                 @enderror
 
-                
-
-                
-                
-                    
-                
-
-                
+           
 
 
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
-        
+                    <div class="text-center text-uppercase fw-medium text-warning mb-2">
+                       User Login
+                    </div>
                     <!-- Email Address -->
-                    <div class="row mb-4">
-                        <div class="col">
-                            <div>
+                    <div class="row mb-4 mt-3">
+                        <div class="col input-group px-5">
+                            <div class="input-group-text rounded-left border-right-0 border-warning bg-warning" id="basic-addon1">
                                 <label for="email">
-                                    Email
+                                    <i class="fa-solid fa-user"></i>
                                 </label>
                             </div>
 
-                            <input class="form-control
+                            <input class="form-control rounded-right border-left-0 
                             @error('email') @enderror
                             "
                                     type="email"
                                     id="email"
-                                    name="email">
+                                    name="email"
+                                    placeholder="Usermail">
                         </div>
                     </div>
         
                     <!-- Password -->
                     <div class="row mb-4">
-                        <div class="col">
-                            <div>
+                        <div class="col input-group px-5">
+                            <div class="input-group-text rounded-left border-right-0 border-warning bg-warning" id="basic-addon1">
                                 <label for="password">
-                                    Password
+                                    <i class="fa-solid fa-lock"></i>
                                 </label>
                             </div>
-                            <input class="form-control 
+                            <input class="form-control rounded-right border-left-0 
                             @error('password') @enderror
                             "
                                     type="password"
                                     id="password"
-                                    name="password">
+                                    name="password"
+                                    placeholder="Password">
                         </div>
                     </div>
         
                     <!-- Remember Me -->
-                    <div class="row text-center mb-4">
-                        <div class="col">
+                    <div class="row justify-content-between ms-3 mb-4 p-1">
+                        <div class="col ms-2">
                             <label for="remember_me">
                                 <input id="remember_me" type="checkbox" name="remember">
                                 <span>Rimani collegato</span>
                             </label>
                         </div>
-                    </div>
-        
-                    {{-- button + forgot pw --}}
-                    <div class="mb-4 text-center">
-                        <button class="btn btn-success mb-4" type="submit">
-                            Log in
-                        </button>
-
-                        <div>
+                        <div class="col ms-5">
                             @if (Route::has('password.request'))
                                 <a href="{{ route('password.request') }}">
                                     {{ __('Password dimenticata?') }}
                                 </a>
                             @endif
                         </div>
+                    </div>
+        
+                    {{-- button + forgot pw --}}
+                    <div class="mb-4 text-center">
+                        <button class="btn btn-warning mb-4" type="submit">
+                            Log in
+                        </button>
+
+                       
                     </div>
                 </form>
             </div>
@@ -110,13 +108,23 @@
     <style scoped>
         .card{
             width: 50%;
+            
+            border-bottom-left-radius: 5%;
+            border-bottom-right-radius: 5%;
+            position: relative;
+        }
+        .card-top {
+            position: absolute;
+            top: 8%;
+            left: 22%;
         }
         .card-img-top{
             width: 100%;
             height: 200px;
             object-fit: cover;
             background-position: center;
-            background-image: url('https://i.pinimg.com/736x/e9/3b/26/e93b26ba393c37f7846ad1978324d621.jpg')
+            background-image: url('https://static.vecteezy.com/system/resources/thumbnails/005/182/631/small_2x/orange-abstract-background-with-modern-style-wave-background-yellow-gradient-abstract-background-vector.jpg');
+            
         }
     </style>
 

@@ -330,7 +330,7 @@
                                     <span class="text-danger">*</span> Tutti i campi sono obbligatori
                                 </p>
 
-                                <button class="btn btn-success mb-3" type="submit">
+                                <button class="btn btn-warning mb-3" type="submit">
                                     Registrati
                                 </button>
                                 
@@ -354,6 +354,9 @@
 
         #typologies {
             font-size: 0.9rem;
+        }
+        .card {
+            border-radius: 2%;
         }
     </style>
 

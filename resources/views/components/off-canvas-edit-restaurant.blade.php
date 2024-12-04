@@ -135,7 +135,12 @@
                                 </div>
                                 @if ($restaurant->img)
                                     <div class="mt-3 position-relative img-preview-wrapper">
+                                        @if (filter_var($restaurant->img, FILTER_VALIDATE_URL))
+                                        <img src="{{ $restaurant->img }}" alt="{{ $restaurant->restaurant_name }}" class="img-thumbnail">
+                                        @else
                                         <img src="{{ asset('storage/'.$restaurant->img) }}" alt="{{ $restaurant->restaurant_name }}" class="img-thumbnail">
+                                        @endif
+                                        
                                         <button type="button" class="remove-img-btn">
                                             <i class="fa-solid fa-xmark"></i>
                                         </button>

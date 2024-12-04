@@ -87,33 +87,42 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="image" class="form-label">Immagine</label>
-                            <input
-                                type="file"
-                                class="form-control text-light my-bg-lightdark @error('image') is-invalid @enderror"
-                                id="image"
-                                name="image"
-                                minlength="3"
-                                maxlength="2048"
-                                placeholder="Carica un immagine per il tuo piatto...">
-
-                                @if ($menuItem->image)
-                                <div class="mt-2 d-flex flex-column">
-                                    <h5>Immagine attuale:</h5>
-                                    
-                                    @if (filter_var($menuItem->image, FILTER_VALIDATE_URL))
-                                        <img class="h-150" src="{{ $menuItem->image }}" alt="{{ $menuItem->itemname }}">
-                                    @else
-                                        <img class="h-150" src="{{ asset('storage/'.$menuItem->image) }}" alt="{{ $menuItem->itemname }}">
-                                    @endif
                             
-                                    <button type="button" class="btn btn-danger btn-sm mt-2" id="remove_image{{ $menuItem->id }}"
-                                            onclick="document.getElementById('removeimage_input{{ $menuItem->id }}').checked = true;">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                    <input class="d-none" type="checkbox" id="removeimage_input{{ $menuItem->id }}" name="remove_image" value="1">
+                            <label for="img_input{{ $menuItem->id }}">Carica immagine:</label>
+                            <input type="file" id="img_input{{ $menuItem->id }}" name="image" class="form-control">
+
+                            <div class="mt-2">
+                                <div class="d-flex justify-content-center" data-id="{{ $menuItem->id }}">
+                                    @if ($menuItem->image)
+                                        <div class="position-relative img-preview-wrapper" id="image_container{{ $menuItem->id }}">
+                                            @if (filter_var($menuItem->image, FILTER_VALIDATE_URL))
+                                                <img class="h-150 img-thumbnail" 
+                                                        id="img_preview{{ $menuItem->id }}" 
+                                                        src="{{ $menuItem->image }}" 
+                                                        alt="{{ $menuItem->itemname }}">
+                                            @else
+                                                <img class="h-150 img-thumbnail" 
+                                                        id="img_preview{{ $menuItem->id }}" 
+                                                        src="{{ asset('storage/'.$menuItem->image) }}" 
+                                                        alt="{{ $menuItem->itemname }}">
+                                            @endif
+                            
+                                            <button type="button" 
+                                                    class="remove-img-btn d-flex" 
+                                                    id="remove_image{{ $menuItem->id }}">
+                                                <i class="fa-solid fa-xmark"></i>
+                                            </button>
+                                            <input class="d-none" 
+                                                    type="checkbox" 
+                                                    id="removeimage_input{{ $menuItem->id }}" 
+                                                    name="remove_image" 
+                                                    value="1">
+                                        </div>
+                                    @endif
                                 </div>
-                                @endif
+                            </div>
+                                    
+                                
                         </div>
 
                         <div class="mb-3">
@@ -140,3 +149,7 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+    @vite('resources/js/buttons/imgItems.js')
+@endpush

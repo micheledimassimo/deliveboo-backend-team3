@@ -2,6 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
+        <link rel="icon" type="image/svg+xml" href="/DELIVEBOO.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -14,17 +15,20 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"|
         integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    </head>
-    <body>
 
+        {{-- font --}}
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Knewave&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
         <main>
             <div class="d-flex vh-100">
                 <div class="d-flex flex-column vh-100 flex-shrink-0 fixed-top py-3 text-white side-bar">
 
                     <h3 class="my-4 text-center">
-
                         <i class="fa-solid fa-burger"></i><span> DeliveBoo</span>
-
                     </h3>
 
                     <ul class="nav nav-pills mb-auto d-flex flex-column">

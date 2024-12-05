@@ -1,5 +1,7 @@
 @extends('layouts.guest')
 
+@section('page-title', 'Registrazione')
+
 @section('main-content')
 
 @vite('resources/js/register-scripts.js')
@@ -50,35 +52,35 @@
         </div>
     @enderror
     
-
-    
-
     <div class="container login-container my-2">
         
         <div class="card">
+            <div class="row">
 
-            <div class="row ">
-                <div class="col-md-4 rounded-start"> </div>
+                <div class="col-md-4 rounded-start text-center"> 
+                    <div id="img-container" class="d-flex flex-column justify-content-center px-3 rounded-start">
+                        <h3 class="mb-0">
+                            Benvenuto!
+                        </h3>
+                        <span>Inizia a vendere su</span>
+    
+                        <h2 class="my-3">
+                            Delive<span class="text-white">Boo</span>
+                        </h2>
+    
+                        <p>
+                            Ti aiuteremo a configurare il <span class="fw-bold">tuo account</span>.
+                            <br>
+                            Ci vorranno solo pochi minuti.
+                        </p>
+                    </div>
+                </div>
 
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h2 class="card-title mb-3">
-                            Inizia a vendere su
-                            <i class="fa-solid fa-burger"></i>
-                            Delive<span class="text-warning">Boo</span>
-                        </h2>
-                        <h5 class="card-text mb-0">
-                            Benvenuto!
-                        </h5>
-                        <p>
-                            Ti aiuteremo a configurare il tuo account.
-                            Ci vorranno solo pochi minuti.
-                        </p>
-
                         <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                             @csrf
 
-                            <!-- Name + cognome -->
                             <div class="row mb-4">
                                 <div class="col">
                                     <div>
@@ -125,9 +127,8 @@
                                 </div>
                             </div>
     
-                            
                             <div class="row mb-4">
-                                <!-- Nome Attività -->
+
                                 <div class="col-6">
                                     <div>
                                         <label for="restaurant_name">
@@ -148,7 +149,7 @@
                                                 Il nome dell'attività è obbligatorio e deve essere lungo massimo 128 caratteri.
                                             </div>
                                 </div>
-                                <!-- Partita IVA -->
+
                                 <div class="col-6">
                                     <div>
                                         <label for="p_iva">
@@ -171,8 +172,9 @@
                                             </div>
                                 </div>
                             </div>
+
                             <div class="row">
-                                <!-- Indirizzo Attività -->
+
                                 <div class="col-6 mb-4">
                                     <div>
                                         <label for="address">
@@ -193,7 +195,7 @@
                                                 L'indirizzo è obbligatorio e deve essere lungo almeno 3 caratteri.
                                             </div>
                                 </div>
-                                <!-- Numero di telefono attività -->
+
                                 <div class="col-6 mb-4">
                                     <div>
                                         <label for="phone_number">
@@ -216,8 +218,9 @@
                                             </div>
                                 </div>
                             </div>
+                            
                             <div class="row">
-                                <!-- Foto Ristorante -->
+
                                 <div class="col-md-6 mb-4">
                                     <div>
                                         <label for="img">
@@ -233,76 +236,73 @@
                                         placeholder="Inserisci qui la foto del tuo ristorante..">
                                 </div>
 
-                                <!-- Tipologie Attività -->
                                 <div class=" col-md-6 mb-3">
-                                <label for="typologies" class="form-label p-0 m-0">
-                                    Tipologie <span class="text-danger">*</span>
-                                </label>
-                                <div class="custom-dropdown-register">
-                                    <button type="button" class="dropdown-button">
-                                        <div class="row">
-                                            <div class="col-11">
-                                                <span class="dropdown-placeholder">
-                                                    Seleziona massimo 4 tipologie
-                                                </span>
-                                                <span class="selected-values"></span>
+                                    <label for="typologies" class="form-label p-0 m-0">
+                                        Tipologie <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="custom-dropdown-register">
+                                        <button type="button" class="dropdown-button">
+                                            <div class="row">
+                                                <div class="col-11">
+                                                    <span class="dropdown-placeholder">
+                                                        Seleziona massimo 4 tipologie
+                                                    </span>
+                                                    <span class="selected-values"></span>
+                                                </div>
+                                                <div class="col-1 px-1">
+                                                    <span>
+                                                        <i class="fa-solid fa-chevron-down"></i>
+                                                    </span>
+                                                </div>
                                             </div>
-                                            <div class="col-1 px-1">
-                                                <span>
-                                                    <i class="fa-solid fa-chevron-down"></i>
-                                                </span>
-                                            </div>
+                                        </button>
+                                        <div class="dropdown-list">
+                                            <ul>
+                                                @foreach($typologies as $index => $typology)
+                                                    <li data-checkbox-id="typology_{{ $typology->id }}">
+                                                        <input type="checkbox" value="{{ $typology->id }}" id="typology_{{ $typology->id }}"
+                                                            name="typologies[]" 
+                                                                />
+                                                        {{ $typology->typology_name }}
+                                                    </li>   
+                                                @endforeach
+                                            </ul>
                                         </div>
-                                    </button>
-                                    <div class="dropdown-list">
-                                        <ul>
-                                            @foreach($typologies as $index => $typology)
-                                                <li data-checkbox-id="typology_{{ $typology->id }}">
-                                                    <input type="checkbox" value="{{ $typology->id }}" id="typology_{{ $typology->id }}"
-                                                           name="typologies[]" 
-                                                            />
-                                                    {{ $typology->typology_name }}
-                                                </li>
-                                                
-                                            @endforeach
-                                        </ul>
                                     </div>
                                 </div>
-                                </div>
-                            <!-- Email Address -->
-                            <div class="row mb-3">
-                                <div class="col">
-                                    <div>
-                                        <label for="email">
-                                            Email <span class="text-danger">*</span> 
-                                        </label>
-                                    </div>
-                                    <input class="form-control 
-                                    @error('email') is-invalid @enderror
-                                    "
+
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        <div>
+                                            <label for="email">
+                                                Email <span class="text-danger">*</span> 
+                                            </label>
+                                        </div>
+                                        <input class="form-control 
+                                        @error('email') is-invalid @enderror
+                                        "
                                             type="email" id="email"
                                             name="email"
                                             maxlength="255"
                                             placeholder="Inserisci qui la tua email.."
                                             value="{{ old('email') }}"
                                             required>
-                                            <div class="invalid-feedback">
-                                                L'indirizzo email è obbligatorio e deve essere lungo massimo 255 caratteri, SENZA maiuscole.
-                                            </div>
-                                </div>
-                            </div>
-    
-                            <!-- Password + conferma -->
-                            <div class="row mb-3">
-                                <div class="col">
-                                    <div>
-                                    <label for="password">
-                                        Password <span class="text-danger">*</span> 
-                                    </label>
+                                        <div class="invalid-feedback">
+                                            L'indirizzo email è obbligatorio e deve essere lungo massimo 255 caratteri, SENZA maiuscole.
+                                        </div>
                                     </div>
-                                    <input class="form-control 
-                                    @error('password') is-invalid @enderror
-                                    "
+                                </div>
+    
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        <div>
+                                        <label for="password">
+                                            Password <span class="text-danger">*</span> 
+                                        </label>
+                                        </div>
+                                        <input class="form-control 
+                                        @error('password') is-invalid @enderror
+                                        "
                                             type="password"
                                             id="password"
                                             name="password"
@@ -310,20 +310,20 @@
                                             minlength="8"
                                             maxlength="64"
                                             placeholder="Inserisci password..">
-                                            <div class="invalid-feedback">
-                                                La password è obbligatoria e deve essere lungo almeno 8 caratteri e  massimo 64, caratteri speciali compresi.
-                                            </div>
-                                </div>
-        
-                                <div class="col">
-                                    <div>
-                                        <label for="password_confirmation">
-                                            Conferma Password <span class="text-danger">*</span> 
-                                        </label>
+                                        <div class="invalid-feedback">
+                                            La password è obbligatoria e deve essere lungo almeno 8 caratteri e  massimo 64, caratteri speciali compresi.
+                                        </div>
                                     </div>
-                                    <input class="form-control
-                                    @error('password') is-invalid @enderror
-                                    "
+            
+                                    <div class="col">
+                                        <div>
+                                            <label for="password_confirmation">
+                                                Conferma Password <span class="text-danger">*</span> 
+                                            </label>
+                                        </div>
+                                        <input class="form-control
+                                            @error('password') is-invalid @enderror
+                                            "
                                             type="password"
                                             id="password_confirmation"
                                             name="password_confirmation"
@@ -331,27 +331,26 @@
                                             minlength="8"
                                             maxlength="64"
                                             placeholder="Conferma password..">
-                                            <div class="invalid-feedback">
-                                                La password è obbligatoria e deve essere lungo almeno 8 caratteri e  massimo 64, caratteri speciali compresi.
-                                            </div>
+                                        <div class="invalid-feedback">
+                                            La password è obbligatoria e deve essere lungo almeno 8 caratteri e  massimo 64, caratteri speciali compresi.
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
 
-                            {{-- submit --}}
-                            <div class="mb-2">
-                                <p>
-                                    <span class="text-danger">*</span> Tutti i campi sono obbligatori
-                                </p>
+                                <div class="mb-2">
+                                    <p>
+                                        <span class="text-danger">*</span> Tutti i campi sono obbligatori
+                                    </p>
 
-                                <button class="btn btn-warning mb-3" type="submit">
-                                    Registrati
-                                </button>
-                                
-                                <div>
-                                    <a href="{{ route('login') }}">
-                                        {{ __('Già registrato?') }}
-                                    </a>
-                                </div>
+                                    <button class="btn btn-warning rounded-pill mb-3 px-4" type="submit">
+                                        Registrati
+                                    </button>
+                                    
+                                    <div>
+                                        <a href="{{ route('login') }}">
+                                            {{ __('Già registrato?') }}
+                                        </a>
+                                    </div>
                             </div>
                         </form>
                     </div>
@@ -361,20 +360,20 @@
     </div>
 
     <style scoped>
+        #img-container{
+            height: 100%;
+            background-position: center;
+            background-image: url('/bg.jpg')
+        }
 
-        .col-md-4{
-            background-image: url('https://i.pinimg.com/736x/e9/3b/26/e93b26ba393c37f7846ad1978324d621.jpg')
+        h2{
+            font-family: "Knewave", system-ui;
+            font-size: 3rem;
         }
 
         #typologies {
             font-size: 0.9rem;
         }
-        .card {
-            border-radius: 2%;
-        }
     </style>
-
-
-
 
 @endsection

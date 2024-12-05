@@ -1,25 +1,21 @@
 @extends('layouts.guest')
 
-@section('main-content')
+@section('page-title', 'Accedi')
 
+@section('main-content')
 
     <div class="container d-flex justify-content-center mt-4">
         <div class="card shadow">
-            <div class="card-img-top"></div>
+            <div class="card-img-top text-center d-flex flex-column justify-content-center">
+                <h2 class="mb-3 mt-0">
+                    Bentornato!
+                </h2>
+                <p class="mb-0">
+                    Accedi al tuo account per visualizzare i tuoi dati.
+                </p>
+            </div>
             
             <div class="card-body p-5">
-                <div class="text-center card-top">
-                    <h2 class="card-title">
-                        <i class="fa-solid fa-burger text-warning"></i> Delive<span class="text-warning">Boo</span>
-                    </h2>
-                    <h5 class="card-text mb-0">
-                        Bentornato!
-                    </h5>
-                    <p>
-                        Accedi al tuo account per visualizzare i tuoi dati.
-                    </p>
-                </div>
-
                 @error('email')
                     <div class="alert alert-danger mb-4">
                         <ul class="mb-0">
@@ -30,15 +26,12 @@
                     </div>
                 @enderror
 
-           
-
-
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
-                    <div class="text-center text-uppercase fw-medium text-warning mb-2">
+                    <div class="text-center text-uppercase fw-bold fs-5 text-warning mb-4">
                        User Login
                     </div>
-                    <!-- Email Address -->
+
                     <div class="row mb-4 mt-3">
                         <div class="col input-group px-5">
                             <div class="input-group-text rounded-left border-right-0 border-warning bg-warning" id="basic-addon1">
@@ -57,7 +50,6 @@
                         </div>
                     </div>
         
-                    <!-- Password -->
                     <div class="row mb-4">
                         <div class="col input-group px-5">
                             <div class="input-group-text rounded-left border-right-0 border-warning bg-warning" id="basic-addon1">
@@ -75,7 +67,6 @@
                         </div>
                     </div>
         
-                    <!-- Remember Me -->
                     <div class="row justify-content-between ms-3 mb-4 p-1">
                         <div class="col ms-2">
                             <label for="remember_me">
@@ -92,13 +83,10 @@
                         </div>
                     </div>
         
-                    {{-- button + forgot pw --}}
-                    <div class="mb-4 text-center">
-                        <button class="btn btn-warning mb-4" type="submit">
+                    <div class="text-center">
+                        <button class="btn btn-warning my-3 rounded-pill px-4" type="submit">
                             Log in
-                        </button>
-
-                       
+                        </button>               
                     </div>
                 </form>
             </div>
@@ -106,25 +94,21 @@
     </div>
 
     <style scoped>
+        h2{
+            font-family: "Knewave", system-ui;
+            font-size: 3rem;
+        }
         .card{
             width: 50%;
-            
             border-bottom-left-radius: 5%;
             border-bottom-right-radius: 5%;
-            position: relative;
         }
-        .card-top {
-            position: absolute;
-            top: 8%;
-            left: 22%;
-        }
+
         .card-img-top{
-            width: 100%;
             height: 200px;
-            object-fit: cover;
+            /* object-fit: cover; */
             background-position: center;
-            background-image: url('https://static.vecteezy.com/system/resources/thumbnails/005/182/631/small_2x/orange-abstract-background-with-modern-style-wave-background-yellow-gradient-abstract-background-vector.jpg');
-            
+            background-image: url('/bg.jpg');   
         }
     </style>
 

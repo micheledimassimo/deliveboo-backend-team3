@@ -31,8 +31,8 @@ class TypologyController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'typologies' => 'required|array|min:1|max:4', // Deve essere un array con almeno un elemento
-            'typologies.*' => 'integer|exists:typologies,id', // Ogni elemento deve esistere nella tabella 'typologies'
+            'typologies' => 'required|array|min:1|max:4', 
+            'typologies.*' => 'integer|exists:typologies,id', 
         ]);
     }
 

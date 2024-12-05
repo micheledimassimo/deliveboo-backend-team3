@@ -51,13 +51,11 @@ class RegisteredUserController extends Controller
             'address' => ['required', 'string','min:5', 'max:128'],
             'phone_number' => ['required', 'string','min:5', 'max:64', 'regex:/^[\d+\-() ]+$/'],
             'img' => ['nullable', 'image', 'max:2048'],
-            'typologies' => 'required|array|min:1|max:4', // Deve essere un array con almeno un elemento
-            'typologies.*' => 'integer|exists:typologies,id', // Ogni elemento deve esistere nella tabella 'typologies'
+            'typologies' => 'required|array|min:1|max:4', 
+            'typologies.*' => 'integer|exists:typologies,id', 
         ]);
-        
 
         $data = $request->all();
-
         
         if (isset($data['restaurant_name']) && isset($data['address']) && isset($data['phone_number']) ) {
             $user = User::create([
@@ -91,7 +89,6 @@ class RegisteredUserController extends Controller
                 'img' => $data['img']
             ]);
         }
-
         
         if (isset($data['typologies']) && is_array($data['typologies'])) {
             $typologies = Typology::whereIn('id', $data['typologies'])->get();

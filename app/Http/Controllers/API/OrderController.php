@@ -20,17 +20,14 @@ class OrderController extends Controller
 {   
     public function index(Request $request)
     {
-        // Recupera lo slug del ristorante dalla richiesta
         $restaurantSlug = $request->input('restaurant_slug');
 
-        // Verifica se lo slug è stato fornito
         if (!$restaurantSlug) {
             return response()->json([
                 'error' => 'Restaurant slug is required.',
             ], 400);
         }
 
-        // Filtra gli ordini in base allo slug del ristorante
         $ordersWithRestaurants = Order::whereHas('menuItems.restaurant', function ($query) use ($restaurantSlug) {
             $query->where('slug', $restaurantSlug);
         })
@@ -39,19 +36,19 @@ class OrderController extends Controller
         ->map(function ($order) {
 
             $totalPrice = $order->menuItems->reduce(function ($total, $menuItem) {
-            $quantity = $menuItem->pivot->quantity ?? 1; // Quantità (default 1 se non specificata)
-            $price = $menuItem->price ?? 0; // Prezzo (default 0 se non specificato)
-            return $total + ($quantity * $price); // Somma al totale
+            $quantity = $menuItem->pivot->quantity ?? 1; 
+            $price = $menuItem->price ?? 0; 
+            return $total + ($quantity * $price); 
 
             }, 0);
             return [
                 'order_id' => $order->id,
-                'total_price' => $totalPrice, // Prezzo totale
+                'total_price' => $totalPrice, 
                 'menu_items' => $order->menuItems->map(function ($menuItem) {
                     return [
                         'item_name' => $menuItem->item_name,
-                        'quantity' => $menuItem->pivot->quantity ?? null, // Corretto accesso alla quantità
-                        'restaurant_slug' => $menuItem->restaurant->slug ?? null, // Gestione null
+                        'quantity' => $menuItem->pivot->quantity ?? null, 
+                        'restaurant_slug' => $menuItem->restaurant->slug ?? null, 
                     ];
                 }),
             ];
@@ -74,21 +71,18 @@ class OrderController extends Controller
         'items.*.quantity' => 'required|integer|min:1',
     ]);
 
-    // Recupera il ristorante tramite lo slug
     $restaurant = Restaurant::where('slug', $data['restaurant_slug'])->with('user')->first();
 
     if (!$restaurant) {
         return response()->json(['error' => 'Restaurant not found.'], 404);
     }
 
-    // Recupera l'email dello user collegato al ristorante
     $restaurantUserEmail = $restaurant->user->email ?? null;
 
     if (!$restaurantUserEmail) {
         return response()->json(['error' => 'Restaurant owner email not found.'], 404);
     }
 
-    // Crea l'ordine
     $order = Order::create([
         'restaurant_slug' => $data['restaurant_slug'],
         'customer_email' => $data['customer']['email'],
@@ -98,14 +92,11 @@ class OrderController extends Controller
         'total_price' => $data['total_price'],
     ]);
 
-    // Invia una mail al cliente
     $customerMail = $data['customer']['email'];
     Mail::to($customerMail)->send(new NewContact());
 
-    // Invia una mail allo user del ristorante (opzionale)
     Mail::to($restaurantUserEmail)->send(new NewOrder());
 
-    // Collega gli articoli all'ordine
     foreach ($data['items'] as $item) {
         $order->menuItems()->attach($item['id'], ['quantity' => $item['quantity']]);
     }
@@ -113,7 +104,7 @@ class OrderController extends Controller
     return response()->json([
         'success' => true,
         'data' => $order,
-        'restaurant_user_email' => $restaurantUserEmail, // Ritorna anche l'email dello user del ristorante
+        'restaurant_user_email' => $restaurantUserEmail, 
     ]);
 }
 

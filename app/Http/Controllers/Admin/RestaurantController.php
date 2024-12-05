@@ -147,17 +147,14 @@ class RestaurantController extends Controller
 
         $restaurant = Restaurant::with('menuItems')->where('slug', $slug)->firstOrFail();
 
-        // Autorizzazione
         $this->authorize('view', $restaurant);
 
-        // Recupera gli ordini associati al ristorante
         $orders = Order::whereHas('menuItems', function ($query) use ($restaurant) {
             $query->where('restaurant_id', $restaurant->id);
         })->with(['menuItems' => function ($query) {
-            $query->withPivot('quantity'); // Include la quantità dalla tabella pivot
+            $query->withPivot('quantity'); 
         }])->get();
 
-        // Elabora i dati
         $orders = $orders->map(function ($order) {
             $totalPrice = $order->menuItems->reduce(function ($total, $menuItem) {
                 $quantity = $menuItem->pivot->quantity ?? 1;
@@ -169,15 +166,15 @@ class RestaurantController extends Controller
             return [
                 'order_id' => $order->id,
                 'total_price' => $totalPrice,
-                'customer_email' => $order->customer_email ?? 'Non disponibile', // Email cliente
-                'customer_address' => $order->customer_address ?? 'Non disponibile', // Indirizzo cliente
-                'customer_number' => $order->customer_number ?? 'Non disponibile', // Numero cliente
-                'customer_name' => $order->customer_name ?? 'Non disponibile', // Nome cliente
+                'customer_email' => $order->customer_email ?? 'Non disponibile', 
+                'customer_address' => $order->customer_address ?? 'Non disponibile', 
+                'customer_number' => $order->customer_number ?? 'Non disponibile', 
+                'customer_name' => $order->customer_name ?? 'Non disponibile', 
                 'created_at' => $order->created_at,
                 'menu_items' => $order->menuItems->map(function ($menuItem) {
                     return [
                         'item_name' => $menuItem->item_name,
-                        'quantity' => $menuItem->pivot->quantity ?? 1, // Quantità dalla pivot
+                        'quantity' => $menuItem->pivot->quantity ?? 1, 
                     ];
                 }),
             ];
@@ -187,19 +184,14 @@ class RestaurantController extends Controller
         return view('admin.restaurants.orders', compact('restaurant', 'orders'));
 }
 
-    // statistiche
     public function statistics($slug, Request $request)
     {
-        // Recupera il ristorante tramite lo slug
         $restaurant = Restaurant::where('slug', $slug)->firstOrFail();
 
-        // Anno selezionato (predefinito: anno corrente)
         $selectedYear = $request->input('year', date('Y'));
 
-        // Recupera gli ID dei menu items del ristorante
         $menuItemIds = $restaurant->menuItems()->pluck('id');
 
-        // Ottieni il conteggio degli ordini per mese e per anno selezionato
         $ordersPerMonth = Order::join('menu_item_order', 'orders.id', '=', 'menu_item_order.order_id')
             ->whereIn('menu_item_order.menu_item_id', $menuItemIds)
             ->whereYear('orders.created_at', $selectedYear)
@@ -208,13 +200,11 @@ class RestaurantController extends Controller
             ->orderBy('month')
             ->get();
 
-        // Prepara i dati per il grafico degli ordini
         $ordersData = array_fill(0, 12, 0);
         foreach ($ordersPerMonth as $order) {
             $ordersData[$order->month - 1] = $order->total;
         }
 
-        // Guadagni per mese
         $earningsPerMonth = Order::join('menu_item_order', 'orders.id', '=', 'menu_item_order.order_id')
             ->join('menu_items', 'menu_item_order.menu_item_id', '=', 'menu_items.id') // Unione con la tabella menu_items per ottenere il prezzo
             ->whereIn('menu_item_order.menu_item_id', $menuItemIds)
@@ -224,29 +214,25 @@ class RestaurantController extends Controller
             ->orderBy('month')
             ->get();
 
-        // Prepara i dati per il grafico dei guadagni
         $earningsData = array_fill(0, 12, 0);
         foreach ($earningsPerMonth as $earning) {
             $earningsData[$earning->month - 1] = $earning->total;
         }
 
-        // Ottieni gli anni disponibili per il filtro
         $years = Order::join('menu_item_order', 'orders.id', '=', 'menu_item_order.order_id')
-            ->join('menu_items', 'menu_item_order.menu_item_id', '=', 'menu_items.id') // Unione con la tabella menu_items
+            ->join('menu_items', 'menu_item_order.menu_item_id', '=', 'menu_items.id') 
             ->whereIn('menu_item_order.menu_item_id', $menuItemIds)
             ->selectRaw('YEAR(orders.created_at) as year')
             ->distinct()
             ->pluck('year');
 
-        // Risposta AJAX per aggiornare i grafici
         if ($request->ajax()) {
             return response()->json([
                 'ordersData' => $ordersData,
                 'earningsData' => $earningsData,
             ]);
         }
-
-        // Ritorna la vista con i dati iniziali
+ 
         return view('admin.restaurants.statistics', compact(
             'restaurant',
             'ordersData',

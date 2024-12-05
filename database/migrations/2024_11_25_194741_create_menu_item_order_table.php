@@ -13,27 +13,21 @@ return new class extends Migration
     {
         Schema::create('menu_item_order', function (Blueprint $table) {
             $table->foreignId('menu_item_id')
-                   ->constrained()
-                   ->onUpdate('cascade')
-                   ->onDelete('cascade');
-
+                  ->constrained()
+                  ->onUpdate('cascade')
+                  ->onDelete('cascade');
             $table->foreignId('order_id')
-                    ->constrained()
-                    ->onUpdate('cascade')
-                    ->onDelete('cascade');
-
+                  ->constrained()
+                  ->onUpdate('cascade')
+                  ->onDelete('cascade');
             $table->integer('quantity')->nullable();        
-
             $table->timestamps();
-
             $table->primary([
                 'menu_item_id',
                 'order_id'
                 ]);
-
         });
     }
-
     /**
      * Reverse the migrations.
      */

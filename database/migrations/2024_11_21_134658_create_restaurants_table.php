@@ -25,10 +25,7 @@ return new class extends Migration
                   ->onDelete('cascade');
             $table->timestamps();
         });
-
-        // commento
     }
-
     /**
      * Reverse the migrations.
      */

@@ -40,7 +40,7 @@ class RestaurantSeeder extends Seeder
             Restaurant::create([
                 'restaurant_name' => $restaurant['name'], 
                 'address' => fake()->address(),
-                'phone_number' => fake()->phoneNumber(),
+                'phone_number' => fake()->e164PhoneNumber() ,
                 'img' => $restaurant['image_url'], 
                 'slug' => $slug,
                 'user_id' => $user->id,

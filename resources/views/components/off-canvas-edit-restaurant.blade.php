@@ -127,7 +127,7 @@
                        </div>
                     </div>
                     <div class="row">
-                        <div class="col-6 col-sm-12">
+                        <div class="col-md-6 col-sm-12">
                             <div class="mb-3">
                                 <label for="img" class="form-label text-light fs-3">
                                     Immagine del Ristorante

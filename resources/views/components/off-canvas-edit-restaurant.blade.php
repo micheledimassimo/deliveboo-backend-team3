@@ -4,10 +4,14 @@
     <div>
         <div class="offcanvas restaurant-offcanvas offcanvas-top my-bg-lightdark" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title text-light" id="offcanvasTopLabel">Modifica dettagli ristorante</h5>
+                
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-            <div class="offcanvas-body">
+            <div class="offcanvas-body restaurant-offcanvas-body">
+                <h3 class="offcanvas-title text-light mb-3" id="offcanvasTopLabel">Modifica dettagli ristorante</h3>
+                <p class="text-white">
+                    <span class="text-danger text">*</span> Tutti i campi sono obbligatori
+                </p>
                 <form method="POST" action="{{ route('admin.restaurants.update', ['restaurant' => $restaurant->id]) }}" enctype="multipart/form-data">
                     @method('PUT')
                     @csrf
@@ -52,7 +56,7 @@
                         </div>
                     </div>
 
-                    <div class="row mb-3">
+                    <div class="row">
                         <div class="col-md-6 col-sm-12">
                             <div class="mb-3">
                                 <label for="phone_number" class="form-label text-light fs-3">
@@ -71,14 +75,16 @@
                                     Il numero di telefono è obbligatorio (i caratteri ammessi sono: numeri + - () ).
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                
-                            </div>
-                            <div class="text-light">
-                                <label for="typologies" class="form-label fs-2">
-                                    Tipologie
+                            
+                            
+                        </div>
+
+                       <div class="col-md-6 col-sm-12">
+                            <div class="text-light p-0 mb-3">
+                                <label for="typologies" class="form-label fs-3">
+                                    <span class="text-danger t">*</span> Tipologie
                                 </label>
-                                <div class="custom-dropdown">
+                                <div class="custom-dropdown p-0 m-0">
                                     <button type="button" class="dropdown-button">
                                         <div class="row">
                                             <div class="col-11">
@@ -118,9 +124,10 @@
                                     Seleziona almeno una tipologia.
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="col-md-6 col-sm-12">
+                       </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 col-sm-12">
                             <div class="mb-3">
                                 <label for="img" class="form-label text-light fs-3">
                                     Immagine del Ristorante
@@ -135,30 +142,30 @@
                                 <div class="invalid-feedback">
                                     L'immagine deve essere un file valido e non superare i 2MB.
                                 </div>
-                                @if ($restaurant->img)
-                                    <div class="mt-3 position-relative img-preview-wrapper">
-                                        @if (filter_var($restaurant->img, FILTER_VALIDATE_URL))
-                                        <img src="{{ $restaurant->img }}" alt="{{ $restaurant->restaurant_name }}" class="img-thumbnail">
-                                        @else
-                                        <img src="{{ asset('storage/'.$restaurant->img) }}" alt="{{ $restaurant->restaurant_name }}" class="img-thumbnail">
-                                        @endif
-                                        
-                                        <button type="button" class="remove-img-btn">
-                                            <i class="fa-solid fa-xmark"></i>
-                                        </button>
-                                        <input type="checkbox" id="remove_img" name="remove_img" class="d-none">
-                                    </div>
-                                @endif
                             </div>
                         </div>
-                        
-                        <div class="text-center my-5">
-                            <button type="submit" class="btn btn-success btn-lg">
-                                <i class="fa-solid fa-pen-to-square"></i> Modifica
-                            </button>
+                        <div>
+                            @if ($restaurant->img)
+                            <div class="position-relative img-preview-wrapper">
+                                @if (filter_var($restaurant->img, FILTER_VALIDATE_URL))
+                                <img src="{{ $restaurant->img }}" alt="{{ $restaurant->restaurant_name }}" class="img-thumbnail">
+                                @else
+                                <img src="{{ asset('storage/'.$restaurant->img) }}" alt="{{ $restaurant->restaurant_name }}" class="img-thumbnail">
+                                @endif
+                                
+                                <button type="button" class="remove-img-btn">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </button>
+                                <input type="checkbox" id="remove_img" name="remove_img" class="d-none">
+                            </div>
+                            @endif
                         </div>
                     </div>
-                    
+                    <div class="text-center my-5">
+                        <button type="submit" class="btn btn-success btn-lg">
+                            <i class="fa-solid fa-pen-to-square"></i> Modifica
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>

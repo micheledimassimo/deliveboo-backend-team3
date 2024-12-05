@@ -145,46 +145,46 @@ class RestaurantController extends Controller
     public function orders($slug)
     {
 
-    $restaurant = Restaurant::with('menuItems')->where('slug', $slug)->firstOrFail();
+        $restaurant = Restaurant::with('menuItems')->where('slug', $slug)->firstOrFail();
 
-    // Autorizzazione
-    $this->authorize('view', $restaurant);
+        // Autorizzazione
+        $this->authorize('view', $restaurant);
 
-    // Recupera gli ordini associati al ristorante
-    $orders = Order::whereHas('menuItems', function ($query) use ($restaurant) {
-        $query->where('restaurant_id', $restaurant->id);
-    })->with(['menuItems' => function ($query) {
-        $query->withPivot('quantity'); // Include la quantità dalla tabella pivot
-    }])->get();
+        // Recupera gli ordini associati al ristorante
+        $orders = Order::whereHas('menuItems', function ($query) use ($restaurant) {
+            $query->where('restaurant_id', $restaurant->id);
+        })->with(['menuItems' => function ($query) {
+            $query->withPivot('quantity'); // Include la quantità dalla tabella pivot
+        }])->get();
 
-    // Elabora i dati
-    $orders = $orders->map(function ($order) {
-        $totalPrice = $order->menuItems->reduce(function ($total, $menuItem) {
-            $quantity = $menuItem->pivot->quantity ?? 1;
-            $price = $menuItem->price ?? 0;
+        // Elabora i dati
+        $orders = $orders->map(function ($order) {
+            $totalPrice = $order->menuItems->reduce(function ($total, $menuItem) {
+                $quantity = $menuItem->pivot->quantity ?? 1;
+                $price = $menuItem->price ?? 0;
 
-            return $total + ($quantity * $price);
-        }, 0);
+                return $total + ($quantity * $price);
+            }, 0);
 
-        return [
-            'order_id' => $order->id,
-            'total_price' => $totalPrice,
-            'customer_email' => $order->customer_email ?? 'Non disponibile', // Email cliente
-            'customer_address' => $order->customer_address ?? 'Non disponibile', // Indirizzo cliente
-            'customer_number' => $order->customer_number ?? 'Non disponibile', // Numero cliente
-            'customer_name' => $order->customer_name ?? 'Non disponibile', // Nome cliente
-            'created_at' => $order->created_at,
-            'menu_items' => $order->menuItems->map(function ($menuItem) {
-                return [
-                    'item_name' => $menuItem->item_name,
-                    'quantity' => $menuItem->pivot->quantity ?? 1, // Quantità dalla pivot
-                ];
-            }),
-        ];
-    });
+            return [
+                'order_id' => $order->id,
+                'total_price' => $totalPrice,
+                'customer_email' => $order->customer_email ?? 'Non disponibile', // Email cliente
+                'customer_address' => $order->customer_address ?? 'Non disponibile', // Indirizzo cliente
+                'customer_number' => $order->customer_number ?? 'Non disponibile', // Numero cliente
+                'customer_name' => $order->customer_name ?? 'Non disponibile', // Nome cliente
+                'created_at' => $order->created_at,
+                'menu_items' => $order->menuItems->map(function ($menuItem) {
+                    return [
+                        'item_name' => $menuItem->item_name,
+                        'quantity' => $menuItem->pivot->quantity ?? 1, // Quantità dalla pivot
+                    ];
+                }),
+            ];
+        });
 
-    $orders = $orders->sortByDesc('created_at');
-    return view('admin.restaurants.orders', compact('restaurant', 'orders'));
+        $orders = $orders->sortByDesc('created_at');
+        return view('admin.restaurants.orders', compact('restaurant', 'orders'));
 }
 
     // statistiche
@@ -216,9 +216,10 @@ class RestaurantController extends Controller
 
         // Guadagni per mese
         $earningsPerMonth = Order::join('menu_item_order', 'orders.id', '=', 'menu_item_order.order_id')
+            ->join('menu_items', 'menu_item_order.menu_item_id', '=', 'menu_items.id') // Unione con la tabella menu_items per ottenere il prezzo
             ->whereIn('menu_item_order.menu_item_id', $menuItemIds)
             ->whereYear('orders.created_at', $selectedYear)
-            ->selectRaw('MONTH(orders.created_at) as month, SUM(orders.total_price) as total')
+            ->selectRaw('MONTH(orders.created_at) as month, SUM(menu_item_order.quantity * menu_items.price) as total') // Utilizza il prezzo dalla tabella menu_items
             ->groupBy('month')
             ->orderBy('month')
             ->get();
@@ -231,6 +232,7 @@ class RestaurantController extends Controller
 
         // Ottieni gli anni disponibili per il filtro
         $years = Order::join('menu_item_order', 'orders.id', '=', 'menu_item_order.order_id')
+            ->join('menu_items', 'menu_item_order.menu_item_id', '=', 'menu_items.id') // Unione con la tabella menu_items
             ->whereIn('menu_item_order.menu_item_id', $menuItemIds)
             ->selectRaw('YEAR(orders.created_at) as year')
             ->distinct()

@@ -11,11 +11,6 @@ use App\Models\Typology;
 class TypologyController extends Controller
 {
     public function index(){
-
-        // $restaurants = Restaurant::get();
-
-        // eager loading con with per portarsi dietro le categorie
-        // paginazione per mostrarne 5 a pagina
         $typologies = Typology::orderBy('typology_name', 'asc')->get();
 
         return response()->json([

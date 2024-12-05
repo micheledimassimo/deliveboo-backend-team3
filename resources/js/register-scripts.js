@@ -18,17 +18,13 @@
 
     listItems.forEach(li => {
         li.addEventListener('click', function (event) {
-            // Evita di attivare la checkbox se l'utente ha cliccato direttamente su di essa
             if (event.target.tagName === 'INPUT') return;
 
-            // Trova la checkbox associata
             const checkboxId = this.getAttribute('data-checkbox-id');
             const checkbox = document.getElementById(checkboxId);
 
             if (checkbox) {
-                // Cambia lo stato della checkbox
                 checkbox.checked = !checkbox.checked;
-                // Triggera l'evento 'change' per aggiornare lo stato se necessario
                 checkbox.dispatchEvent(new Event('change'));
             }
         });
@@ -37,16 +33,14 @@
     function handleCheckboxChange() {
         const selectedCheckboxes = [...checkboxes].filter(cb => cb.checked);
         
-        // Disabilita checkbox e <li> non selezionati se sono selezionate 4 opzioni
         if (selectedCheckboxes.length >= 4) {
             checkboxes.forEach(cb => {
                 if (!cb.checked) {
-                    cb.disabled = true; // Disable unchecked checkboxes
-                    findParentLi(cb).classList.add('disabled'); // Disable corresponding <li>
+                    cb.disabled = true; 
+                    findParentLi(cb).classList.add('disabled'); 
                 }
             });
         } else {
-            // Riabilita tutti i checkbox e <li> se meno di 4 sono selezionati
             checkboxes.forEach(cb => {
                 cb.disabled = false;
                 findParentLi(cb).classList.remove('disabled');

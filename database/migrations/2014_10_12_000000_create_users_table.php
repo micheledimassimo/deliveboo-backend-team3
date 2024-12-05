@@ -20,11 +20,7 @@ return new class extends Migration
             $table->string('password', 64);
             $table->string('p_iva', 11);
             $table->rememberToken();
-            
             $table->timestamps();
-
-            
-
         });
     }
 

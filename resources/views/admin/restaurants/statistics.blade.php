@@ -13,6 +13,9 @@
             <h3 class="text-white mb-0">Statistiche</h3>
 
             <select id="yearSelect" class="form-select-sm px-2 text-light my-bg-lightdark mb-2">
+                <option value="last12months" {{ $selectedYear === 'last12months' ? 'selected' : '' }}>
+                    Ultimi 12 Mesi
+                </option>
                 @foreach ($years as $year)
                     <option value="{{ $year }}" {{ $year == $selectedYear ? 'selected' : '' }}>
                         Anno {{ $year }}
@@ -64,8 +67,9 @@
     };
 
     // Dati iniziali
-    let ordersData = @json($ordersData);
-    let earningsData = @json($earningsData);
+    let ordersData = @json($statistics['ordersData']);
+    let earningsData = @json($statistics['earningsData']);
+    let months = @json($statistics['months']); // Aggiungi i mesi dinamici
 
     // Funzione per creare grafico ordini
     function renderOrdersChart(data) {
@@ -76,10 +80,7 @@
         ordersChart = new Chart(ordersCtx, {
             type: 'bar',
             data: {
-                labels: [
-                    'Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno',
-                    'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre',
-                ],
+                labels: months, // Usa i mesi dinamici qui
                 datasets: [{
                     label: 'Numero di Ordini',
                     data: data,
@@ -101,10 +102,7 @@
         earningsChart = new Chart(earningsCtx, {
             type: 'line',
             data: {
-                labels: [
-                    'Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno',
-                    'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre',
-                ],
+                labels: months, // Usa i mesi dinamici qui
                 datasets: [{
                     label: 'Guadagni €',
                     data: data,
@@ -117,13 +115,8 @@
         });
     }
 
-    // Inizializza i grafici
-    renderOrdersChart(ordersData);
-    renderEarningsChart(earningsData);
-
-    // Cambia anno e aggiorna entrambi i grafici
-    $('#yearSelect').on('change', function () {
-        const selectedYear = $(this).val();
+    // Funzione per gestire la selezione dell'anno
+    function getYearData(selectedYear) {
         const url = '{{ route("admin.restaurants.statistics", $restaurant->slug) }}';
 
         $.ajax({
@@ -133,12 +126,24 @@
             success: function (response) {
                 renderOrdersChart(response.ordersData);
                 renderEarningsChart(response.earningsData);
+                months = response.months; // Aggiorna dinamicamente i mesi
             },
             error: function () {
                 alert('Errore nel caricamento dei dati.');
             }
         });
+    }
+
+    // Se non è stato selezionato nessun anno, usa l'anno corrente come predefinito
+    let selectedYear = $('#yearSelect').val() || new Date().getFullYear(); // Anno corrente se non selezionato
+    getYearData(selectedYear);
+
+    // Cambia anno e aggiorna entrambi i grafici
+    $('#yearSelect').on('change', function () {
+        const selectedYear = $(this).val();
+        getYearData(selectedYear);
     });
 </script>
+
 
 @endsection

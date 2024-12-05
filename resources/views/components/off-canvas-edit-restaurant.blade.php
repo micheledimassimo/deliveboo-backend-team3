@@ -161,7 +161,7 @@
                             @endif
                         </div>
                     </div>
-                    <div class="text-center my-5">
+                    <div class="text-center mt-5">
                         <button type="submit" class="btn btn-success btn-lg">
                             <i class="fa-solid fa-pen-to-square"></i> Modifica
                         </button>

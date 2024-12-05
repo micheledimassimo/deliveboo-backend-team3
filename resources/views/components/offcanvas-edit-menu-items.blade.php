@@ -1,6 +1,5 @@
 <div>
     <div class="offcanvas offcanvas-end my-bg-lightdark" data-bs-scroll="true" tabindex="-1" id="offcanvasWithEdit{{ $menuItem->id }}" aria-labelledby="offcanvasWithEditLabel">
-        {{-- bottone chiusura offcanvas --}}
         <div class="offcanvas-header">
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
@@ -9,8 +8,6 @@
             <div class="card my-bg-lightdark text-white border-0">
                 <div class="card-body">
                     <h5 class="card-title" id="offcanvasWithEditLabel">Modifica i dettagli del piatto</h5>
-
-                    {{-- form --}}
                     <form action="{{ route('admin.menu_items.update', [$menuItem ->id]) }}" method="POST" enctype="multipart/form-data" >
                         @csrf
                         @method ('PUT')

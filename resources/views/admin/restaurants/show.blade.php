@@ -38,17 +38,13 @@
 
                 {{-- info Ristorante --}}
                 <div class="col-12 col-lg">
-                    <!-- Nome ristorante -->
                     <h3 class="card-title">{{ $restaurant->restaurant_name }}</h3>
-                    <!-- Indirizzo -->
                     <p class="mb-2">
                         <strong>Indirizzo:</strong> {{ $restaurant->address }}
                     </p>
-                    <!-- Telefono -->
                     <p class="mb-2">
                         <strong>Telefono:</strong> {{ $restaurant->phone_number }}
                     </p>
-                    <!-- Tipologie -->
                     <p class="m-0">
                         <strong>Tipologie:</strong>
                         @foreach($restaurant->typologies as $typology)

@@ -182,18 +182,16 @@ class RestaurantController extends Controller
 
         $orders = $orders->sortByDesc('created_at');
         return view('admin.restaurants.orders', compact('restaurant', 'orders'));
-}
+    }
 
-    // statistiche
     public function statistics($slug, Request $request)
-{
-    // Recupera il ristorante tramite lo slug
+    {
     $restaurant = Restaurant::where('slug', $slug)->firstOrFail();
 
-    // Anno selezionato (predefinito: anno corrente)
+    $this->authorize('view', $restaurant);
+
     $selectedYear = $request->input('year', date('Y'));
     
-    // Ottieni gli anni disponibili per il filtro
     $years = Order::join('menu_item_order', 'orders.id', '=', 'menu_item_order.order_id')
             ->join('menu_items', 'menu_item_order.menu_item_id', '=', 'menu_items.id')
             ->whereIn('menu_item_order.menu_item_id', $restaurant->menuItems()->pluck('id'))
@@ -201,21 +199,16 @@ class RestaurantController extends Controller
             ->distinct()
             ->pluck('year');
             
-    // Determina l'intervallo temporale in base alla scelta
     if ($selectedYear === 'last12months') {
-        // Se si tratta degli ultimi 12 mesi, calcola l'intervallo
         $startDate = now()->subMonths(12)->startOfMonth();
         $endDate = now()->endOfMonth();
     } else {
-        // Altrimenti, usa l'anno selezionato
         $startDate = now()->setYear($selectedYear)->startOfYear();
         $endDate = now()->setYear($selectedYear)->endOfYear();
     }
 
-    // Recupera i dati di statistiche per l'intervallo selezionato
     $statistics = $this->getStatisticsData($restaurant, $startDate, $endDate);
 
-    // Risposta AJAX per aggiornare i grafici
     if ($request->ajax()) {
         return response()->json([
             'ordersData' => $statistics['ordersData'],
@@ -224,20 +217,18 @@ class RestaurantController extends Controller
         ]);
     }
 
-    // Ritorna la vista con i dati iniziali
     return view('admin.restaurants.statistics', compact(
         'restaurant',
         'statistics',
         'years',
         'selectedYear'
     ));
-}
+    }
 
 private function getStatisticsData($restaurant, $startDate, $endDate)
 {
     $menuItemIds = $restaurant->menuItems()->pluck('id');
 
-    // Recupera i dati aggregati per ordini e guadagni in un'unica query
     $statistics = Order::join('menu_item_order', 'orders.id', '=', 'menu_item_order.order_id')
         ->join('menu_items', 'menu_item_order.menu_item_id', '=', 'menu_items.id')
         ->whereIn('menu_item_order.menu_item_id', $menuItemIds)
@@ -249,20 +240,17 @@ private function getStatisticsData($restaurant, $startDate, $endDate)
         ->orderBy('month')
         ->get();
 
-    // Prepara i dati per il grafico degli ordini e guadagni
     $ordersData = [];
     $earningsData = [];
     $months = [];
 
-    // Prepara i mesi e i dati vuoti iniziali
     for ($date = $startDate->copy(); $date <= $endDate; $date->addMonth()) {
-        $month = $date->format('Y-m'); // Usa il formato "Y-m" per corrispondere al formato della query
+        $month = $date->format('Y-m'); 
         
         $ordersData[$month] = 0;
         $earningsData[$month] = 0;
     }
 
-    // Popola i dati con i risultati delle query
     foreach ($statistics as $stat) {
         $ordersData[$stat->month] = $stat->total_orders;
         $earningsData[$stat->month] = $stat->total_earnings;

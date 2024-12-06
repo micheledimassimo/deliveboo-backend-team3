@@ -27,4 +27,14 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    public function render($request, Throwable $exception)
+    {
+        if ($exception instanceof \Illuminate\Auth\Access\AuthorizationException) {
+            // Redirect to a custom 403 page or show a custom view
+            return response()->view('errors.403', [], 403);
+        }
+
+        return parent::render($request, $exception);
+    }
 }

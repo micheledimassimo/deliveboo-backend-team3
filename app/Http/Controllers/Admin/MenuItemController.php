@@ -137,7 +137,7 @@ class MenuItemController extends Controller
 
             'item_name' => 'required|min:3|max:255',
             'description' => 'required|min:10|max:1024',
-            'price'=> 'required|numeric',
+            'price'=> 'required|numeric|min:0.01|max:999',
             'is_visible' => 'nullable|boolean',
             'image' => 'nullable|image|max:1024',
             'restaurant_id' => 'nullable|exists:restaurants,id',

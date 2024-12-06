@@ -17,7 +17,7 @@ class OrderSeeder extends Seeder
         $restaurants = Restaurant::all();
 
         foreach ($restaurants as $restaurant) {
-            foreach (range(1, rand(0, 10)) as $index) {
+            foreach (range(1, rand(5, 10)) as $index) {
                 $order = Order::create([
                     'customer_email' => fake()->email(),
                     'customer_address' => fake()->address(),

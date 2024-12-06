@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('item_name', 64);
             $table->string('slug');
-            $table->text('description', 1024);
-            $table->decimal('price', 4, 2);
+            $table->text('description');
+            $table->decimal('price', 5, 2);
             $table->boolean('is_visible')
                     ->nullable()->default(false);
             $table->string('image', 2048)

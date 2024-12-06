@@ -209,7 +209,7 @@
                                             id="phone_number"
                                             name="phone_number"
                                             minlength="5"
-                                            maxlength="64"
+                                            maxlength="32"
                                             placeholder="Inserisci qui il telefono della tua attività.."
                                             value="{{ old('phone_number') }}"
                                             required>
@@ -373,6 +373,16 @@
 
         #typologies {
             font-size: 0.9rem;
+        }
+
+        @media screen and (max-width: 992px) {
+            h2 {
+                font-size: 2rem;
+                
+            }
+            #img-container {
+                padding: 10px;
+            }
         }
     </style>
 

@@ -28,7 +28,7 @@
                 <div class="d-flex flex-column vh-100 flex-shrink-0 fixed-top py-3 text-white side-bar">
 
                     <h3 class="my-4 text-center">
-                        <i class="fa-solid fa-burger"></i><span> DeliveBoo</span>
+                        <span> DeliveBoo</span>
                     </h3>
 
                     <ul class="nav nav-pills mb-auto d-flex flex-column">

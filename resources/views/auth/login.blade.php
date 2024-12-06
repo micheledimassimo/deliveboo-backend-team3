@@ -110,6 +110,23 @@
             background-position: center;
             background-image: url('/bg.jpg');   
         }
+
+
+        @media (max-width:1050px){
+
+            .card{
+
+                width: 80%;
+            }
+        }
+
+        @media (max-width:768px){
+
+            .card{
+
+                width: 100%;
+            }
+        }
     </style>
 
 @endsection

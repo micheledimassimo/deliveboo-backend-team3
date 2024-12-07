@@ -63,7 +63,7 @@ class OrderController extends Controller
         'restaurant_slug' => 'required|string',
         'customer.email' => 'required|email|max:255',
         'customer.address' => 'required|string|max:255',
-        'customer.number' => 'required|string|min:10|max:15',
+        'customer.number' => 'required|string|min:10|max:18',
         'customer.name' => 'required|string|min:3|max:64',
         'total_price' => 'required|numeric|min:1',
         'items' => 'required|array',

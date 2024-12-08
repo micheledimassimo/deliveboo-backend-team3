@@ -6,51 +6,7 @@
 
 @vite('resources/js/register-scripts.js')
 
-    @error('phone_number')
-        <div class="alert alert-danger mb-4">
-            <ul class="mb-0">
-                <li>
-                    Il numero di telefono contiene caratteri non permessi (sono ammessi + - ())
-                </li>
-            </ul>
-        </div>
-    @enderror
-
-    @error('p_iva')
-        <div class="alert alert-danger mb-4">
-            <ul class="mb-0">
-                <li>
-                    Sono ammessi solo numeri in partita IVA
-                </li>
-            </ul>
-        </div>
-    @enderror
-
-    @error('typologies')
-        <div class="alert alert-danger mb-4">
-            Seleziona almeno una tipologia
-        </div>
-    @enderror
-
-    @error('email')
-        <div class="alert alert-danger mb-4">
-            <ul class="mb-0">
-                <li>
-                    Email già registrata
-                </li>
-            </ul>
-        </div>
-    @enderror
-
-    @error('password')
-        <div class="alert alert-danger mb-4">
-            <ul class="mb-0">
-                <li>
-                    Le password non coincidono
-                </li>
-            </ul>
-        </div>
-    @enderror
+    
     
     <div class="container login-container my-2">
         
@@ -268,6 +224,11 @@
                                                 @endforeach
                                             </ul>
                                         </div>
+                                        @error('typologies')
+                                            <div class="text-danger ps-2 mb-4">
+                                                Seleziona almeno una tipologia
+                                            </div>
+                                        @enderror
                                     </div>
                                 </div>
 

@@ -1,5 +1,18 @@
+// Import Bootstrap
 @import "~bootstrap/scss/bootstrap";
 
-main {
-    background-color: lightcoral;
-}
+// Import General Layouts
+@import "layouts/general";
+
+// Import Partials (Variables & Mixins)
+@import "partials/variables";
+@import "partials/mixins";
+
+// Import Component Styles
+@import "components/restaurant-header";
+@import "components/menu-item-card";
+@import "components/offcanvas-general";
+@import "components/side-bar";
+@import "components/order";
+@import "components/statistics";
+@import "components/register-page";

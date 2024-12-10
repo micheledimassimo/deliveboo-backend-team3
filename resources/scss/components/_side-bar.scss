@@ -1,0 +1,25 @@
+.side-bar {
+    width: 15%;
+    background-color: #FF914D;
+}
+
+.fit-content {
+    width: fit-content;
+}
+
+
+@media (max-width: 1050px) {
+    .side-bar {
+        i {
+            display: block;
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    .side-bar {
+        span {
+            display: none;
+        }
+    }
+}

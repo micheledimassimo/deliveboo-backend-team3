@@ -1,0 +1,599 @@
+{
+    "McDonald's": [
+        {
+            "name": "Big Mac",
+            "description": "Il famoso panino con due hamburger di manzo, lattuga, formaggio, cipolla, sottaceti e salsa speciale.",
+            "price": 5.99,
+            "image": "https://images.openfoodfacts.org/images/products/200/000/000/2603/front_fr.107.full.jpg"
+        },
+        {
+            "name": "Quarter Pounder with Cheese",
+            "description": "Un hamburger di manzo da 113 grammi con formaggio cheddar, cipolle, sottaceti e ketchup.",
+            "price": 6.49,
+            "image": "https://s7d1.scene7.com/is/image/mcdonaldsstage/DC_202201_0007-005_QuarterPounderwithCheese_1564x1564:product-header-mobile?wid=1313&hei=1313&dpr=off"
+        },
+        {
+            "name": "McChicken",
+            "description": "Un filetto di pollo croccante con lattuga e maionese, servito su un panino morbido.",
+            "price": 4.29,
+            "image": "https://s7d1.scene7.com/is/image/mcdonalds/PRODUCTS-HERO-WEBSITE_832x472-McChicken:nutrition-calculator-tile?wid=472&hei=472&dpr=off"
+        },
+        {
+            "name": "Filet-O-Fish",
+            "description": "Un filetto di pesce impanato con salsa tartara e lattuga su un panino morbido.",
+            "price": 4.49,
+            "image": "https://www.mcdonalds.it/sites/default/files/products/filet-o-fish--hero-isolated.png"
+        },
+        {
+            "name": "Egg McMuffin",
+            "description": "Un panino con uovo, formaggio cheddar e prosciutto, perfetto per una colazione veloce.",
+            "price": 3.79,
+            "image": "https://s7d1.scene7.com/is/image/mcdonalds/mcdonalds-Egg-Cheese-McMuffin-2:1-3-product-tile-desktop?wid=829&hei=515&dpr=off"
+        },
+        {
+            "name": "McFlurry",
+            "description": "Un delizioso gelato con vari mix-ins come M&M's o Oreo.",
+            "price": 3.49,
+            "image": "https://www.mcdonalds.it/sites/default/files/products/mcflurry-oreo--isolated_0.png"
+        },
+        {
+            "name": "French Fries",
+            "description": "Patatine fritte croccanti, perfette da accompagnare a qualsiasi piatto.",
+            "price": 2.49,
+            "image": "https://s7d1.scene7.com/is/image/mcdonalds/mcdonalds-fries-medium-april-promo:nutrition-calculator-tile?wid=822&hei=822&dpr=off"
+        },
+        {
+            "name": "Apple Pie",
+            "description": "Una torta di mele calda con una crosta dorata e croccante.",
+            "price": 1.99,
+            "image": "https://mcdonalds.com.mt/wp-content/uploads/2018/05/applepie.jpg"
+        }
+    ],
+    "Burger King": [
+        {
+            "name": "Whopper",
+            "description": "Un hamburger di manzo con lattuga, pomodoro, cipolla, maionese, ketchup e sottaceti su un panino morbido.",
+            "price": 6.19,
+            "image": "https://cdn.prod.website-files.com/631b4b4e277091ef01450237/65947cd2a2c28c35b5ca6fb1_Whopper%20w%20Cheese.png"
+        },
+        {
+            "name": "Cheeseburger",
+            "description": "Un hamburger di manzo con formaggio cheddar, ketchup e senape su un panino morbido.",
+            "price": 3.49,
+            "image": "https://www.burgerking.it/assets/img/console/mo/products/566image_sito_slide_it.png?v=1709568747"
+        },
+        {
+            "name": "Chicken Fries",
+            "description": "Strisce di pollo croccanti a forma di patatine, servite con una salsa per intingerle.",
+            "price": 3.99,
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSzhUdUC0NZA3LmgZG1OPtPfsBAY5Q5Bt1sQ&s"
+        },
+        {
+            "name": "Big Fish Sandwich",
+            "description": "Filetto di pesce croccante con lattuga e salsa tartara su un panino morbido.",
+            "price": 4.99,
+            "image": "https://www.alaskapollock.org/media/1907/bk_big-fish.jpg"
+        },
+        {
+            "name": "Onion Rings",
+            "description": "Anelli di cipolla croccanti e dorati, perfetti da gustare come snack o contorno.",
+            "price": 2.99,
+            "image": "https://burgerking.com.mt/wp-content/uploads/2020/03/or-site.png"
+        },
+        {
+            "name": "Chicken Nuggets",
+            "description": "Piccole crocchette di pollo, servite con una varietà di salse per intingerle.",
+            "price": 4.49,
+            "image": "https://dynaimage.cdn.cnn.com/cnn/c_fill,g_auto,w_1200,h_675,ar_16:9/https%3A%2F%2Fcdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F210517091115-burger-king-crown-nuggets.jpg"
+        },
+        {
+            "name": "Whopper Jr.",
+            "description": "Una versione più piccola del Whopper, con gli stessi ingredienti freschi.",
+            "price": 4.29,
+            "image": "https://www.burgerking.ee/images/optimized/products/whopper-jr-cheese-desktop-8b9471b07b5d6a1ed2af58f83341348e.png"
+        },
+        {
+            "name": "BK Mocha Joe",
+            "description": "Caffè espresso con cioccolato caldo e schiuma di latte.",
+            "price": 2.79,
+            "image": "https://images.summitmedia-digital.com/spotph/images/2023/05/23/burger-king-mocha-joe-frost-discontinue-phaseout-1684837199.jpg"
+        }
+    ],
+    "KFC": [
+        {
+            "name": "Original Recipe Chicken",
+            "description": "Pollo fritto con l'esclusiva ricetta segreta di KFC, croccante fuori e tenero dentro.",
+            "price": 5.99,
+            "image": "https://rs-menus-api.roocdn.com/images/2b81b9c0-8054-42c9-ad2b-e64e5adc6fdb/image.jpeg"
+        },
+        {
+            "name": "Extra Crispy Chicken",
+            "description": "Pollo fritto con una crosta extra croccante, per un sapore più intenso.",
+            "price": 6.49,
+            "image": "https://rs-menus-api.roocdn.com/images/de117c0e-a57b-4103-9f94-29c8883a4db3/image.jpeg"
+        },
+        {
+            "name": "Chicken Tenders",
+            "description": "Filetti di pollo impanati e fritti, croccanti e succosi all'interno.",
+            "price": 4.99,
+            "image": "https://rs-menus-api.roocdn.com/images/13e452af-425d-44be-ab2b-e4d59ba628ca/image.jpeg"
+        },
+        {
+            "name": "Popcorn Chicken",
+            "description": "Piccole bocchette di pollo croccante, perfette per uno snack veloce.",
+            "price": 4.29,
+            "image": "https://rs-menus-api.roocdn.com/images/74bace51-d175-47c4-8743-f9d871339a2c/image.jpeg"
+        },
+        {
+            "name": "Fried Chicken Sandwich",
+            "description": "Panino con pollo fritto croccante, lattuga e maionese su un panino morbido.",
+            "price": 5.49,
+            "image": "https://rs-menus-api.roocdn.com/images/b9b1ab48-f7e8-4fa6-8f6f-2c13d18e61a0/image.jpeg"
+        },
+        {
+            "name": "Mashed Potatoes with Gravy",
+            "description": "Purè di patate cremoso accompagnato da una ricca salsa gravy.",
+            "price": 2.49,
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgBAHWTa55c8aD30tFWn9rJgBpa8sWFSlHbA&s"
+        },
+        {
+            "name": "Cole Slaw",
+            "description": "Insalata di cavolo cremoso, un contorno classico di KFC.",
+            "price": 2.19,
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrHcXCJq9KILZG7Pjllnn1wIkYrKGTzDpW1Q&s"
+        },
+        {
+            "name": "Biscuits",
+            "description": "Panini morbidi e burrosi, perfetti da gustare con il pollo.",
+            "price": 1.79,
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLk-HeYPm0vXA2CUlbrBIuBySB74P_B82Q6A&s"
+        }
+    ],
+    "Subway": [
+        {
+            "name": "Italian BMT",
+            "description": "Un sandwich con salame, pepperoni e prosciutto, con formaggio e verdure fresche.",
+            "price": 6.99,
+            "image": "https://rs-menus-api.roocdn.com/images/7c2a717a-44c3-44f9-a80e-1e1d0f26e4df/image.jpeg"
+        },
+        {
+            "name": "Subway Club",
+            "description": "Un mix di tacchino, prosciutto e roast beef con formaggio e verdure fresche.",
+            "price": 7.49,
+            "image": "https://rs-menus-api.roocdn.com/images/6a477d73-aa31-4ec2-b6a8-70ae8fe2dd11/image.jpeg"
+        },
+        {
+            "name": "Chicken Teriyaki",
+            "description": "Pollo grigliato con salsa teriyaki dolce, accompagnato da verdure fresche.",
+            "price": 7.29,
+            "image": "https://rs-menus-api.roocdn.com/images/42b64f10-1220-4e27-b39e-da43c2eced48/image.jpeg"
+        },
+        {
+            "name": "Veggie Delight",
+            "description": "Un sandwich vegetariano con una selezione di verdure fresche e salse.",
+            "price": 5.99,
+            "image": "https://rs-menus-api.roocdn.com/images/b45e0c3e-a741-4a9f-bda0-e3a30f48286b/image.jpeg"
+        },
+        {
+            "name": "Meatball Marinara",
+            "description": "Polpette di carne con salsa marinara, formaggio mozzarella e pane fresco.",
+            "price": 6.49,
+            "image": "https://rs-menus-api.roocdn.com/images/a23daaaf-3fb9-4c16-8905-5b3bb3617e28/image.jpeg"
+        },
+        {
+            "name": "Tuna Sandwich",
+            "description": "Tonno con maionese, servito con verdure fresche su un panino morbido.",
+            "price": 6.29,
+            "image": "https://rs-menus-api.roocdn.com/images/9fed6a2e-4df1-4cf5-80dd-aaedf80bfc54/image.jpeg"
+        },
+        {
+            "name": "Turkey Breast",
+            "description": "Fettine di tacchino arrosto con lattuga, pomodoro e maionese.",
+            "price": 6.99,
+            "image": "https://rs-menus-api.roocdn.com/images/c3a435e6-6b59-4bc9-b3d2-1c92ac5ca97e/image.jpeg"
+        },
+        {
+            "name": "Steak & Cheese",
+            "description": "Bistecca con formaggio fuso, peperoni e cipolle su pane tostato.",
+            "price": 7.79,
+            "image": "https://www.subway.com/ns/images/menu/ITA/ENG/RPLC_SteakandCheese_ITCY.jpg"
+        }
+    ],
+    
+    "140 Grammi": [
+        {
+            "name": "Carbonara",
+            "description": "Spaghetti a base di pancetta affumicata, uova, grana padano e tocco di pepe nero macinato.",
+            "price": 16.80,
+            "image": "https://rs-menus-api.roocdn.com/images/77a5f6d3-0f57-4b61-909d-3f44fcf865c2/image.jpeg"
+        },
+        {
+            "name": "Amatriciana",
+            "description": "Penne pancetta affumicata, cipolla, salsa di pomodoro vino bianco, olio evo.",
+            "price": 16.50,
+            "image": "https://rs-menus-api.roocdn.com/images/7894fedc-736d-47f3-b3be-17ac85e47bec/image.jpeg"
+        },
+        {
+            "name": "Pescatora",
+            "description": "Spaghetti ai frutti di mare, prezzemolo, pomodoro fresco,salsa di pomodoro, basilico, aglio, olio evo. ",
+            "price": 21.50,
+            "image":"https://rs-menus-api.roocdn.com/images/193f14bf-fe58-4f67-8af9-afdefb2159a5/image.jpeg"
+        },
+        {
+            "name": "Vongole e bottarga",
+            "description": "Spaghetti vongole, pomodoro fresco, bottarga, aglio, prezzemolo, olio evo",
+            "price": 19.80,
+            "image": "https://rs-menus-api.roocdn.com/images/2482e89f-7bdf-4b9e-b826-cdc46e13c0ac/image.jpeg"
+        },
+        {
+            "name": "Penne al pomodoro",
+            "description": "Penne, pomodoro fresco e basilico ",
+            "price": 11.80,
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwwzlLsh_CZMVBwrArh6sJ9Kz1x8nXd_LJiQ&s"
+        },
+        {
+            "name": "Rombo di Tuono",
+            "description": "Spaghetti cipolla, salsa di pomodoro, vino bianco, olio evo, polpette di manzo",
+            "price": 18.80,
+            "image": "https://rs-menus-api.roocdn.com/images/c56f18a9-d1d0-46d5-af8a-44c140096d34/image.jpeg"
+        }
+    ],
+    "Old Wild West": [
+        {
+            "name": "Rib-Eye",
+            "description": "Entrecôte di manzo alla griglia servita con patate* Premium Fries e salsa OWW",
+            "price": 16.90,
+            "image": "https://www.oldwildwest.it/proxyvfs.axd/img_main/r21121/ribeye-jpg?v=19816&ext=.jpg"
+        },
+        {
+            "name": "Cherokee Rib-Eye",
+            "description": "Tagliata di entrecôte di manzo alla griglia con scaglie di Parmigiano Reggiano DOP su letto di rucola, servita con patate* Premium Fries e salsa OWW",
+            "price": 17.50,
+            "image": "https://www.oldwildwest.it/proxyvfs.axd/img_main/r21122/cherokee-ribeye-jpg?v=19817&ext=.jpg"
+        },
+        {
+            "name": "Picanha Steak",
+            "description": "Tagliata di Picanha alla griglia, servita con verdure al forno e accompagnata da salsa Chimichurri homemade ",
+            "price": 16.90,
+            "image":"https://www.oldwildwest.it/proxyvfs.axd/img_main/r25702/picanasteak-jpg?v=19819&ext=.jpg"
+        },
+        {
+            "name": "American Burger",
+            "description": "Panino con semi di sesamo*, hamburger*, formaggio Cheddar, bacon, pomodoro, insalata iceberg e salsa Ketchup, servito con patate* Fries e salsa OWW",
+            "price": 10.80,
+            "image": "https://www.oldwildwest.it/proxyvfs.axd/img_main/r24121/american-jpg?v=19809&ext=.jpg"
+        },
+        {
+            "name": "BBQ Ribs - 1 baffa",
+            "description": "Costine di maiale cotte in sottovuoto con salsa Barbecue servite con patate* Premium Fries e salsa Barbecue - 1 baffa",
+            "price": 21.00,
+            "image": "https://www.oldwildwest.it/proxyvfs.axd/img_main/r24190/bbqribs-jpg?v=19825&ext=.jpg"
+        },
+        {
+            "name": "Galletto OWW",
+            "description": "Galletto* Italiano alla griglia, accuratamente speziato, servito con patate* Fries, salsa OWW e un crostino di pane*",
+            "price": 14.50,
+            "image": "https://www.oldwildwest.it/proxyvfs.axd/img_main/r21156/galletto-jpg?v=19823&ext=.jpg"
+        }
+    ],
+    "Yama Sushi Restaurant": [
+        
+        {
+            "name": "Sashimi sake 6 pezzi",
+            "description": "fette di salmone crudo",
+            "price":8.00,
+            "image": "https://rs-menus-api.roocdn.com/images/96232fd7-eccb-4301-aac4-e0d1ad566fdd/image.jpeg"
+        },
+        {
+            "name": "Nigiri misti",
+            "description": "8 nigiri misti",
+            "price": 14.00,
+            "image": "https://rs-menus-api.roocdn.com/images/f675e956-6baa-4f07-8448-a63997217642/image.jpeg"
+        },
+        {
+            "name": "Uramaki orange 8pz",
+            "description": "Salmone, philadelphia e tobiko - uova di pesce",
+            "price": 11.00,
+            "image": "https://rs-menus-api.roocdn.com/images/bcf51843-79d2-4a4a-a7b8-184db042027d/image.jpeg"
+        },
+        {
+            "name": "Uramaki spicy flambè roll 8pz",
+            "description": "Tempura di gamberi,maio,avvolto salmone flambè, salsa spicy, salsa teriyaki e cipollotto, piccante",
+            "price": 13.00,
+            "image": "https://rs-menus-api.roocdn.com/images/c214ad49-5c13-4c48-93c7-9cf78c67efda/image.jpeg"
+        },
+        {
+            "name": "Hosomaki sake 8pz",
+            "description": "Salmone",
+            "price": 6.00,
+            "image": "https://rs-menus-api.roocdn.com/images/803ffcef-2554-4b14-a891-d7cc41b82766/image.jpeg"
+        },
+        {
+            "name": "Hosomaki maguro 8pz",
+            "description": "Tonno",
+            "price":6.00 ,
+            "image": "https://rs-menus-api.roocdn.com/images/ae7543e2-9657-4d91-bb89-e8b264c7bef3/image.jpeg"
+        },
+        {
+            "name": "Futomaki tempura ebi 10PZ",
+            "description": "Avocado, tempura di gamberi ,mayo e salsa teriyaki,farina di tempura",
+            "price": 13.00,
+            "image": "https://rs-menus-api.roocdn.com/images/49ff67b7-51ed-47d7-bc66-fe254780e971/image.jpeg"
+        },
+        {
+            "name": "Gunkan dorai 2pz",
+            "description": "Salmone, salsa kai, frutta secca,teriyaki",
+            "price": 6.00,
+            "image": "https://rs-menus-api.roocdn.com/images/d707fb16-85ac-4b8f-adc7-966dec77b5c9/image.jpeg"
+        },
+        {
+            "name": "Tempura di Gamberi",
+            "description": "Gamberoni fritti",
+            "price": 12.00,
+            "image": "https://rs-menus-api.roocdn.com/images/a6e952f9-812d-42fd-ace2-3a5d6bd65e4e/image.jpeg"
+        },
+        {
+            "name": "Spaghetti di riso con gamberi e verdure",
+            "description": "Spaghetti di riso saltato con gamberi e verdure mix ,uova",
+            "price": 8.00,
+            "image": "https://rs-menus-api.roocdn.com/images/1f804fa7-2729-463c-bf70-79774a0185ce/image.jpeg"
+        },
+        
+        {
+            "name": "Ramen con brodo di carne",
+            "description": "manzo, verdure e uova, piccante",
+            "price":10.00 ,
+            "image": "https://rs-menus-api.roocdn.com/images/881c21a7-b0b8-4b9f-8c88-66fbbe86ac45/image.jpeg"
+        },
+        {
+            "name": "Ramen con brodo di pesce",
+            "description": "pesce, verdure e uova",
+            "price": 10.00,
+            "image": "https://rs-menus-api.roocdn.com/images/cbd61fb8-b2db-43ae-9fdd-c736f317fd7e/image.jpeg"
+        }
+    ], 
+    "Starbucks": [
+        {
+            "name": "Caffè Americano",
+            "description": "Espresso diluito con acqua calda per un caffè forte e intenso.",
+            "price": 2.99,
+            "image": "https://rs-menus-api.roocdn.com/images/50679076-a89a-46df-bdcc-3fbba0a3a364/image.jpeg"
+        },
+        {
+            "name": "Caramel Macchiato",
+            "description": "Espresso con latte caldo e uno strato di caramello.",
+            "price": 4.49,
+            "image": "https://rs-menus-api.roocdn.com/images/55beb451-9551-4686-9510-c21ec8b51705/image.jpeg"
+        },
+        {
+            "name": "Cappuccino",
+            "description": "Espresso con una generosa quantità di schiuma di latte.",
+            "price": 3.79,
+            "image": "https://rs-menus-api.roocdn.com/images/1b535585-8f73-4b06-892b-f2b8548e5649/image.jpeg"
+        },
+        {
+            "name": "Mocha",
+            "description": "Espresso con cioccolato e latte caldo, guarnito con panna montata.",
+            "price": 4.29,
+            "image": "https://rs-menus-api.roocdn.com/images/d89aad99-2881-41c8-9148-3eecf0cc6ffd/image.jpeg"
+        },
+        {
+            "name": "Iced Latte",
+            "description": "Espresso con latte freddo, perfetto per una giornata calda.",
+            "price": 3.99,
+            "image": "https://rs-menus-api.roocdn.com/images/8e50cdd8-17ba-4d4e-9098-a32f63a834b2/image.jpeg"
+        },
+        {
+            "name": "Frappuccino",
+            "description": "Una bevanda ghiacciata con caffè, latte e ghiaccio, guarnita con panna montata.",
+            "price": 4.99,
+            "image": "https://rs-menus-api.roocdn.com/images/1deac685-7e76-475e-b9af-84dacec071b4/image.jpeg"
+        }
+    ],   
+    "Pizza Hut": [
+        {
+            "name": "Pepperoni Pizza",
+            "description": "Pizza con salsa marinara, formaggio mozzarella e abbondante pepperoni.",
+            "price": 9.99,
+            "image": null
+        },
+        {
+            "name": "Veggie Supreme",
+            "description": "Pizza con una varietà di verdure fresche come peperoni, cipolla, funghi e olive.",
+            "price": 10.49,
+            "image": null
+        },
+        {
+            "name": "Meat Lover's Pizza",
+            "description": "Pizza con vari tipi di carne come salame, salsiccia, bacon e carne macinata.",
+            "price": 11.49,
+            "image": null
+        },
+        {
+            "name": "BBQ Chicken Pizza",
+            "description": "Pizza con pollo grigliato, salsa barbecue, cipolle rosse e formaggio.",
+            "price": 10.99,
+            "image": null
+        },
+        {
+            "name": "Cheese Pizza",
+            "description": "Pizza semplice con salsa di pomodoro e formaggio mozzarella.",
+            "price": 7.99,
+            "image": null
+        },
+        {
+            "name": "Hawaiian Pizza",
+            "description": "Pizza con prosciutto, ananas e formaggio mozzarella.",
+            "price": 9.49,
+            "image": null
+        },
+        {
+            "name": "Stuffed Crust Pizza",
+            "description": "Pizza con bordo ripieno di formaggio, condita con salsa marinara e formaggio mozzarella.",
+            "price": 12.99,
+            "image": null
+        },
+        {
+            "name": "Garlic Breadsticks",
+            "description": "Stuzzichini di pane all'aglio croccante, perfetti come accompagnamento.",
+            "price": 4.99,
+            "image": null
+        }
+    ],
+    "Domino's Pizza": [
+        {
+            "name": "Cheese Pizza",
+            "description": "Pizza con salsa marinara e formaggio mozzarella.",
+            "price": 7.99,
+            "image": null
+        },
+        {
+            "name": "Pepperoni Pizza",
+            "description": "Pizza con salsa di pomodoro, mozzarella e fette di pepperoni.",
+            "price": 8.49,
+            "image": null
+        },
+        {
+            "name": "Deluxe Feast",
+            "description": "Pizza con peperoni, funghi, peperoni verdi, cipolle e carne macinata.",
+            "price": 11.99,
+            "image": null
+        },
+        {
+            "name": "Chicken Alfredo Pizza",
+            "description": "Pizza con pollo grigliato, salsa alfredo cremosa, funghi e mozzarella.",
+            "price": 11.49,
+            "image": null
+        },
+        {
+            "name": "Veggie Pizza",
+            "description": "Pizza con peperoni, olive nere, peperoni verdi, funghi e cipolle.",
+            "price": 9.99,
+            "image": null
+        },
+        {
+            "name": "Breadsticks",
+            "description": "Stuzzichini di pane caldo e soffice, serviti con salsa marinara.",
+            "price": 4.49,
+            "image": null
+        }
+    ],
+    
+    "Taco Bell": [
+        {
+            "name": "Crunchy Taco",
+            "description": "Taco croccante ripieno di carne macinata, lattuga e formaggio.",
+            "price": 1.49,
+            "image": null
+        },
+        {
+            "name": "Beef Burrito",
+            "description": "Tortilla ripiena di carne macinata, fagioli, formaggio e salsa.",
+            "price": 2.49,
+            "image": null
+        },
+        {
+            "name": "Chicken Quesadilla",
+            "description": "Tortilla farcita con pollo grigliato, formaggio e salsa cremosa.",
+            "price": 3.49,
+            "image": null
+        },
+        {
+            "name": "Soft Taco",
+            "description": "Taco morbido con carne macinata, formaggio e lattuga.",
+            "price": 1.79,
+            "image": null
+        },
+        {
+            "name": "Mexican Pizza",
+            "description": "Pizza con carne, formaggio, pomodori e salsa piccante.",
+            "price": 5.99,
+            "image": null
+        }
+    ],
+    "Wendy's": [
+        {
+            "name": "Dave's Single",
+            "description": "Hamburger con manzo 100% puro, formaggio cheddar, lattuga, pomodoro, cipolla, ketchup e maionese.",
+            "price": 5.79,
+            "image": null
+
+        },
+        {
+            "name": "Spicy Chicken Sandwich",
+            "description": "Pollo speziato impanato con lattuga e maionese.",
+            "price": 6.29,
+            "image": null
+        },
+        {
+            "name": "Chicken Nuggets",
+            "description": "Crocchette di pollo, servite con varie salse per intingerle.",
+            "price": 4.49,
+            "image": null
+        },
+        {
+            "name": "Baconator",
+            "description": "Hamburger con manzo, bacon croccante, formaggio cheddar e maionese.",
+            "price": 6.79,
+            "image": null
+        },
+        {
+            "name": "Frosty",
+            "description": "Un gelato cremoso al cioccolato o alla vaniglia.",
+            "price": 2.29,
+            "image": null
+        }
+    ],
+    "Chipotle": [
+        {
+            "name": "Burrito",
+            "description": "Tortilla farcita con riso, fagioli, carne a scelta, formaggio e guacamole.",
+            "price": 7.99,
+            "image": null
+        },
+        {
+            "name": "Bowl",
+            "description": "Bowl con riso, carne a scelta, fagioli, formaggio e salse fresche.",
+            "price": 8.49,
+            "image": null
+        },
+        {
+            "name": "Tacos",
+            "description": "Due tacos con carne a scelta, guacamole, salsa e formaggio.",
+            "price": 6.99,
+            "image": ""
+        },
+        {
+            "name": "Quesadilla",
+            "description": "Tortilla con formaggio fuso e carne a scelta.",
+            "price": 7.49,
+            "image": ""
+        }
+    ],
+    "Five Guys": [
+        {
+            "name": "Cheeseburger",
+            "description": "Un hamburger con carne fresca e formaggio cheddar, servito con varie salse.",
+            "price": 8.99,
+            "image": ""
+        },
+        {
+            "name": "Bacon Cheeseburger",
+            "description": "Un cheeseburger con bacon croccante, carne fresca e formaggio cheddar.",
+            "price": 9.49,
+            "image": ""
+        },
+        {
+            "name": "Fries",
+            "description": "Patatine fritte tagliate a mano, croccanti e salate.",
+            "price": 3.99,
+            "image": null
+        },
+        {
+            "name": "Hot Dog",
+            "description": "Un hot dog con carne di alta qualità, servito con salse a scelta.",
+            "price": 4.99,
+            "image": null
+        }
+    ]
+}

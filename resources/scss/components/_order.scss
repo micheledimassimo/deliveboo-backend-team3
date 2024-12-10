@@ -1,0 +1,9 @@
+.my-btn-carousel {
+    color: white;
+    border: solid $highlight-orange 1px;
+
+    &:hover {
+        background-color: $highlight-orange;
+        color: white;
+    }
+}
